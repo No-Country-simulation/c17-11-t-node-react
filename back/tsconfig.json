@@ -16,6 +16,13 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@Auth/*": ["src/auth/*"],
+      "@Constants/*": ["src/constants/*"],
+      "@Decorators/*": ["src/decorators/*"],
+      "@Helpers/*": ["src/helpers/*"],
+      "@User/*": ["src/user/*"],
+    }
   }
 }
