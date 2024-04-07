@@ -19,9 +19,15 @@
     "noFallthroughCasesInSwitch": false,
     "paths": {
       "@Auth/*": ["src/auth/*"],
+      "@Care/*": ["src/care/*"],
+      "@Caretaker/*": ["src/caretaker/*"],
       "@Constants/*": ["src/constants/*"],
       "@Decorators/*": ["src/decorators/*"],
       "@Helpers/*": ["src/helpers/*"],
+      "@Payment/*": ["src/payment/*"],
+      "@Pet/*": ["src/pet/*"],
+      "@Role/*": ["src/role/*"],
+      "@Service/*": ["src/service/*"],
       "@User/*": ["src/user/*"],
     }
   }
