@@ -14,7 +14,10 @@ export class User {
   pet: Pet[];
 
   @Prop()
-  name: string;
+  first_name: string;
+
+  @Prop()
+  last_name: string;
 
   @Prop()
   dni: number;

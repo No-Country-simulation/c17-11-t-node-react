@@ -1,15 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Role } from './schemas/role.schema';
+import { Role, RoleDocument } from './schemas/role.schema';
 import { Model } from 'mongoose';
 
 @Injectable()
 export class RoleService {
   constructor(@InjectModel(Role.name) private roleModel: Model<Role>) {
-    const count = roleModel.estimatedDocumentCount();
+    const count = this.roleModel.estimatedDocumentCount();
     count.then((value) => {
       if (value == 0) {
-        roleModel.create(
+        this.roleModel.create(
           { name: 'admin' },
           { name: 'caretaker' },
           { name: 'client' },
@@ -18,7 +18,11 @@ export class RoleService {
     });
   }
 
-  async findAll(): Promise<Role[]> {
+  async findAll(): Promise<RoleDocument[]> {
     return this.roleModel.find().exec();
+  }
+
+  async findOneByName(name: string): Promise<RoleDocument> {
+    return this.roleModel.findOne({ name }).exec();
   }
 }
