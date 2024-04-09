@@ -10,7 +10,7 @@ import { PasswordService } from '@Helpers/password/password.service';
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
     RoleModule,
   ],
-  exports: [MongooseModule],
+  exports: [MongooseModule, UserService],
   providers: [UserService, PasswordService],
 })
 export class UserModule {}

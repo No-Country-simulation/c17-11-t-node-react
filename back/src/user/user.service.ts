@@ -5,6 +5,7 @@ import { Model } from 'mongoose';
 import { RoleService } from '@Role/role.service';
 import { PasswordService } from '@Helpers/password/password.service';
 import { CreateUserDTO, UpdateUserDTO } from './dto/user.dto';
+import { EMAIL } from '@Constants/regex';
 
 @Injectable()
 export class UserService {
@@ -19,7 +20,7 @@ export class UserService {
   }
 
   async findAll(): Promise<UserDocument[]> {
-    return this.userModel.find().exec();
+    return this.userModel.find().populate('role').exec();
   }
 
   // async findAllPaginate() {
@@ -27,7 +28,21 @@ export class UserService {
   // }
 
   async findById(id: string): Promise<UserDocument> {
-    return this.userModel.findById(id).exec();
+    return this.userModel.findById(id).populate('role').exec();
+  }
+
+  async findUserByUsernameOrEmail(username: string): Promise<User> {
+    const query: {
+      email?: string;
+      username?: string;
+    } = {};
+
+    if (EMAIL.test(username)) {
+      query.email = username;
+    } else {
+      query.username = username;
+    }
+    return this.userModel.findOne(query).populate('role').exec();
   }
 
   async create(data: CreateUserDTO) {

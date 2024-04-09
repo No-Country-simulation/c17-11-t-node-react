@@ -8,7 +8,7 @@ export type CaretakerDocument = HydratedDocument<Caretaker>;
 
 @Schema()
 export class Caretaker {
-  @Prop({ type: Types.ObjectId, ref: 'User' })
+  @Prop({ type: Types.ObjectId, ref: 'User', unique: true })
   user: User;
 
   @Prop({ type: [{ type: Types.ObjectId, ref: 'Service' }] })
