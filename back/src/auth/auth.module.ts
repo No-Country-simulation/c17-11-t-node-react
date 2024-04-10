@@ -7,9 +7,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { PassportModule } from '@nestjs/passport';
 import { LocalStrategy } from './strategy/local.strategy';
 import { LoginController } from './v1/login/login.controller';
+import { JwtStrategy } from './strategy/jwt.strategy';
 
 @Module({
-  providers: [AuthService, PasswordService, LocalStrategy],
+  providers: [AuthService, PasswordService, LocalStrategy, JwtStrategy],
   imports: [
     UserModule,
     JwtModule.registerAsync({

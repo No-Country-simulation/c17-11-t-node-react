@@ -4,6 +4,7 @@ import { Public } from '@Decorators/public-access.decorator';
 import { LocalAuthGuard } from '@Guards/local-auth/local-auth.guard';
 import {
   Controller,
+  Get,
   HttpCode,
   HttpStatus,
   InternalServerErrorException,
@@ -25,7 +26,10 @@ export class LoginController {
   @Post('login')
   async login(@Req() req: Request) {
     try {
-      const token = await this.authService.login(req.user['data']._doc._id);
+      const token = await this.authService.login(
+        req.user['data']._doc._id,
+        req.user['data']._doc.role._id,
+      );
       return {
         success: true,
         data: {
@@ -39,5 +43,11 @@ export class LoginController {
         message: String(error),
       });
     }
+  }
+
+  @Public()
+  @Get('google')
+  async loginByGoogle(@Req() req: Request) {
+    return req.user;
   }
 }

@@ -13,10 +13,13 @@ import { CaretakerModule } from './caretaker/caretaker.module';
 import { CareModule } from './care/care.module';
 import { PaymentModule } from './payment/payment.module';
 import { ServiceModule } from './service/service.module';
+import { APP_GUARD } from '@nestjs/core';
+import { JwtAuthGuard } from '@Guards/jwt-auth/jwt-auth.guard';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
+      isGlobal: true,
       load: [configLoad],
       validationSchema: envSchema,
     }),
@@ -37,6 +40,13 @@ import { ServiceModule } from './service/service.module';
     ServiceModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useExisting: JwtAuthGuard,
+    },
+    JwtAuthGuard,
+  ],
 })
 export class AppModule {}

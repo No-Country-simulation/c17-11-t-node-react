@@ -49,11 +49,16 @@ export class AuthService {
     };
   }
 
-  async login(userId: string, expiresIn?: string): Promise<string> {
+  async login(
+    userId: string,
+    roleId: string,
+    expiresIn?: string,
+  ): Promise<string> {
     if (!expiresIn) expiresIn = '24h';
 
     const payload = {
       sub: userId,
+      role: roleId,
     };
 
     return this.jwtService.signAsync(payload, { expiresIn });
