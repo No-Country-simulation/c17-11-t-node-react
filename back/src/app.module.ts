@@ -15,6 +15,7 @@ import { PaymentModule } from './payment/payment.module';
 import { ServiceModule } from './service/service.module';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from '@Guards/jwt-auth/jwt-auth.guard';
+import { RolesGuard } from '@Guards/roles/roles.guard';
 
 @Module({
   imports: [
@@ -47,6 +48,11 @@ import { JwtAuthGuard } from '@Guards/jwt-auth/jwt-auth.guard';
       useExisting: JwtAuthGuard,
     },
     JwtAuthGuard,
+    {
+      provide: APP_GUARD,
+      useExisting: RolesGuard,
+    },
+    RolesGuard,
   ],
 })
 export class AppModule {}

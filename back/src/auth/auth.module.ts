@@ -8,11 +8,20 @@ import { PassportModule } from '@nestjs/passport';
 import { LocalStrategy } from './strategy/local.strategy';
 import { LoginController } from './v1/login/login.controller';
 import { JwtStrategy } from './strategy/jwt.strategy';
+import { GoogleStrategy } from './strategy/google.strategy';
+import { RoleModule } from '@Role/role.module';
 
 @Module({
-  providers: [AuthService, PasswordService, LocalStrategy, JwtStrategy],
+  providers: [
+    AuthService,
+    PasswordService,
+    LocalStrategy,
+    JwtStrategy,
+    GoogleStrategy,
+  ],
   imports: [
     UserModule,
+    RoleModule,
     JwtModule.registerAsync({
       global: true,
       imports: [ConfigModule],

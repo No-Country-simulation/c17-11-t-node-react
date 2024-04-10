@@ -31,7 +31,7 @@ export class UserService {
     return this.userModel.findById(id).populate('role').exec();
   }
 
-  async findUserByUsernameOrEmail(username: string): Promise<User> {
+  async findUserByUsernameOrEmail(username: string): Promise<UserDocument> {
     const query: {
       email?: string;
       username?: string;

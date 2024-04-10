@@ -1,6 +1,7 @@
 import { IsPassword } from '@Decorators/password.decorator';
 import {
   IsArray,
+  IsBoolean,
   IsDate,
   IsNotEmpty,
   IsNumber,
@@ -11,9 +12,10 @@ import {
   Min,
   ValidateNested,
 } from 'class-validator';
+import { Types } from 'mongoose';
 
 export class CreateUserDTO {
-  role?: string;
+  role?: Types.ObjectId;
 
   @IsArray()
   @IsOptional()
@@ -31,10 +33,10 @@ export class CreateUserDTO {
   @IsNotEmpty()
   @Min(7)
   @Max(8)
-  dni: number;
+  dni?: number;
 
   @IsDate()
-  birthday: Date;
+  birthday?: Date;
 
   @IsString()
   @IsOptional()
@@ -128,6 +130,10 @@ export class UpdateUserDTO {
   @ValidateNested()
   @IsOptional()
   address?: Address[];
+
+  @IsBoolean()
+  @IsOptional()
+  blocking?: boolean;
 }
 
 class Address {

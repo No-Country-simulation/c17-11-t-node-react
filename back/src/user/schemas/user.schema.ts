@@ -50,6 +50,9 @@ export class User {
     }),
   )
   address: Record<string, any>;
+
+  @Prop()
+  blocking: boolean;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

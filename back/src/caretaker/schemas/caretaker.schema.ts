@@ -19,6 +19,9 @@ export class Caretaker {
 
   @Prop()
   active_requests: number;
+
+  @Prop()
+  description: string;
 }
 
 export const CaretakerSchema = SchemaFactory.createForClass(Caretaker);
