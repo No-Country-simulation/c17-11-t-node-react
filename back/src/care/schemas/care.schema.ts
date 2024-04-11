@@ -32,6 +32,12 @@ export class Care {
 
   @Prop()
   state: boolean;
+
+  @Prop()
+  description: string;
+
+  @Prop()
+  totalPrice: number;
 }
 
 export const CareSchema = SchemaFactory.createForClass(Care);

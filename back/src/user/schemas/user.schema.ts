@@ -14,7 +14,10 @@ export class User {
   pet: Pet[];
 
   @Prop()
-  name: string;
+  first_name: string;
+
+  @Prop()
+  last_name: string;
 
   @Prop()
   dni: number;
@@ -47,6 +50,9 @@ export class User {
     }),
   )
   address: Record<string, any>;
+
+  @Prop()
+  blocking: boolean;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

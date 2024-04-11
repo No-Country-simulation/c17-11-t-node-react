@@ -8,7 +8,7 @@ export type CaretakerDocument = HydratedDocument<Caretaker>;
 
 @Schema()
 export class Caretaker {
-  @Prop({ type: Types.ObjectId, ref: 'User' })
+  @Prop({ type: Types.ObjectId, ref: 'User', unique: true })
   user: User;
 
   @Prop({ type: [{ type: Types.ObjectId, ref: 'Service' }] })
@@ -19,6 +19,9 @@ export class Caretaker {
 
   @Prop()
   active_requests: number;
+
+  @Prop()
+  description: string;
 }
 
 export const CaretakerSchema = SchemaFactory.createForClass(Caretaker);
