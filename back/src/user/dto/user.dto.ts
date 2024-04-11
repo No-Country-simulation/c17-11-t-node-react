@@ -11,6 +11,7 @@ import {
   Max,
   MaxLength,
   Min,
+  MinLength,
   ValidateNested,
 } from 'class-validator';
 
@@ -106,8 +107,10 @@ export class UpdateUserDTO {
   @IsOptional()
   picture?: string;
 
-  @IsArray()
   @IsOptional()
+  @MinLength(10, {
+    each: true,
+  })
   @MaxLength(10, {
     each: true,
   })
@@ -132,7 +135,6 @@ export class UpdateUserDTO {
 
   @IsOptional()
   @IsString()
-  @IsPassword()
   current_password?: string;
 
   @ValidateNested()

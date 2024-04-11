@@ -20,7 +20,7 @@ export class UserService {
   }
 
   async findAll(): Promise<UserDocument[]> {
-    return this.userModel.find().populate('role').exec();
+    return this.userModel.find({}, { password: 0 }).populate('role').exec();
   }
 
   // async findAllPaginate() {
@@ -28,7 +28,7 @@ export class UserService {
   // }
 
   async findById(id: string): Promise<UserDocument> {
-    return this.userModel.findById(id).populate('role').exec();
+    return this.userModel.findById(id, { password: 0 }).populate('role').exec();
   }
 
   async findUserByUsernameOrEmail(username: string): Promise<UserDocument> {
@@ -62,7 +62,7 @@ export class UserService {
     const { password, current_password, ...req } = data;
 
     if ((password && !current_password) || (!password && current_password)) {
-      new Error('current or new password has not been sent');
+      throw new Error('current or new password has not been sent');
     }
 
     let hash: string;
@@ -74,12 +74,12 @@ export class UserService {
         user.password,
       );
 
-      if (!comparePassword) new Error('incorrect current password');
+      if (!comparePassword) throw new Error('incorrect current password');
 
       hash = await this.passwordService.hash(password);
     }
 
-    if (!hash) {
+    if (hash) {
       return this.userModel
         .findByIdAndUpdate(id, {
           password: hash,

@@ -4,6 +4,9 @@ import { User, UserSchema } from './schemas/user.schema';
 import { UserService } from './user.service';
 import { RoleModule } from '@Role/role.module';
 import { PasswordService } from '@Helpers/password/password.service';
+import { GettersController } from './v1/getters/getters.controller';
+import { AddController } from './v1/add/add.controller';
+import { UpdateController } from './v1/update/update.controller';
 
 @Module({
   imports: [
@@ -12,5 +15,6 @@ import { PasswordService } from '@Helpers/password/password.service';
   ],
   exports: [MongooseModule, UserService],
   providers: [UserService, PasswordService],
+  controllers: [GettersController, AddController, UpdateController],
 })
 export class UserModule {}
