@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument } from './schemas/user.schema';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 import { RoleService } from '@Role/role.service';
 import { PasswordService } from '@Helpers/password/password.service';
 import { CreateUserDTO, UpdateUserDTO } from './dto/user.dto';
@@ -46,13 +46,16 @@ export class UserService {
   }
 
   async create(data: CreateUserDTO) {
-    const { password, ...req } = data;
+    const { password, role, ...req } = data;
     const hash =
       password != undefined
         ? await this.passwordService.hash(password)
         : undefined;
-
-    return this.userModel.create({ password: hash, ...req });
+    return this.userModel.create({
+      password: hash,
+      role: new Types.ObjectId(role),
+      ...req,
+    });
   }
 
   async update(id: string, data: UpdateUserDTO) {

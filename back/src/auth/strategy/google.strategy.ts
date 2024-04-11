@@ -14,15 +14,19 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
       callbackURL:
         configService.get('api_url') + '/api/v1/auth/google/callback',
       scope: ['email', 'profile'],
+      passReqToCallback: true,
     });
   }
 
   async validate(
+    req: any,
     accessToken: string,
     refreshToken: string,
     profile: GoogleProfile,
     done: VerifyCallback,
   ) {
+    // console.log(req);
+
     const user = {
       accessToken,
       first_name: profile._json.given_name,

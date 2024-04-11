@@ -3,6 +3,7 @@ import {
   IsArray,
   IsBoolean,
   IsDate,
+  IsEmail,
   IsNotEmpty,
   IsNumber,
   IsOptional,
@@ -12,10 +13,11 @@ import {
   Min,
   ValidateNested,
 } from 'class-validator';
-import { Types } from 'mongoose';
 
 export class CreateUserDTO {
-  role?: Types.ObjectId;
+  @IsNotEmpty()
+  @IsString()
+  role?: string;
 
   @IsArray()
   @IsOptional()
@@ -29,13 +31,14 @@ export class CreateUserDTO {
   @IsNotEmpty()
   last_name: string;
 
+  @IsOptional()
   @IsNumber()
-  @IsNotEmpty()
   @Min(7)
   @Max(8)
   dni?: number;
 
   @IsDate()
+  @IsOptional()
   birthday?: Date;
 
   @IsString()
@@ -51,11 +54,12 @@ export class CreateUserDTO {
 
   @IsString()
   @IsNotEmpty()
+  @IsEmail()
   email: string;
   email_verified?: boolean;
 
+  @IsOptional()
   @IsString()
-  @IsNotEmpty()
   username: string;
 
   @IsString()
@@ -69,6 +73,10 @@ export class CreateUserDTO {
   @ValidateNested()
   @IsOptional()
   address?: Address[];
+
+  @IsBoolean()
+  @IsOptional()
+  blocking?: boolean;
 }
 
 export class UpdateUserDTO {
