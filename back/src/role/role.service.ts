@@ -12,7 +12,7 @@ export class RoleService {
         this.roleModel.create(
           { name: 'admin' },
           { name: 'caretaker' },
-          { name: 'client' },
+          { name: 'owner' },
         );
       }
     });

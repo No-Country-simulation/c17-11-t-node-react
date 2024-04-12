@@ -9,6 +9,9 @@ export class Service {
   name: string;
 
   @Prop()
+  description: string;
+
+  @Prop()
   price: number;
 }
 

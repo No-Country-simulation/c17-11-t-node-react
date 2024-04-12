@@ -38,11 +38,14 @@ export class LoginController {
         req.user['data']._doc._id,
         req.user['data']._doc.role._id,
       );
+
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { password, ...result } = req.user['data']._doc;
       return {
         success: true,
         data: {
           access_token: token,
-          role: req.user['data']._doc.role.name,
+          user: result,
         },
       };
     } catch (error) {
@@ -74,38 +77,46 @@ export class LoginController {
       );
 
       if (user == null) {
-        const rol = await this.roleService.findOneByName('client');
+        const rol = await this.roleService.findOneByName('owner');
         const createdUser = await this.userService.create({
           email: userInfo.email,
           first_name: userInfo.first_name,
           last_name: userInfo.last_name,
-          username: userInfo.first_name.trim().replace(/\s+/g, ' '),
+          username:
+            userInfo.first_name.trim().replace(/\s+/g, '') +
+            new Date().valueOf().toString(),
           email_verified: userInfo.email_verified,
           picture: userInfo.picture,
-          role: rol._id,
+          role: rol._id.toString(),
+          blocking: false,
         });
 
         const token = await this.authService.login(
-          String(createdUser._id),
-          String(rol._id),
+          createdUser._id.toString(),
+          rol._id.toString(),
         );
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { password, ...result } = createdUser;
         return {
           success: true,
           data: {
             access_token: token,
+            user: result,
           },
         };
       }
 
       const token = await this.authService.login(
-        String(user._id),
+        user._id.toString(),
         user.role['_id'],
       );
+
       return {
         success: true,
         data: {
           access_token: token,
+          user: user,
         },
       };
     } catch (error) {

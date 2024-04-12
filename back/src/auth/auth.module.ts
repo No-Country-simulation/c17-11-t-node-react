@@ -10,6 +10,7 @@ import { LoginController } from './v1/login/login.controller';
 import { JwtStrategy } from './strategy/jwt.strategy';
 import { GoogleStrategy } from './strategy/google.strategy';
 import { RoleModule } from '@Role/role.module';
+import { RegisterController } from './v1/register/register.controller';
 
 @Module({
   providers: [
@@ -33,6 +34,6 @@ import { RoleModule } from '@Role/role.module';
     }),
     PassportModule,
   ],
-  controllers: [LoginController],
+  controllers: [LoginController, RegisterController],
 })
 export class AuthModule {}

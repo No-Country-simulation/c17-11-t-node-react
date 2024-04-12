@@ -3,6 +3,7 @@ import {
   IsArray,
   IsBoolean,
   IsDate,
+  IsEmail,
   IsNotEmpty,
   IsNumber,
   IsOptional,
@@ -10,12 +11,14 @@ import {
   Max,
   MaxLength,
   Min,
+  MinLength,
   ValidateNested,
 } from 'class-validator';
-import { Types } from 'mongoose';
 
 export class CreateUserDTO {
-  role?: Types.ObjectId;
+  @IsNotEmpty()
+  @IsString()
+  role?: string;
 
   @IsArray()
   @IsOptional()
@@ -29,13 +32,14 @@ export class CreateUserDTO {
   @IsNotEmpty()
   last_name: string;
 
+  @IsOptional()
   @IsNumber()
-  @IsNotEmpty()
   @Min(7)
   @Max(8)
   dni?: number;
 
   @IsDate()
+  @IsOptional()
   birthday?: Date;
 
   @IsString()
@@ -51,11 +55,12 @@ export class CreateUserDTO {
 
   @IsString()
   @IsNotEmpty()
+  @IsEmail()
   email: string;
   email_verified?: boolean;
 
+  @IsOptional()
   @IsString()
-  @IsNotEmpty()
   username: string;
 
   @IsString()
@@ -69,9 +74,15 @@ export class CreateUserDTO {
   @ValidateNested()
   @IsOptional()
   address?: Address[];
+
+  @IsBoolean()
+  @IsOptional()
+  blocking?: boolean;
 }
 
 export class UpdateUserDTO {
+  role?: string;
+
   @IsArray()
   @IsOptional()
   pet?: string[];
@@ -98,8 +109,10 @@ export class UpdateUserDTO {
   @IsOptional()
   picture?: string;
 
-  @IsArray()
   @IsOptional()
+  @MinLength(10, {
+    each: true,
+  })
   @MaxLength(10, {
     each: true,
   })
@@ -124,16 +137,18 @@ export class UpdateUserDTO {
 
   @IsOptional()
   @IsString()
-  @IsPassword()
   current_password?: string;
 
   @ValidateNested()
   @IsOptional()
   address?: Address[];
 
-  @IsBoolean()
-  @IsOptional()
   blocking?: boolean;
+}
+
+export class BlockUserDTO {
+  @IsBoolean()
+  blocking: boolean;
 }
 
 class Address {

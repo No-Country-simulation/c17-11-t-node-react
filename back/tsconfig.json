@@ -25,11 +25,13 @@
       "@Decorators/*": ["src/decorators/*"],
       "@Guards/*": ["src/guards/*"],
       "@Helpers/*": ["src/helpers/*"],
+      "@Interfaces/*": ["src/interfaces/*"],
       "@Payment/*": ["src/payment/*"],
       "@Pet/*": ["src/pet/*"],
       "@Role/*": ["src/role/*"],
       "@Service/*": ["src/service/*"],
       "@User/*": ["src/user/*"],
+      "@Utils/*": ["src/utils/*"]
     }
   }
 }
