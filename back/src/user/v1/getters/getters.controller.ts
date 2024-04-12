@@ -59,6 +59,8 @@ export class GettersController {
           });
         }
       }
+      console.log(error);
+
       throw new InternalServerErrorException({
         success: false,
         message: String(error),

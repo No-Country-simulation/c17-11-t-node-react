@@ -1,11 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument } from './schemas/user.schema';
-import { Model, Types } from 'mongoose';
+import { Model } from 'mongoose';
 import { RoleService } from '@Role/role.service';
 import { PasswordService } from '@Helpers/password/password.service';
 import { CreateUserDTO, UpdateUserDTO } from './dto/user.dto';
 import { EMAIL } from '@Constants/regex';
+import { MongooseService } from '@Helpers/mongoose/mongoose.service';
 
 @Injectable()
 export class UserService {
@@ -13,6 +14,7 @@ export class UserService {
     @InjectModel(User.name) private userModel: Model<User>,
     private roleService: RoleService,
     private readonly passwordService: PasswordService,
+    private mongooseService: MongooseService,
   ) {
     this.setup()
       .then()
@@ -53,7 +55,7 @@ export class UserService {
         : undefined;
     return this.userModel.create({
       password: hash,
-      role: new Types.ObjectId(role),
+      role: this.mongooseService.stringToObjectId(role),
       ...req,
     });
   }
@@ -81,16 +83,28 @@ export class UserService {
 
     if (hash) {
       return this.userModel
-        .findByIdAndUpdate(id, {
-          password: hash,
-          ...req,
-        })
+        .findByIdAndUpdate(
+          id,
+          {
+            password: hash,
+            ...req,
+          },
+          {
+            new: true,
+          },
+        )
         .exec();
     } else {
       return this.userModel
-        .findByIdAndUpdate(id, {
-          ...req,
-        })
+        .findByIdAndUpdate(
+          id,
+          {
+            ...req,
+          },
+          {
+            new: true,
+          },
+        )
         .exec();
     }
   }

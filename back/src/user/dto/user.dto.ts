@@ -81,6 +81,8 @@ export class CreateUserDTO {
 }
 
 export class UpdateUserDTO {
+  role?: string;
+
   @IsArray()
   @IsOptional()
   pet?: string[];

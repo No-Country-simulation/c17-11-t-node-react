@@ -77,7 +77,7 @@ export class LoginController {
       );
 
       if (user == null) {
-        const rol = await this.roleService.findOneByName('client');
+        const rol = await this.roleService.findOneByName('owner');
         const createdUser = await this.userService.create({
           email: userInfo.email,
           first_name: userInfo.first_name,
