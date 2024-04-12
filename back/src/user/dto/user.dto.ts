@@ -141,9 +141,12 @@ export class UpdateUserDTO {
   @IsOptional()
   address?: Address[];
 
-  @IsBoolean()
-  @IsOptional()
   blocking?: boolean;
+}
+
+export class BlockUserDTO {
+  @IsBoolean()
+  blocking: boolean;
 }
 
 class Address {

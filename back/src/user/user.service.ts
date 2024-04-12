@@ -67,7 +67,7 @@ export class UserService {
 
     let hash: string;
     if (password && current_password) {
-      if (password === current_password) new Error('matching passwords');
+      if (password === current_password) throw new Error('matching passwords');
       const user = await this.userModel.findById(id);
       const comparePassword = await this.passwordService.compare(
         current_password,
@@ -107,7 +107,8 @@ export class UserService {
       const hash = await this.passwordService.hash('admin@123');
 
       this.userModel.create({
-        name: 'admin',
+        first_name: 'admin',
+        last_name: 'admin',
         dni: 1234567890,
         birthday: new Date('2000-10-11T00:00:00'),
         picture: '',
