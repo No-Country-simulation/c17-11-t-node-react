@@ -17,7 +17,7 @@ export class Caretaker {
   @Prop({ type: [{ type: Types.ObjectId, ref: 'Pet' }] })
   pets: Pet[];
 
-  @Prop()
+  @Prop({ default: 0 })
   active_requests: number;
 
   @Prop()

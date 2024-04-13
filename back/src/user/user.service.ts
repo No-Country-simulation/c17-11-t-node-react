@@ -6,6 +6,7 @@ import { RoleService } from '@Role/role.service';
 import { PasswordService } from '@Helpers/password/password.service';
 import { CreateUserDTO, UpdateUserDTO } from './dto/user.dto';
 import { EMAIL } from '@Constants/regex';
+import { MongooseService } from '@Helpers/mongoose/mongoose.service';
 
 @Injectable()
 export class UserService {
@@ -13,6 +14,7 @@ export class UserService {
     @InjectModel(User.name) private userModel: Model<User>,
     private roleService: RoleService,
     private readonly passwordService: PasswordService,
+    private mongooseService: MongooseService,
   ) {
     this.setup()
       .then()
@@ -20,7 +22,7 @@ export class UserService {
   }
 
   async findAll(): Promise<UserDocument[]> {
-    return this.userModel.find().populate('role').exec();
+    return this.userModel.find({}, { password: 0 }).populate('role').exec();
   }
 
   // async findAllPaginate() {
@@ -28,7 +30,7 @@ export class UserService {
   // }
 
   async findById(id: string): Promise<UserDocument> {
-    return this.userModel.findById(id).populate('role').exec();
+    return this.userModel.findById(id, { password: 0 }).populate('role').exec();
   }
 
   async findUserByUsernameOrEmail(username: string): Promise<UserDocument> {
@@ -46,48 +48,63 @@ export class UserService {
   }
 
   async create(data: CreateUserDTO) {
-    const { password, ...req } = data;
+    const { password, role, ...req } = data;
     const hash =
       password != undefined
         ? await this.passwordService.hash(password)
         : undefined;
-
-    return this.userModel.create({ password: hash, ...req });
+    return this.userModel.create({
+      password: hash,
+      role: this.mongooseService.stringToObjectId(role),
+      ...req,
+    });
   }
 
   async update(id: string, data: UpdateUserDTO) {
     const { password, current_password, ...req } = data;
 
     if ((password && !current_password) || (!password && current_password)) {
-      new Error('current or new password has not been sent');
+      throw new Error('current or new password has not been sent');
     }
 
     let hash: string;
     if (password && current_password) {
-      if (password === current_password) new Error('matching passwords');
+      if (password === current_password) throw new Error('matching passwords');
       const user = await this.userModel.findById(id);
       const comparePassword = await this.passwordService.compare(
         current_password,
         user.password,
       );
 
-      if (!comparePassword) new Error('incorrect current password');
+      if (!comparePassword) throw new Error('incorrect current password');
 
       hash = await this.passwordService.hash(password);
     }
 
-    if (!hash) {
+    if (hash) {
       return this.userModel
-        .findByIdAndUpdate(id, {
-          password: hash,
-          ...req,
-        })
+        .findByIdAndUpdate(
+          id,
+          {
+            password: hash,
+            ...req,
+          },
+          {
+            new: true,
+          },
+        )
         .exec();
     } else {
       return this.userModel
-        .findByIdAndUpdate(id, {
-          ...req,
-        })
+        .findByIdAndUpdate(
+          id,
+          {
+            ...req,
+          },
+          {
+            new: true,
+          },
+        )
         .exec();
     }
   }
@@ -104,7 +121,8 @@ export class UserService {
       const hash = await this.passwordService.hash('admin@123');
 
       this.userModel.create({
-        name: 'admin',
+        first_name: 'admin',
+        last_name: 'admin',
         dni: 1234567890,
         birthday: new Date('2000-10-11T00:00:00'),
         picture: '',
