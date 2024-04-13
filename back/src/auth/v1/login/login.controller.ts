@@ -116,7 +116,14 @@ export class LoginController {
         success: true,
         data: {
           access_token: token,
-          user: user,
+          user: {
+            username: user.username,
+            first_name: user.first_name,
+            last_name: user.last_name,
+            email: user.email,
+            role: user.role.name,
+            picture: user.picture,
+          },
         },
       };
     } catch (error) {
