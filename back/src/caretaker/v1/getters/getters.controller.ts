@@ -7,6 +7,7 @@ import {
   InternalServerErrorException,
   NotFoundException,
   Param,
+  Query,
 } from '@nestjs/common';
 
 @Controller({
@@ -21,6 +22,30 @@ export class GettersController {
   async getAll() {
     try {
       const caretakers = await this.caretakerService.findAll();
+
+      return {
+        success: true,
+        data: caretakers,
+      };
+    } catch (error) {
+      throw new InternalServerErrorException({
+        success: false,
+        message: String(error),
+      });
+    }
+  }
+
+  @Public()
+  @Get('p')
+  async getAllPaginate(@Query('page') p: string, @Query('limit') l: string) {
+    const page = p == undefined ? 1 : Number(p);
+    const limit = l == undefined ? 10 : Number(l);
+
+    try {
+      const caretakers = await this.caretakerService.findAllPaginate(
+        page,
+        limit,
+      );
 
       return {
         success: true,
