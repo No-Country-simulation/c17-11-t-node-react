@@ -34,8 +34,6 @@ export class LoginController {
   @Post('login')
   async login(@Req() req: Request) {
     try {
-      console.log(req.user);
-
       const token = await this.authService.login(
         req.user['data']._id,
         req.user['data'].role._id,
@@ -101,13 +99,20 @@ export class LoginController {
           rol._id.toString(),
         );
 
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { password, ...result } = createdUser;
+        const { first_name, last_name, email, picture, role, username } =
+          createdUser;
         return {
           success: true,
           data: {
             access_token: token,
-            user: result,
+            user: {
+              first_name,
+              last_name,
+              email,
+              username,
+              picture,
+              role: role.name,
+            },
           },
         };
       }
