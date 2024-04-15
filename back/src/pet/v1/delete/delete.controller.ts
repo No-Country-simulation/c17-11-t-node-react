@@ -1,13 +1,12 @@
 import { PRINCIPAL_PATHS } from '@Constants/routes';
-import { CreatePetDTO } from '@Pet/dto/pet.dto';
 import { PetService } from '@Pet/pet.service';
 import { RoleService } from '@Role/role.service';
 import {
   BadRequestException,
-  Body,
   Controller,
+  Delete,
   InternalServerErrorException,
-  Post,
+  Param,
   Req,
 } from '@nestjs/common';
 import { Request } from 'express';
@@ -16,14 +15,14 @@ import { Request } from 'express';
   version: '1',
   path: PRINCIPAL_PATHS.PET,
 })
-export class AddController {
+export class DeleteController {
   constructor(
-    private petService: PetService,
-    private roleService: RoleService,
+    private readonly petService: PetService,
+    private readonly roleService: RoleService,
   ) {}
 
-  @Post()
-  async addPet(@Body() data: CreatePetDTO, @Req() req: Request) {
+  @Delete(':id')
+  async deletePet(@Param('id') petId: string, @Req() req: Request) {
     try {
       const userId: string = req.user['userId'];
 
@@ -37,15 +36,16 @@ export class AddController {
         throw new Error('no_user');
       }
 
-      const pet = await this.petService.create(data, userId);
+      const deletedPet = await this.petService.delete(petId, userId);
 
       return {
         success: true,
-        data: pet,
+        message: 'Pet deleted successfully',
+        data: deletedPet,
       };
     } catch (error) {
       if (error instanceof Error) {
-        if (error.message == 'no_user') {
+        if (error.message === 'no_user') {
           throw new BadRequestException({
             success: false,
             message: 'User not provided',
@@ -54,7 +54,8 @@ export class AddController {
       }
       throw new InternalServerErrorException({
         success: false,
-        message: String(error),
+        message: 'Error deleting pet',
+        error: error.message,
       });
     }
   }
