@@ -7,6 +7,7 @@ import { PasswordService } from '@Helpers/password/password.service';
 import { CreateUserDTO, UpdateUserDTO } from './dto/user.dto';
 import { EMAIL } from '@Constants/regex';
 import { MongooseService } from '@Helpers/mongoose/mongoose.service';
+import { CaretakerService } from '@Caretaker/caretaker.service';
 
 @Injectable()
 export class UserService {
@@ -15,6 +16,7 @@ export class UserService {
     private roleService: RoleService,
     private readonly passwordService: PasswordService,
     private mongooseService: MongooseService,
+    private caretakerService: CaretakerService,
   ) {
     this.setup()
       .then()
@@ -113,7 +115,28 @@ export class UserService {
   }
 
   async delete(id: string) {
-    return this.userModel.findByIdAndDelete(id).exec();
+    await this.caretakerService.update(id, {
+      blocking: true,
+      enable: false,
+    });
+
+    return this.userModel
+      .findByIdAndUpdate(
+        id,
+        {
+          picture: '',
+          email: new Date().valueOf().toString(),
+          username: new Date().valueOf().toString(),
+          password: '',
+          email_verified: false,
+          address: [],
+          blocking: true,
+        },
+        {
+          new: true,
+        },
+      )
+      .exec();
   }
 
   private async setup() {

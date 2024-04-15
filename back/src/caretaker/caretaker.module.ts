@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Caretaker, CaretakerSchema } from './schemas/caretaker.schema';
 import { CaretakerService } from './caretaker.service';
@@ -15,9 +15,10 @@ import { UpdateController } from './v1/update/update.controller';
       { name: Caretaker.name, schema: CaretakerSchema },
     ]),
     RoleModule,
-    UserModule,
+    forwardRef(() => UserModule),
   ],
   providers: [CaretakerService, MongooseService],
   controllers: [GettersController, AddController, UpdateController],
+  exports: [CaretakerService],
 })
 export class CaretakerModule {}
