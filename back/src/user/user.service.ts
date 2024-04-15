@@ -25,9 +25,12 @@ export class UserService {
     return this.userModel.find({}, { password: 0 }).populate('role').exec();
   }
 
-  // async findAllPaginate() {
-  //   return this.userModel.
-  // }
+  async findAllPaginate(page: number, limit: number) {
+    const count = await this.userModel.estimatedDocumentCount();
+    const query = this.userModel.find({}, { password: 0 });
+
+    return this.mongooseService.paginate(query, count, page, limit);
+  }
 
   async findById(id: string): Promise<UserDocument> {
     return this.userModel.findById(id, { password: 0 }).populate('role').exec();
