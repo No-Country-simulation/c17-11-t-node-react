@@ -28,6 +28,13 @@ export class AuthService {
       };
     }
 
+    if (user.blocking) {
+      return {
+        success: false,
+        message: 'Blocked user',
+      };
+    }
+
     const validatePass = await this.passwordService.compare(
       pass,
       user.password,
@@ -36,16 +43,31 @@ export class AuthService {
     if (!validatePass) {
       return {
         success: false,
-        message: 'incorrect password',
+        message: 'Incorrect password',
       };
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { password, ...result } = user;
+    const {
+      _id,
+      first_name,
+      last_name,
+      email,
+      username: userName,
+      role,
+      picture,
+    } = user;
 
     return {
       success: true,
-      data: result,
+      data: {
+        _id,
+        first_name,
+        last_name,
+        email,
+        username: userName,
+        role,
+        picture,
+      },
     };
   }
 

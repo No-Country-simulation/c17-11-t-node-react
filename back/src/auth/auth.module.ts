@@ -11,6 +11,7 @@ import { JwtStrategy } from './strategy/jwt.strategy';
 import { GoogleStrategy } from './strategy/google.strategy';
 import { RoleModule } from '@Role/role.module';
 import { RegisterController } from './v1/register/register.controller';
+import { CaretakerModule } from '@Caretaker/caretaker.module';
 
 @Module({
   providers: [
@@ -23,6 +24,7 @@ import { RegisterController } from './v1/register/register.controller';
   imports: [
     UserModule,
     RoleModule,
+    CaretakerModule,
     JwtModule.registerAsync({
       global: true,
       imports: [ConfigModule],

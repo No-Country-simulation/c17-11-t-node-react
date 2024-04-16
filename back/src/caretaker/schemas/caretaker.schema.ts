@@ -22,6 +22,12 @@ export class Caretaker {
 
   @Prop()
   description: string;
+
+  @Prop({ default: false })
+  blocking: boolean;
+
+  @Prop({ default: true })
+  enable: boolean;
 }
 
 export const CaretakerSchema = SchemaFactory.createForClass(Caretaker);

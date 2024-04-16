@@ -9,5 +9,12 @@ export const configLoad = () => {
       clientId: process.env.GOOGLE_CLIENT_ID,
       secret: process.env.GOOGLE_CLIENT_SECRET,
     },
+    origins: splitString(process.env.ORIGINS, ','),
   };
+};
+
+const splitString = (value: string, splitter: string | RegExp): string[] => {
+  if (!value) return ['*'];
+
+  return value.split(splitter);
 };

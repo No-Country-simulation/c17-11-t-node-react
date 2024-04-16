@@ -24,7 +24,7 @@ export class UpdateController {
   async updateCaretaker(@Body() data: UpdateCaretakerDTO, @Req() req: Request) {
     try {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { user, active_requests, ...body } = data;
+      const { user, active_requests, blocking, ...body } = data;
 
       const caretaker = await this.caretakerService.update(
         req.user['userId'],
