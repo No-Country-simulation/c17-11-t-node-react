@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString,  } from "class-validator";
+import { IsNotEmpty, IsNumber, IsOptional, IsString,  } from "class-validator";
 
 
 export class CreateServiceDTO {
@@ -14,11 +14,11 @@ export class CreateServiceDTO {
 export class UpdateServiceDTO {
     // name?: string
     @IsString()
-    @IsNotEmpty()
+    @IsOptional()
     name:string;
 
     @IsNumber()
-    @IsNotEmpty()
+    @IsOptional()
     price:number
 
 }

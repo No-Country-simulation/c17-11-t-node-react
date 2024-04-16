@@ -19,16 +19,12 @@ export class ServiceService {
     async findAll() {
         return this.serviceModel
         .find()
-        //.populate({ path: 'caretaker', select: 'name price' })
-        //.populate({ path: 'care', select: 'name price' })
         .exec()
     }
 
     async findById(id: string) {
         return this.serviceModel
         .findById(id)
-        //.populate({ path: 'caretaker', select: 'name price' })
-        //.populate({ path: 'care', select: 'name price' })
         .exec()
     }
 

@@ -19,10 +19,8 @@ export class UpdateController {
         try {
             const { ...body } = data
 
-            console.log(body, "soy body")
             const updatedService = await this.serviceService.update(serviceId, body)
 
-            console.log(updatedService, "soy updatedService")
             if(updatedService == null) throw new Error('null')
             return {
                 success:true,
