@@ -10,6 +10,10 @@ export const configLoad = () => {
       secret: process.env.GOOGLE_CLIENT_SECRET,
     },
     origins: splitString(process.env.ORIGINS, ','),
+    mail: {
+      address: process.env.MAIL_ADDRESS,
+      password: process.env.MAIL_PASSWORD,
+    },
   };
 };
 
