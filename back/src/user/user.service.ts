@@ -65,11 +65,13 @@ export class UserService {
     });
   }
 
-  async update(id: string, data: UpdateUserDTO) {
+  async update(id: string, data: UpdateUserDTO, resetPassword = false) {
     const { password, current_password, ...req } = data;
 
-    if ((password && !current_password) || (!password && current_password)) {
-      throw new Error('current or new password has not been sent');
+    if (!resetPassword) {
+      if ((password && !current_password) || (!password && current_password)) {
+        throw new Error('current or new password has not been sent');
+      }
     }
 
     let hash: string;
@@ -83,6 +85,10 @@ export class UserService {
 
       if (!comparePassword) throw new Error('incorrect current password');
 
+      hash = await this.passwordService.hash(password);
+    }
+
+    if (resetPassword) {
       hash = await this.passwordService.hash(password);
     }
 
