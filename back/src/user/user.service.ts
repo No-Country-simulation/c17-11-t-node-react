@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument } from './schemas/user.schema';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 import { RoleService } from '@Role/role.service';
 import { PasswordService } from '@Helpers/password/password.service';
 import { CreateUserDTO, UpdateUserDTO } from './dto/user.dto';
@@ -58,9 +58,16 @@ export class UserService {
       password != undefined
         ? await this.passwordService.hash(password)
         : undefined;
+
+    let ownerId: Types.ObjectId | undefined;
+    if (!role) {
+      const foundRole = await this.roleService.findOneByName('owner');
+      ownerId = foundRole._id;
+    }
+
     return this.userModel.create({
       password: hash,
-      role: this.mongooseService.stringToObjectId(role),
+      role: ownerId ? ownerId : this.mongooseService.stringToObjectId(role),
       ...req,
     });
   }
