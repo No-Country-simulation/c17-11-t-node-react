@@ -8,7 +8,6 @@ import {
   Req,
 } from '@nestjs/common';
 import { PRINCIPAL_PATHS } from '@Constants/routes';
-// import { Public } from '@Decorators/public-access.decorator';
 import { PetService } from '@Pet/pet.service';
 import { RoleService } from '@Role/role.service';
 import { UpdatePetDTO } from '@Pet/dto/pet.dto';
@@ -23,7 +22,6 @@ export class UpdateController {
     private readonly petService: PetService,
     private readonly roleService: RoleService,
   ) {}
-  // @Public()
 
   @Patch(':id')
   async updatePet(
@@ -34,11 +32,7 @@ export class UpdateController {
     try {
       const roleId = req.user['roleId'];
       const role = await this.roleService.findById(roleId);
-      if (
-        role.name !== 'admin' &&
-        role.name !== 'owner' &&
-        role.name !== 'caretaker'
-      ) {
+      if (role.name !== 'admin') {
         throw new Error('no_user');
       }
 

@@ -134,28 +134,4 @@ export class UserService {
       });
     }
   }
-
-  async addToPetUser(userId: string, petId: string) {
-    try {
-      await this.userModel.updateOne(
-        { _id: userId as string },
-        { $addToSet: { pet: petId as string } },
-      );
-    } catch (error) {
-      throw new Error(`Error removing pet from user: ${error.message}`);
-    }
-  }
-
-  async removePetFromUser(userId: string, petId: string) {
-    try {
-      await this.userModel
-        .updateOne(
-          { _id: userId as string },
-          { $pull: { pet: petId as string } },
-        )
-        .exec();
-    } catch (error) {
-      throw new Error(`Error removing pet from user: ${error.message}`);
-    }
-  }
 }

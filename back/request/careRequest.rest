@@ -1,0 +1,33 @@
+
+post http://localhost:3000/api/v1/cares
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFmMDg3MDM3YWEwODY2ZWM5OGMzMDAiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGNhIiwiaWF0IjoxNzEzMzA5ODA4LCJleHAiOjE3MTMzOTYyMDh9.MbaAx_oxFAt-mIPoKYBz48JWcZ-5vJpbNh16bu0z02I
+
+{
+  "caretaker": "661f0d5ec9034420e37dabd0",
+  "services": [],
+  "pet": "661f040ad6423995b91ceaed",
+  "hours": 6,
+  "status": "listo",
+  "state": false,
+  "description": "el perro se porta mal",
+  "totalPrice": 1000
+}
+
+###
+
+PATCH  http://localhost:3000/api/v1/cares
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFmMDg3MDM3YWEwODY2ZWM5OGMzMDAiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGNhIiwiaWF0IjoxNzEzMzA5ODA4LCJleHAiOjE3MTMzOTYyMDh9.MbaAx_oxFAt-mIPoKYBz48JWcZ-5vJpbNh16bu0z02I
+
+{
+  "description": "mentira el perro se porta bien"
+}
+
+###
+
+delete  http://localhost:3000/api/v1/cares/661f0ad582ca145641b3718b
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFlYWU4MzE4NzM0YWFlMzc1NjUwZWYiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGNhIiwiaWF0IjoxNzEzMjg3OTE2LCJleHAiOjE3MTMzNzQzMTZ9.YC9xcGx8HKg_2BLHP095YiADFKVBUL9B74ahiLpttgY
+
+

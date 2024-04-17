@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Pet } from './schemas/pet.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -11,11 +11,10 @@ export class PetService {
     @InjectModel(Pet.name) private petModel: Model<Pet>,
     private userService: UserService,
   ) {}
-  async create(data: CreatePetDTO, userId: string) {
+
+  async create(data: CreatePetDTO) {
     try {
-      const pet = await this.petModel.create(data);
-      await this.userService.addToPetUser(userId, pet._id.toString());
-      return pet;
+      return await this.petModel.create(data);
     } catch (error) {
       throw new Error(`Error creating pet: ${error.message}`);
     }
@@ -43,14 +42,9 @@ export class PetService {
     }
   }
 
-  async delete(petId: string, userId: string) {
+  async delete(petId: string) {
     try {
-      const deletedPet = await this.petModel.findByIdAndDelete(petId).exec();
-      if (!deletedPet) {
-        throw new NotFoundException('Pet not found');
-      }
-      await this.userService.removePetFromUser(userId, petId);
-      return deletedPet;
+      return await this.petModel.findByIdAndDelete(petId).exec();
     } catch (error) {
       throw new Error(`Error deleting pet: ${error.message}`);
     }

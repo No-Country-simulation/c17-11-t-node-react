@@ -21,7 +21,6 @@ export class GettersController {
   async getAll() {
     try {
       const pets = await this.petService.findAll();
-
       return {
         success: true,
         data: pets,

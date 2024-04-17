@@ -1,5 +1,5 @@
 import { PRINCIPAL_PATHS } from '@Constants/routes';
-import { PetService } from '@Pet/pet.service';
+import { CareService } from '@Care/care.service';
 import { RoleService } from '@Role/role.service';
 import {
   BadRequestException,
@@ -13,16 +13,16 @@ import { Request } from 'express';
 
 @Controller({
   version: '1',
-  path: PRINCIPAL_PATHS.PET,
+  path: PRINCIPAL_PATHS.CARE,
 })
 export class DeleteController {
   constructor(
-    private readonly petService: PetService,
+    private readonly careService: CareService,
     private readonly roleService: RoleService,
   ) {}
 
   @Delete(':id')
-  async deletePet(@Param('id') petId: string, @Req() req: Request) {
+  async deleteCare(@Param('id') careId: string, @Req() req: Request) {
     try {
       const roleId = req.user['roleId'];
       const role = await this.roleService.findById(roleId);
@@ -30,12 +30,12 @@ export class DeleteController {
         throw new Error('no_user');
       }
 
-      const deletedPet = await this.petService.delete(petId);
+      const deleteCare = await this.careService.delete(careId);
 
       return {
         success: true,
-        message: 'Pet deleted successfully',
-        data: deletedPet,
+        message: 'Care deleted successfully',
+        data: deleteCare,
       };
     } catch (error) {
       if (error instanceof Error) {
