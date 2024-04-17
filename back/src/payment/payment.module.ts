@@ -5,12 +5,13 @@ import { PaymentService } from './payment.service';
 import { AddController } from './v1/add/add.controller';
 import { GettersController } from './v1/getters/getters.controller';
 import { UpdateController } from './v1/update/update.controller';
+import { MongooseService } from '@Helpers/mongoose/mongoose.service';
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: Payment.name, schema: PaymentSchema }]),
   ],
-  providers: [PaymentService],
+  providers: [PaymentService, MongooseService],
   controllers: [AddController, GettersController, UpdateController],
 })
 export class PaymentModule {}

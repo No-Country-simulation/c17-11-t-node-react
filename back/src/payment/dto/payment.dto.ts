@@ -1,14 +1,41 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+import {
+  IsDate,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
+export class CreatePaymentDTO {
+  @IsString()
+  @IsNotEmpty()
+  care: string;
 
-export class CreatePaymentDto {
-    // @IsString()
-    // @IsOptional()
-    // care: string
-    
-    // @IsNumber()
-    // @IsNotEmpty()
-    // amount: number
+  amount: number;
 
+  date?: Date;
 
+  @IsDate()
+  @IsOptional()
+  payment_date: Date;
+
+  @IsString()
+  @IsNotEmpty()
+  status: string;
+}
+
+export class UpdatePaymentDTO {
+  @IsString()
+  @IsOptional()
+  care?: string;
+
+  @IsNumber()
+  @IsOptional()
+  amount?: number;
+
+  payment_date?: Date;
+
+  @IsString()
+  @IsOptional()
+  status?: string;
 }

@@ -1,24 +1,30 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString,  } from "class-validator";
-
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateServiceDTO {
-    @IsString()
-    @IsNotEmpty()
-    name:string;
+  @IsString()
+  @IsNotEmpty()
+  name: string;
 
-    @IsNumber()
-    @IsNotEmpty()
-    price:number
+  @IsNumber()
+  @IsNotEmpty()
+  price: number;
+
+  @IsOptional()
+  @IsString()
+  description: string;
 }
 
 export class UpdateServiceDTO {
-    // name?: string
-    @IsString()
-    @IsOptional()
-    name:string;
+  // name?: string
+  @IsString()
+  @IsOptional()
+  name: string;
 
-    @IsNumber()
-    @IsOptional()
-    price:number
+  @IsNumber()
+  @IsOptional()
+  price: number;
 
+  @IsOptional()
+  @IsString()
+  description: string;
 }
