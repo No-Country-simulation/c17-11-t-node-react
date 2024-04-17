@@ -9,5 +9,16 @@ export const configLoad = () => {
       clientId: process.env.GOOGLE_CLIENT_ID,
       secret: process.env.GOOGLE_CLIENT_SECRET,
     },
+    origins: splitString(process.env.ORIGINS, ','),
+    mail: {
+      address: process.env.MAIL_ADDRESS,
+      password: process.env.MAIL_PASSWORD,
+    },
   };
+};
+
+const splitString = (value: string, splitter: string | RegExp): string[] => {
+  if (!value) return ['*'];
+
+  return value.split(splitter);
 };

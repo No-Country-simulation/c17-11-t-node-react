@@ -8,4 +8,7 @@ export const envSchema = joi.object({
   API_URL: joi.string().required(),
   GOOGLE_CLIENT_ID: joi.string().required(),
   GOOGLE_CLIENT_SECRET: joi.string().required(),
+  ORIGINS: joi.string().default('*'),
+  MAIL_ADDRESS: joi.string().required(),
+  MAIL_PASSWORD: joi.string().required(),
 });

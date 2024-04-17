@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Role, RoleDocument } from './schemas/role.schema';
-import { Model } from 'mongoose';
+import { FilterQuery, Model } from 'mongoose';
 
 @Injectable()
 export class RoleService {
@@ -18,8 +18,8 @@ export class RoleService {
     });
   }
 
-  async findAll(): Promise<RoleDocument[]> {
-    return this.roleModel.find().exec();
+  async findAll(filter?: FilterQuery<Role>): Promise<RoleDocument[]> {
+    return this.roleModel.find(filter).exec();
   }
 
   async findOneByName(name: string): Promise<RoleDocument> {

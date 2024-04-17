@@ -1,4 +1,5 @@
 import {
+  IsBoolean,
   IsNotEmpty,
   IsOptional,
   IsString,
@@ -45,4 +46,10 @@ export class UpdateCaretakerDTO {
   @IsString()
   @IsOptional()
   description?: string;
+
+  blocking?: boolean;
+
+  @IsBoolean()
+  @IsOptional()
+  enable?: boolean;
 }

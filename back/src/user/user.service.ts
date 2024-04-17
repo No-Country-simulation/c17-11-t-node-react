@@ -7,6 +7,7 @@ import { PasswordService } from '@Helpers/password/password.service';
 import { CreateUserDTO, UpdateUserDTO } from './dto/user.dto';
 import { EMAIL } from '@Constants/regex';
 import { MongooseService } from '@Helpers/mongoose/mongoose.service';
+import { CaretakerService } from '@Caretaker/caretaker.service';
 
 @Injectable()
 export class UserService {
@@ -15,6 +16,7 @@ export class UserService {
     private roleService: RoleService,
     private readonly passwordService: PasswordService,
     private mongooseService: MongooseService,
+    private caretakerService: CaretakerService,
   ) {
     this.setup()
       .then()
@@ -25,9 +27,12 @@ export class UserService {
     return this.userModel.find({}, { password: 0 }).populate('role').exec();
   }
 
-  // async findAllPaginate() {
-  //   return this.userModel.
-  // }
+  async findAllPaginate(page: number, limit: number) {
+    const count = await this.userModel.estimatedDocumentCount();
+    const query = this.userModel.find({}, { password: 0 });
+
+    return this.mongooseService.paginate(query, count, page, limit);
+  }
 
   async findById(id: string): Promise<UserDocument> {
     return this.userModel.findById(id, { password: 0 }).populate('role').exec();
@@ -60,11 +65,13 @@ export class UserService {
     });
   }
 
-  async update(id: string, data: UpdateUserDTO) {
+  async update(id: string, data: UpdateUserDTO, resetPassword = false) {
     const { password, current_password, ...req } = data;
 
-    if ((password && !current_password) || (!password && current_password)) {
-      throw new Error('current or new password has not been sent');
+    if (!resetPassword) {
+      if ((password && !current_password) || (!password && current_password)) {
+        throw new Error('current or new password has not been sent');
+      }
     }
 
     let hash: string;
@@ -78,6 +85,10 @@ export class UserService {
 
       if (!comparePassword) throw new Error('incorrect current password');
 
+      hash = await this.passwordService.hash(password);
+    }
+
+    if (resetPassword) {
       hash = await this.passwordService.hash(password);
     }
 
@@ -110,7 +121,28 @@ export class UserService {
   }
 
   async delete(id: string) {
-    return this.userModel.findByIdAndDelete(id).exec();
+    await this.caretakerService.update(id, {
+      blocking: true,
+      enable: false,
+    });
+
+    return this.userModel
+      .findByIdAndUpdate(
+        id,
+        {
+          picture: '',
+          email: new Date().valueOf().toString(),
+          username: new Date().valueOf().toString(),
+          password: '',
+          email_verified: false,
+          address: [],
+          blocking: true,
+        },
+        {
+          new: true,
+        },
+      )
+      .exec();
   }
 
   private async setup() {

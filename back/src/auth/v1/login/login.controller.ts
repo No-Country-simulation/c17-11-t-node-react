@@ -35,17 +35,20 @@ export class LoginController {
   async login(@Req() req: Request) {
     try {
       const token = await this.authService.login(
-        req.user['data']._doc._id,
-        req.user['data']._doc.role._id,
+        req.user['data']._id,
+        req.user['data'].role._id,
       );
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { password, ...result } = req.user['data']._doc;
+      const { _id, role, ...result } = req.user['data'];
       return {
         success: true,
         data: {
           access_token: token,
-          user: result,
+          user: {
+            role: role.name,
+            ...result,
+          },
         },
       };
     } catch (error) {
@@ -96,13 +99,20 @@ export class LoginController {
           rol._id.toString(),
         );
 
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { password, ...result } = createdUser;
+        const { first_name, last_name, email, picture, role, username } =
+          createdUser;
         return {
           success: true,
           data: {
             access_token: token,
-            user: result,
+            user: {
+              first_name,
+              last_name,
+              email,
+              username,
+              picture,
+              role: role.name,
+            },
           },
         };
       }
@@ -116,7 +126,14 @@ export class LoginController {
         success: true,
         data: {
           access_token: token,
-          user: user,
+          user: {
+            username: user.username,
+            first_name: user.first_name,
+            last_name: user.last_name,
+            email: user.email,
+            role: user.role.name,
+            picture: user.picture,
+          },
         },
       };
     } catch (error) {

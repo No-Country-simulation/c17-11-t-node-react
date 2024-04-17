@@ -1,4 +1,5 @@
 import { AuthService } from '@Auth/auth.service';
+import { CaretakerService } from '@Caretaker/caretaker.service';
 import { PRINCIPAL_PATHS } from '@Constants/routes';
 import { Public } from '@Decorators/public-access.decorator';
 import { RoleService } from '@Role/role.service';
@@ -21,13 +22,14 @@ export class RegisterController {
     private userService: UserService,
     private roleService: RoleService,
     private authService: AuthService,
+    private caretakerService: CaretakerService,
   ) {}
 
   @Public()
   @Post('register')
   async register(@Body() data: CreateUserDTO) {
     try {
-      const { role, first_name, last_name, email, password } = data;
+      const { role, first_name, last_name, email, password, username } = data;
       const isValidRole = await this.roleService.findById(role);
       if (isValidRole == null) throw new Error('invalid_role');
 
@@ -39,12 +41,23 @@ export class RegisterController {
         email_verified: true,
         blocking: false,
         password,
-        username:
-          first_name.trim().replace(/\s+/g, '') +
-          new Date().valueOf().toString(),
+        username: username
+          ? username
+          : first_name.trim().replace(/\s+/g, '') +
+            new Date().valueOf().toString(),
       });
 
       userCreated.password = '';
+
+      if (isValidRole.name == 'caretaker') {
+        await this.caretakerService.create({
+          user: userCreated._id.toString(),
+          active_requests: 0,
+          description: '',
+          services: [],
+          pets: [],
+        });
+      }
       const token = await this.authService.login(
         userCreated._id.toString(),
         userCreated.role['_id'],

@@ -11,6 +11,10 @@ import { JwtStrategy } from './strategy/jwt.strategy';
 import { GoogleStrategy } from './strategy/google.strategy';
 import { RoleModule } from '@Role/role.module';
 import { RegisterController } from './v1/register/register.controller';
+import { CaretakerModule } from '@Caretaker/caretaker.module';
+import { ResetPasswordController } from './v1/reset-password/reset-password.controller';
+import { GetHtmlService } from '@Helpers/get-html/get-html.service';
+import { MailService } from '@Helpers/mail/mail.service';
 
 @Module({
   providers: [
@@ -19,10 +23,13 @@ import { RegisterController } from './v1/register/register.controller';
     LocalStrategy,
     JwtStrategy,
     GoogleStrategy,
+    GetHtmlService,
+    MailService,
   ],
   imports: [
     UserModule,
     RoleModule,
+    CaretakerModule,
     JwtModule.registerAsync({
       global: true,
       imports: [ConfigModule],
@@ -34,6 +41,6 @@ import { RegisterController } from './v1/register/register.controller';
     }),
     PassportModule,
   ],
-  controllers: [LoginController, RegisterController],
+  controllers: [LoginController, RegisterController, ResetPasswordController],
 })
 export class AuthModule {}

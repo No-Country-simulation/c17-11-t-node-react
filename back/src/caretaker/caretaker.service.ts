@@ -21,6 +21,17 @@ export class CaretakerService {
       .exec();
   }
 
+  async findAllPaginate(page: number, limit: number) {
+    const count = await this.caretakerModel.estimatedDocumentCount();
+    const query = this.caretakerModel
+      .find()
+      .populate({ path: 'user', select: 'first_name last_name picture' })
+      .populate({ path: 'services', select: 'name description' })
+      .populate({ path: 'pets', select: 'name' });
+
+    return this.mongooseService.paginate<Caretaker>(query, count, page, limit);
+  }
+
   async findById(id: string) {
     return this.caretakerModel
       .findById(id)
