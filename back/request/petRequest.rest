@@ -3,7 +3,7 @@ content-type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFlYWFiMWI1YmUyMzFmNzllZTFkMDEiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGM4IiwiaWF0IjoxNzEzMzA4NTM0LCJleHAiOjE3MTMzOTQ5MzR9.-JMBCfr1cor7aCSQFVSGxO6O4pYEyMSDWV4E78lNnp0
 
 {
-  "name": "gato"
+  "name": "rinoceronte"
 }
 
 ###
