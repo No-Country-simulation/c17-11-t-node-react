@@ -3,13 +3,13 @@ import { Pet } from './schemas/pet.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreatePetDTO, UpdatePetDTO } from './dto/pet.dto';
-import { UserService } from '@User/user.service';
+import { MongooseService } from '@Helpers/mongoose/mongoose.service';
 
 @Injectable()
 export class PetService {
   constructor(
     @InjectModel(Pet.name) private petModel: Model<Pet>,
-    private userService: UserService,
+    private mongooseService: MongooseService,
   ) {}
 
   async create(data: CreatePetDTO) {
@@ -26,6 +26,19 @@ export class PetService {
       throw new Error(`Error finding all pets: ${error.message}`);
     }
   }
+
+  async findAllPaginate(page: number, limit: number) {
+    try {
+      const count = await this.petModel.estimatedDocumentCount();
+      const query = this.petModel.find();
+      return this.mongooseService.paginate<Pet>(query, count, page, limit);
+    } catch (error) {
+      throw new Error(
+        `Error finding all pets with pagination: ${error.message}`,
+      );
+    }
+  }
+
   async findById(id: string) {
     try {
       return this.petModel.findById(id);

@@ -8,6 +8,7 @@ import {
   InternalServerErrorException,
   NotFoundException,
   Param,
+  Query,
 } from '@nestjs/common';
 
 @Controller({
@@ -38,7 +39,29 @@ export class GettersController {
 
   // @Public()
   @Roles('admin')
-  @Roles('owner')
+  @Get('p')
+  async getAllPaginate(@Query('page') p: string, @Query('limit') l: string) {
+    const page = p == undefined ? 1 : Number(p);
+    const limit = l == undefined ? 10 : Number(l);
+
+    try {
+      const cares = await this.careService.findAllPaginate(page, limit);
+
+      return {
+        success: true,
+        data: cares,
+      };
+    } catch (error) {
+      throw new InternalServerErrorException({
+        success: false,
+        message: String(error),
+      });
+    }
+  }
+
+  // @Public()
+  @Roles('admin')
+  @Roles('caretaker')
   @Get(':id')
   async getById(@Param('id') id: string) {
     try {
@@ -46,6 +69,24 @@ export class GettersController {
       if (!care) {
         throw new NotFoundException('Care not found');
       }
+      return {
+        success: true,
+        data: care,
+      };
+    } catch (error) {
+      throw new InternalServerErrorException({
+        success: false,
+        message: String(error),
+      });
+    }
+  }
+
+  // @Public()
+  @Roles('caretaker')
+  @Get('caretaker/:caretakerId')
+  async findByCaretaker(@Param('caretakerId') caretakerId: string) {
+    try {
+      const care = await this.careService.findByCaretaker(caretakerId);
       return {
         success: true,
         data: care,

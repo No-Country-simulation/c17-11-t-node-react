@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateCareDTO, UpdateCareDTO } from './dto/care.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Care } from './schemas/care.schema';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 import { MongooseService } from '@Helpers/mongoose/mongoose.service';
 
 @Injectable()
@@ -29,9 +29,21 @@ export class CareService {
       .find()
       .populate({ path: 'user', select: 'first_name last_name picture' })
       .populate({ path: 'pet', select: 'name' })
-      .populate({ path: 'services', select: 'name price description' })
-      .populate({ path: 'caretaker', select: 'user' })
+      .populate({ path: 'services', select: '' })
+      .populate({ path: 'caretaker', select: '' })
       .exec();
+  }
+
+  async findAllPaginate(page: number, limit: number) {
+    const count = await this.careModel.estimatedDocumentCount();
+    const query = this.careModel
+      .find()
+      .populate({ path: 'user', select: 'first_name last_name picture' })
+      .populate({ path: 'pet', select: 'name' })
+      .populate({ path: 'services', select: '' })
+      .populate({ path: 'caretaker', select: '' });
+
+    return this.mongooseService.paginate<Care>(query, count, page, limit);
   }
 
   async findById(id: string) {
@@ -40,11 +52,20 @@ export class CareService {
         .findById(id)
         .populate({ path: 'user', select: 'first_name last_name picture' })
         .populate({ path: 'pet', select: 'name' })
-        .populate({ path: 'services', select: 'name price description' })
-        .populate({ path: 'caretaker', select: 'user' })
+        .populate({ path: 'services', select: '' })
+        .populate({ path: 'caretaker', select: '' })
         .exec();
     } catch (error) {
       throw new Error(`Error finding care by id: ${error.message}`);
+    }
+  }
+
+  async findByCaretaker(caretakerId: string) {
+    const caretakerObjectId = new Types.ObjectId(caretakerId);
+    try {
+      return this.careModel.find({ caretaker: caretakerObjectId }).exec();
+    } catch (error) {
+      throw new Error(`Error finding cares by caretaker ID: ${error.message}`);
     }
   }
 
