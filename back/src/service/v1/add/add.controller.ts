@@ -1,6 +1,5 @@
 import { PRINCIPAL_PATHS } from '@Constants/routes';
-import { Public } from '@Decorators/public-access.decorator';
-// import { Roles } from '@Decorators/role.decorator';
+import { Roles } from '@Decorators/role.decorator';
 import { CreateServiceDTO } from '@Service/dto/service.dto';
 import { ServiceService } from '@Service/service.service';
 import {
@@ -18,8 +17,7 @@ import {
 export class AddController {
   constructor(private serviceService: ServiceService) {}
 
-  @Public()
-  //@Roles('admin')
+  @Roles('admin')
   @Post()
   async addService(@Body() data: CreateServiceDTO) {
     const { ...body } = data;

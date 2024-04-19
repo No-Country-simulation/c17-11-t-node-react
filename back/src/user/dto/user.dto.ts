@@ -16,7 +16,7 @@ import {
 } from 'class-validator';
 
 export class CreateUserDTO {
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   role?: string;
 

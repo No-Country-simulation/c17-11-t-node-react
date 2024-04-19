@@ -1,7 +1,6 @@
 import { PRINCIPAL_PATHS } from '@Constants/routes';
-import { Public } from '@Decorators/public-access.decorator';
 import { UpdatePaymentDTO } from '@Payment/dto/payment.dto';
-// import { Roles } from '@Decorators/role.decorator';
+import { Roles } from '@Decorators/role.decorator';
 import { PaymentService } from '@Payment/payment.service';
 import {
   Body,
@@ -19,8 +18,7 @@ import {
 export class UpdateController {
   constructor(private paymentService: PaymentService) {}
 
-  @Public()
-  // @Roles('admin')
+  @Roles('admin')
   @Patch(':id')
   async updatePayment(
     @Param('id') paymentId: string,
@@ -30,15 +28,16 @@ export class UpdateController {
       const { ...body } = data;
 
       if (
+        body.status != undefined &&
         body.status.toLowerCase() != 'pagado' &&
         body.status.toLowerCase() != 'pendiente'
       ) {
         throw new Error('Invalid_status');
       }
 
-      if (body.status.toLowerCase() == 'pagado') body.payment_date = new Date();
-
-      body.status = body.status.toLowerCase();
+      if (body.status && body.status.toLowerCase() == 'pagado')
+        body.payment_date = new Date();
+      else if (body.status) body.status = body.status.toLowerCase();
 
       const updatedPayment = await this.paymentService.update(paymentId, body);
 

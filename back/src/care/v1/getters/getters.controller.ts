@@ -1,6 +1,7 @@
+import { CareService } from '@Care/care.service';
 import { PRINCIPAL_PATHS } from '@Constants/routes';
 import { Roles } from '@Decorators/role.decorator';
-import { PaymentService } from '@Payment/payment.service';
+// import { Public } from '@Decorators/public-access.decorator';
 import {
   Controller,
   Get,
@@ -12,19 +13,21 @@ import {
 
 @Controller({
   version: '1',
-  path: PRINCIPAL_PATHS.PAYMENT,
+  path: PRINCIPAL_PATHS.CARE,
 })
 export class GettersController {
-  constructor(private paymentService: PaymentService) {}
+  constructor(private careService: CareService) {}
 
+  // @Public()
   @Roles('admin')
   @Get()
   async getAll() {
     try {
-      const payments = await this.paymentService.findAll();
+      const cares = await this.careService.findAll();
+
       return {
-        sucess: true,
-        data: payments,
+        success: true,
+        data: cares,
       };
     } catch (error) {
       throw new InternalServerErrorException({
@@ -34,17 +37,19 @@ export class GettersController {
     }
   }
 
+  // @Public()
   @Roles('admin')
   @Get('p')
   async getAllPaginate(@Query('page') p: string, @Query('limit') l: string) {
     const page = p == undefined ? 1 : Number(p);
     const limit = l == undefined ? 10 : Number(l);
+
     try {
-      const services = await this.paymentService.findAllPaginate(page, limit);
+      const cares = await this.careService.findAllPaginate(page, limit);
 
       return {
         success: true,
-        data: services,
+        data: cares,
       };
     } catch (error) {
       throw new InternalServerErrorException({
@@ -54,27 +59,39 @@ export class GettersController {
     }
   }
 
+  // @Public()
   @Roles('admin')
+  @Roles('caretaker')
   @Get(':id')
-  async getOneById(@Param('id') id: string) {
+  async getById(@Param('id') id: string) {
     try {
-      const payment = await this.paymentService.findById(id);
-      if (payment == null) throw new Error('null');
-
+      const care = await this.careService.findById(id);
+      if (!care) {
+        throw new NotFoundException('Care not found');
+      }
       return {
         success: true,
-        data: payment,
+        data: care,
       };
     } catch (error) {
-      if (error instanceof Error) {
-        if (error.message == 'null') {
-          throw new NotFoundException({
-            success: false,
-            message: 'Payment Not Found',
-          });
-        }
-      }
+      throw new InternalServerErrorException({
+        success: false,
+        message: String(error),
+      });
+    }
+  }
 
+  // @Public()
+  @Roles('caretaker')
+  @Get('caretaker/:caretakerId')
+  async findByCaretaker(@Param('caretakerId') caretakerId: string) {
+    try {
+      const care = await this.careService.findByCaretaker(caretakerId);
+      return {
+        success: true,
+        data: care,
+      };
+    } catch (error) {
       throw new InternalServerErrorException({
         success: false,
         message: String(error),

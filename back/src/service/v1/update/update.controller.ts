@@ -1,6 +1,5 @@
 import { PRINCIPAL_PATHS } from '@Constants/routes';
-import { Public } from '@Decorators/public-access.decorator';
-// import { Roles } from '@Decorators/role.decorator';
+import { Roles } from '@Decorators/role.decorator';
 import { UpdateServiceDTO } from '@Service/dto/service.dto';
 import { ServiceService } from '@Service/service.service';
 import {
@@ -19,8 +18,7 @@ import {
 export class UpdateController {
   constructor(private serviceService: ServiceService) {}
 
-  //@Roles('admin')
-  @Public()
+  @Roles('admin')
   @Patch(':id')
   async updateService(
     @Param('id') serviceId: string,

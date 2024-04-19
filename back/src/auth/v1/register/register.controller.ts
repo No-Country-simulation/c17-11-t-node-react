@@ -3,6 +3,7 @@ import { CaretakerService } from '@Caretaker/caretaker.service';
 import { PRINCIPAL_PATHS } from '@Constants/routes';
 import { Public } from '@Decorators/public-access.decorator';
 import { RoleService } from '@Role/role.service';
+import { Role } from '@Role/schemas/role.schema';
 import { CreateUserDTO } from '@User/dto/user.dto';
 import { UserService } from '@User/user.service';
 import {
@@ -30,8 +31,12 @@ export class RegisterController {
   async register(@Body() data: CreateUserDTO) {
     try {
       const { role, first_name, last_name, email, password, username } = data;
-      const isValidRole = await this.roleService.findById(role);
-      if (isValidRole == null) throw new Error('invalid_role');
+
+      let isValidRole: Role;
+      if (role) {
+        isValidRole = await this.roleService.findById(role);
+        if (isValidRole == null) throw new Error('invalid_role');
+      }
 
       const userCreated = await this.userService.create({
         role,
@@ -49,7 +54,7 @@ export class RegisterController {
 
       userCreated.password = '';
 
-      if (isValidRole.name == 'caretaker') {
+      if (isValidRole && isValidRole.name == 'caretaker') {
         await this.caretakerService.create({
           user: userCreated._id.toString(),
           active_requests: 0,

@@ -1,6 +1,3 @@
-import { PRINCIPAL_PATHS } from '@Constants/routes';
-import { Roles } from '@Decorators/role.decorator';
-import { PaymentService } from '@Payment/payment.service';
 import {
   Controller,
   Get,
@@ -9,22 +6,25 @@ import {
   Param,
   Query,
 } from '@nestjs/common';
+import { PRINCIPAL_PATHS } from '@Constants/routes';
+import { PetService } from '@Pet/pet.service';
+import { Public } from '@Decorators/public-access.decorator';
 
 @Controller({
   version: '1',
-  path: PRINCIPAL_PATHS.PAYMENT,
+  path: PRINCIPAL_PATHS.PET,
 })
 export class GettersController {
-  constructor(private paymentService: PaymentService) {}
+  constructor(private petService: PetService) {}
 
-  @Roles('admin')
+  @Public()
   @Get()
   async getAll() {
     try {
-      const payments = await this.paymentService.findAll();
+      const pets = await this.petService.findAll();
       return {
-        sucess: true,
-        data: payments,
+        success: true,
+        data: pets,
       };
     } catch (error) {
       throw new InternalServerErrorException({
@@ -34,17 +34,18 @@ export class GettersController {
     }
   }
 
-  @Roles('admin')
+  @Public()
   @Get('p')
   async getAllPaginate(@Query('page') p: string, @Query('limit') l: string) {
     const page = p == undefined ? 1 : Number(p);
     const limit = l == undefined ? 10 : Number(l);
+
     try {
-      const services = await this.paymentService.findAllPaginate(page, limit);
+      const pets = await this.petService.findAllPaginate(page, limit);
 
       return {
         success: true,
-        data: services,
+        data: pets,
       };
     } catch (error) {
       throw new InternalServerErrorException({
@@ -54,27 +55,19 @@ export class GettersController {
     }
   }
 
-  @Roles('admin')
+  @Public()
   @Get(':id')
-  async getOneById(@Param('id') id: string) {
+  async getById(@Param('id') id: string) {
     try {
-      const payment = await this.paymentService.findById(id);
-      if (payment == null) throw new Error('null');
-
+      const pet = await this.petService.findById(id);
+      if (!pet) {
+        throw new NotFoundException('Pet not found');
+      }
       return {
         success: true,
-        data: payment,
+        data: pet,
       };
     } catch (error) {
-      if (error instanceof Error) {
-        if (error.message == 'null') {
-          throw new NotFoundException({
-            success: false,
-            message: 'Payment Not Found',
-          });
-        }
-      }
-
       throw new InternalServerErrorException({
         success: false,
         message: String(error),

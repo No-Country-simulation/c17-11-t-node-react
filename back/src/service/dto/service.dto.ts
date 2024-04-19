@@ -15,16 +15,15 @@ export class CreateServiceDTO {
 }
 
 export class UpdateServiceDTO {
-  // name?: string
   @IsString()
   @IsOptional()
-  name: string;
+  name?: string;
 
   @IsNumber()
   @IsOptional()
-  price: number;
+  price?: number;
 
   @IsOptional()
   @IsString()
-  description: string;
+  description?: string;
 }

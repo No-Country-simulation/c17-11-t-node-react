@@ -1,10 +1,4 @@
-import {
-  IsDate,
-  IsNotEmpty,
-  IsNumber,
-  IsOptional,
-  IsString,
-} from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class CreatePaymentDTO {
   @IsString()
@@ -15,9 +9,7 @@ export class CreatePaymentDTO {
 
   date?: Date;
 
-  @IsDate()
-  @IsOptional()
-  payment_date: Date;
+  payment_date?: Date;
 
   @IsString()
   @IsNotEmpty()
@@ -28,10 +20,6 @@ export class UpdatePaymentDTO {
   @IsString()
   @IsOptional()
   care?: string;
-
-  @IsNumber()
-  @IsOptional()
-  amount?: number;
 
   payment_date?: Date;
 

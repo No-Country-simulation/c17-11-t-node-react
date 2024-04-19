@@ -1,8 +1,8 @@
 import { PRINCIPAL_PATHS } from '@Constants/routes';
-import { Public } from '@Decorators/public-access.decorator';
-// import { Roles } from '@Decorators/role.decorator';
+import { Roles } from '@Decorators/role.decorator';
 import { CreatePaymentDTO } from '@Payment/dto/payment.dto';
 import { PaymentService } from '@Payment/payment.service';
+import { CareService } from '@Care/care.service';
 import {
   Body,
   Controller,
@@ -16,13 +16,20 @@ import {
   path: PRINCIPAL_PATHS.PAYMENT,
 })
 export class AddController {
-  constructor(private paymentService: PaymentService) {}
+  constructor(
+    private paymentService: PaymentService,
+    private readonly careService: CareService,
+  ) {}
 
-  @Public()
-  // @Roles('admin')
+  @Roles('admin')
   @Post()
   async addPayment(@Body() data: CreatePaymentDTO) {
     const { ...body } = data;
+
+    const care = await this.careService.findById(body.care);
+
+    if (isNaN(care.totalPrice) && care.totalPrice == null)
+      throw new Error('Invalid_Amount');
 
     if (
       body.status.toLowerCase() != 'pagado' &&
@@ -36,6 +43,7 @@ export class AddController {
 
     try {
       const payment = await this.paymentService.create({
+        amount: care.totalPrice,
         ...body,
         date: new Date(),
       });
@@ -49,7 +57,13 @@ export class AddController {
         if (error.message == 'Invalid_status') {
           throw new BadRequestException({
             success: false,
-            message: 'Invalid Status!',
+            message: 'Invalid Status',
+          });
+        }
+        if (error.message == 'Invalid_Amount') {
+          throw new BadRequestException({
+            success: false,
+            message: 'Invalid Amount',
           });
         }
       }

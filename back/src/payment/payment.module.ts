@@ -6,10 +6,12 @@ import { AddController } from './v1/add/add.controller';
 import { GettersController } from './v1/getters/getters.controller';
 import { UpdateController } from './v1/update/update.controller';
 import { MongooseService } from '@Helpers/mongoose/mongoose.service';
+import { CareModule } from '@Care/care.module';
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: Payment.name, schema: PaymentSchema }]),
+    CareModule,
   ],
   providers: [PaymentService, MongooseService],
   controllers: [AddController, GettersController, UpdateController],
