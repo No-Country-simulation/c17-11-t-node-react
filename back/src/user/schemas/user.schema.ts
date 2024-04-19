@@ -19,7 +19,7 @@ export class User {
   @Prop()
   last_name: string;
 
-  @Prop({ unique: true })
+  @Prop()
   dni: number;
 
   @Prop()
