@@ -7,4 +7,5 @@ export const PRINCIPAL_PATHS = {
   CARE: 'cares',
   PAYMENT: 'payments',
   ROLE: 'roles',
+  REVIEW: 'reviews',
 };
