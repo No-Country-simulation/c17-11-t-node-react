@@ -18,6 +18,12 @@ export class Review {
 
   @Prop()
   stars: number;
+
+  @Prop({ default: new Date() })
+  createAt: Date;
+
+  @Prop()
+  updateAt: Date;
 }
 
 export const ReviewSchema = SchemaFactory.createForClass(Review);

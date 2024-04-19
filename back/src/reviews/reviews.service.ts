@@ -20,6 +20,28 @@ export class ReviewsService {
       .exec();
   }
 
+  async findAllPaginate(page: number, limit: number) {
+    const count = await this.reviewModel.estimatedDocumentCount();
+    const query = this.reviewModel
+      .find()
+      .populate({ path: 'caretaker', select: 'stars reviews user' })
+      .populate({ path: 'client', select: 'first_name last_name picture' });
+    return this.mongooseService.paginate(query, count, page, limit);
+  }
+
+  async findAllByCaretaker(id: string, page: number, limit: number) {
+    const count = await this.reviewModel.estimatedDocumentCount({
+      caretaker: id,
+    });
+    const query = this.reviewModel
+      .find({
+        caretaker: id,
+      })
+      .populate({ path: 'caretaker', select: 'stars reviews user' })
+      .populate({ path: 'client', select: 'first_name last_name picture' });
+    return this.mongooseService.paginate(query, count, page, limit);
+  }
+
   async findOneById(id: string): Promise<ReviewDocument> {
     return this.reviewModel
       .findById(id)

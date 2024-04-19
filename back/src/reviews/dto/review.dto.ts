@@ -4,7 +4,9 @@ import {
   IsOptional,
   IsString,
   Length,
+  Max,
   MaxLength,
+  Min,
 } from 'class-validator';
 
 export class AddReviewDTO {
@@ -21,6 +23,8 @@ export class AddReviewDTO {
 
   @IsNumber()
   @IsNotEmpty()
+  @Min(0)
+  @Max(5)
   stars: number;
 }
 
@@ -39,4 +43,6 @@ export class UpdateReviewDTO {
   @IsNumber()
   @IsNotEmpty()
   stars?: number;
+
+  updateAt: Date;
 }

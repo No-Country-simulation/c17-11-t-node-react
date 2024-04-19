@@ -29,7 +29,10 @@ export class Caretaker {
   @Prop({ default: true })
   enable: boolean;
 
-  @Prop()
+  @Prop({ default: 0 })
+  sumPoint: number;
+
+  @Prop({ default: 1 })
   stars: number;
 
   @Prop({ default: 0 })

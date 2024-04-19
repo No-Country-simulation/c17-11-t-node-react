@@ -14,7 +14,7 @@ export class CaretakerService {
 
   async findAll() {
     return this.caretakerModel
-      .find()
+      .find({}, { sumPoint: 0 })
       .populate({ path: 'user', select: 'first_name last_name picture' })
       .populate({ path: 'services', select: 'name description' })
       .populate({ path: 'pets', select: 'name' })
@@ -24,7 +24,7 @@ export class CaretakerService {
   async findAllPaginate(page: number, limit: number) {
     const count = await this.caretakerModel.estimatedDocumentCount();
     const query = this.caretakerModel
-      .find()
+      .find({}, { sumPoint: 0 })
       .populate({ path: 'user', select: 'first_name last_name picture' })
       .populate({ path: 'services', select: 'name description' })
       .populate({ path: 'pets', select: 'name' });
@@ -53,10 +53,27 @@ export class CaretakerService {
 
   async update(userId: string, data: UpdateCaretakerDTO) {
     const { services, pets, ...req } = data;
+
     return this.caretakerModel.findOneAndUpdate(
       {
         user: this.mongooseService.stringToObjectId(userId),
       },
+      {
+        services: this.mongooseService.stringToObjectId(services),
+        pets: this.mongooseService.stringToObjectId(pets),
+        ...req,
+      },
+      {
+        new: true,
+      },
+    );
+  }
+
+  async updateById(id: string, data: UpdateCaretakerDTO) {
+    const { services, pets, ...req } = data;
+
+    return this.caretakerModel.findByIdAndUpdate(
+      id,
       {
         services: this.mongooseService.stringToObjectId(services),
         pets: this.mongooseService.stringToObjectId(pets),

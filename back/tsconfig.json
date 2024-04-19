@@ -28,6 +28,7 @@
       "@Interfaces/*": ["src/interfaces/*"],
       "@Payment/*": ["src/payment/*"],
       "@Pet/*": ["src/pet/*"],
+      "@Reviews/*": ["src/reviews/*"],
       "@Role/*": ["src/role/*"],
       "@Service/*": ["src/service/*"],
       "@User/*": ["src/user/*"],
