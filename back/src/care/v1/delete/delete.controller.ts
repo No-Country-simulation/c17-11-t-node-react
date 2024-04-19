@@ -1,36 +1,27 @@
 import { PRINCIPAL_PATHS } from '@Constants/routes';
 import { CareService } from '@Care/care.service';
-import { RoleService } from '@Role/role.service';
 import {
-  BadRequestException,
   Controller,
   Delete,
   InternalServerErrorException,
+  NotFoundException,
   Param,
-  Req,
 } from '@nestjs/common';
-import { Request } from 'express';
+import { Roles } from '@Decorators/role.decorator';
 
 @Controller({
   version: '1',
   path: PRINCIPAL_PATHS.CARE,
 })
 export class DeleteController {
-  constructor(
-    private readonly careService: CareService,
-    private readonly roleService: RoleService,
-  ) {}
+  constructor(private readonly careService: CareService) {}
 
+  @Roles('admin')
   @Delete(':id')
-  async deleteCare(@Param('id') careId: string, @Req() req: Request) {
+  async deleteCare(@Param('id') careId: string) {
     try {
-      const roleId = req.user['roleId'];
-      const role = await this.roleService.findById(roleId);
-      if (role.name !== 'admin') {
-        throw new Error('no_user');
-      }
-
       const deleteCare = await this.careService.delete(careId);
+      if (deleteCare == null) throw new Error('null');
 
       return {
         success: true,
@@ -39,17 +30,16 @@ export class DeleteController {
       };
     } catch (error) {
       if (error instanceof Error) {
-        if (error.message === 'no_user') {
-          throw new BadRequestException({
+        if (error.message == 'null') {
+          throw new NotFoundException({
             success: false,
-            message: 'User not provided',
+            message: 'Pet not found',
           });
         }
       }
       throw new InternalServerErrorException({
         success: false,
-        message: 'Error deleting pet',
-        error: error.message,
+        message: String(error),
       });
     }
   }

@@ -1,28 +1,29 @@
 post http://localhost:3000/api/v1/pets
 content-type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFlYWFiMWI1YmUyMzFmNzllZTFkMDEiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGM4IiwiaWF0IjoxNzEzMzA4NTM0LCJleHAiOjE3MTMzOTQ5MzR9.-JMBCfr1cor7aCSQFVSGxO6O4pYEyMSDWV4E78lNnp0
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFlYWFiMWI1YmUyMzFmNzllZTFkMDEiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGM4IiwiaWF0IjoxNzEzNTQ3ODE3LCJleHAiOjE3MTM2MzQyMTd9.LXsIwgHzHs8N8TgDC5_x_SeYvVZ4KOxY8u59DtXTpOs
 
 {
-  "name": "rinoceronte"
+  "name": "vaca"
 }
 
 ###
 get http://localhost:3000/api/v1/pets
 
 ###
-get http://localhost:3000/api/v1/pets/661eaf4a18734aae375650f4
+get http://localhost:3000/api/v1/pets/6622b084b5740bb841373bcc
 
 ###
-patch http://localhost:3000/api/v1/pets/661eaf4a18734aae375650f4
+patch http://localhost:3000/api/v1/pets/6622b084b5740bb841373bcc
 content-type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFlYWFiMWI1YmUyMzFmNzllZTFkMDEiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGM4IiwiaWF0IjoxNzEzMzA4NTM0LCJleHAiOjE3MTMzOTQ5MzR9.-JMBCfr1cor7aCSQFVSGxO6O4pYEyMSDWV4E78lNnp0
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFlYWFiMWI1YmUyMzFmNzllZTFkMDEiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGM4IiwiaWF0IjoxNzEzNTQ3ODE3LCJleHAiOjE3MTM2MzQyMTd9.LXsIwgHzHs8N8TgDC5_x_SeYvVZ4KOxY8u59DtXTpOs
 
 {
-  "name": "ave"
+  "name": "vaquita"
 }
 
 ###
-delete http://localhost:3000/api/v1/pets/661f03d3d6423995b91ceaea
+delete http://localhost:3000/api/v1/pets/6622b084b5740bb841373bcc
 content-type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFlYWFiMWI1YmUyMzFmNzllZTFkMDEiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGM4IiwiaWF0IjoxNzEzMzA4NTM0LCJleHAiOjE3MTMzOTQ5MzR9.-JMBCfr1cor7aCSQFVSGxO6O4pYEyMSDWV4E78lNnp0
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFlYWFiMWI1YmUyMzFmNzllZTFkMDEiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGM4IiwiaWF0IjoxNzEzNTQ3ODE3LCJleHAiOjE3MTM2MzQyMTd9.LXsIwgHzHs8N8TgDC5_x_SeYvVZ4KOxY8u59DtXTpOs
+
 

@@ -4,22 +4,38 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Care } from './schemas/care.schema';
 import { Model, Types } from 'mongoose';
 import { MongooseService } from '@Helpers/mongoose/mongoose.service';
+import { ServiceService } from '@Service/service.service';
+import { Caretaker } from '@Caretaker/schemas/caretaker.schema';
 
 @Injectable()
 export class CareService {
   constructor(
     @InjectModel(Care.name) private careModel: Model<Care>,
+    @InjectModel(Caretaker.name) private caretakerModel: Model<Caretaker>,
     private mongooseService: MongooseService,
+    private serviceService: ServiceService,
   ) {}
 
   async create(data: CreateCareDTO, userId: string) {
-    const { caretaker, pet, services, ...req } = data;
+    const { pet, services, ...req } = data;
+
+    const servicePrices = await Promise.all(
+      services.map(async (serviceId) => {
+        const service = await this.serviceService.findById(serviceId);
+        return service.price;
+      }),
+    );
+
+    const totalPrice = servicePrices.reduce((total, price) => total + price, 0);
+
     return this.careModel.create({
       user: this.mongooseService.stringToObjectId(userId),
-      caretaker: this.mongooseService.stringToObjectId(caretaker),
       pet: this.mongooseService.stringToObjectId(pet),
       services: this.mongooseService.stringToObjectId(services),
       date: new Date(),
+      totalPrice: totalPrice,
+      status: 'pending',
+      state: false,
       ...req,
     });
   }
@@ -47,51 +63,61 @@ export class CareService {
   }
 
   async findById(id: string) {
-    try {
-      return this.careModel
-        .findById(id)
-        .populate({ path: 'user', select: 'first_name last_name picture' })
-        .populate({ path: 'pet', select: 'name' })
-        .populate({ path: 'services', select: '' })
-        .populate({ path: 'caretaker', select: '' })
-        .exec();
-    } catch (error) {
-      throw new Error(`Error finding care by id: ${error.message}`);
-    }
+    return this.careModel
+      .findById(id)
+      .populate({ path: 'user', select: 'first_name last_name picture' })
+      .populate({ path: 'pet', select: 'name' })
+      .populate({ path: 'services', select: '' })
+      .populate({ path: 'caretaker', select: '' })
+      .exec();
   }
 
   async findByCaretaker(caretakerId: string) {
     const caretakerObjectId = new Types.ObjectId(caretakerId);
-    try {
-      return this.careModel.find({ caretaker: caretakerObjectId }).exec();
-    } catch (error) {
-      throw new Error(`Error finding cares by caretaker ID: ${error.message}`);
-    }
+    return this.careModel.find({ caretaker: caretakerObjectId }).exec();
   }
 
-  async update(data: UpdateCareDTO, userId: string) {
-    const { services, pet, caretaker, ...req } = data;
-    return this.careModel.findOneAndUpdate(
-      {
-        user: this.mongooseService.stringToObjectId(userId),
-      },
-      {
-        caetaker: this.mongooseService.stringToObjectId(caretaker),
-        services: this.mongooseService.stringToObjectId(services),
-        pets: this.mongooseService.stringToObjectId(pet),
-        ...req,
-      },
-      {
-        new: true,
-      },
-    );
+  async update(
+    data: UpdateCareDTO,
+    userId: string,
+    role: string,
+    careId: string,
+  ) {
+    const { status, description, ...req } = data;
+
+    if (role === 'caretaker') {
+      const userID = new Types.ObjectId(userId);
+      const caretaker = await this.caretakerModel
+        .findOne({ user: userID })
+        .exec();
+
+      return this.careModel.findOneAndUpdate(
+        { _id: this.mongooseService.stringToObjectId(careId) },
+        {
+          caretaker: caretaker._id,
+          status: status,
+          state: status === 'completed',
+          ...req,
+        },
+        { new: true },
+      );
+    } else if (role === 'owner') {
+      return this.careModel.findOneAndUpdate(
+        {
+          _id: this.mongooseService.stringToObjectId(careId),
+        },
+        {
+          description: description,
+          ...req,
+        },
+        {
+          new: true,
+        },
+      );
+    }
   }
 
   async delete(careId: string) {
-    try {
-      return await this.careModel.findByIdAndDelete(careId).exec();
-    } catch (error) {
-      throw new Error(`Error deleting care: ${error.message}`);
-    }
+    return await this.careModel.findByIdAndDelete(careId).exec();
   }
 }

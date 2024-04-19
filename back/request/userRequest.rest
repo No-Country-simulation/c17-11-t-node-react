@@ -13,21 +13,21 @@ content-type: application/json
 
 {
 "role": "66157d1e7aff6b63452074c9",
-"first_name": "caretaker",
-"last_name": "caretaker",
-"email": "caretaker@hotmail.com",
+"first_name": "caretaker2",
+"last_name": "caretaker2",
+"email": "caretaker5@hotmail.com",
 "password": "Admin@123"
 }
 
 ###
 post http://localhost:3000/api/v1/caretakers
 content-type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFmMDdlODM3YWEwODY2ZWM5OGMyZmEiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGM5IiwiaWF0IjoxNzEzMzExMDM3LCJleHAiOjE3MTMzOTc0Mzd9.0GsSJzgm_r17vcokhJt68vLnBIPJBORGA_9lrsHCV_4
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjIxZTNjNWI5ZGZhNWYwMDBkZjQyZDciLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGM5IiwiaWF0IjoxNzEzNDk3MDI5LCJleHAiOjE3MTM1ODM0Mjl9.0jFRTj84klt_92-3ZoaeWogsxnJXR4g6FM4t30OxDec
 
 {
   "services": [],
   "pets": [],
-  "status": "44a",
+  "status": "",
   "active_requests": 2,
   "description": "String"
 }
@@ -61,6 +61,6 @@ post http://localhost:3000/api/v1/auth/login
 content-type: application/json
 
 {
-"username": "caretaker1713309672116",
+"username": "caretaker21713497029212",
 "password": "Admin@123"
 }

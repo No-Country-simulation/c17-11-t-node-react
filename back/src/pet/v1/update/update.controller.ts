@@ -1,42 +1,30 @@
 import {
-  BadRequestException,
   Body,
   Controller,
   InternalServerErrorException,
+  NotFoundException,
   Param,
   Patch,
-  Req,
 } from '@nestjs/common';
 import { PRINCIPAL_PATHS } from '@Constants/routes';
 import { PetService } from '@Pet/pet.service';
-import { RoleService } from '@Role/role.service';
 import { UpdatePetDTO } from '@Pet/dto/pet.dto';
-import { Request } from 'express';
+
+import { Roles } from '@Decorators/role.decorator';
 
 @Controller({
   version: '1',
   path: PRINCIPAL_PATHS.PET,
 })
 export class UpdateController {
-  constructor(
-    private readonly petService: PetService,
-    private readonly roleService: RoleService,
-  ) {}
+  constructor(private readonly petService: PetService) {}
 
+  @Roles('admin')
   @Patch(':id')
-  async updatePet(
-    @Param('id') petId: string,
-    @Body() data: UpdatePetDTO,
-    @Req() req: Request,
-  ) {
+  async updatePet(@Param('id') petId: string, @Body() data: UpdatePetDTO) {
     try {
-      const roleId = req.user['roleId'];
-      const role = await this.roleService.findById(roleId);
-      if (role.name !== 'admin') {
-        throw new Error('no_user');
-      }
-
       const updatedPet = await this.petService.update(petId, data);
+      if (updatedPet == null) throw new Error('null');
 
       return {
         success: true,
@@ -44,10 +32,10 @@ export class UpdateController {
       };
     } catch (error) {
       if (error instanceof Error) {
-        if (error.message == 'no_user') {
-          throw new BadRequestException({
+        if (error.message == 'null') {
+          throw new NotFoundException({
             success: false,
-            message: 'User not provided',
+            message: 'User not found',
           });
         }
       }

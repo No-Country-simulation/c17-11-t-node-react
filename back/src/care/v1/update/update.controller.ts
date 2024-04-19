@@ -1,12 +1,14 @@
 import { CareService } from '@Care/care.service';
 import { UpdateCareDTO } from '@Care/dto/care.dto';
 import { PRINCIPAL_PATHS } from '@Constants/routes';
+import { Roles } from '@Decorators/role.decorator';
 import { RoleService } from '@Role/role.service';
 import {
   BadRequestException,
   Body,
   Controller,
   InternalServerErrorException,
+  Param,
   Patch,
   Req,
 } from '@nestjs/common';
@@ -22,21 +24,24 @@ export class UpdateController {
     private roleService: RoleService,
   ) {}
 
-  @Patch()
-  async updateCare(@Body() data: UpdateCareDTO, @Req() req: Request) {
+  @Roles('caretaker', 'owner')
+  @Patch(':careId')
+  async updateCare(
+    @Body() data: UpdateCareDTO,
+    @Param('careId') careId: string,
+    @Req() req: Request,
+  ) {
     try {
       const userId: string = req.user['userId'];
-      const roleId = req.user['roleId'];
+      const roleId: string = req.user['roleId'];
       const role = await this.roleService.findById(roleId);
-      if (
-        role.name !== 'admin' &&
-        role.name !== 'owner' &&
-        role.name !== 'caretaker'
-      ) {
-        throw new Error('no_user');
-      }
 
-      const care = await this.careService.update(data, userId);
+      const care = await this.careService.update(
+        data,
+        userId,
+        role.name,
+        careId,
+      );
 
       return {
         success: true,
