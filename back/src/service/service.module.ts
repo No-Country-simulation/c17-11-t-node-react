@@ -13,9 +13,10 @@ import { UserModule } from '@User/user.module';
   imports: [
     MongooseModule.forFeature([{ name: Service.name, schema: ServiceSchema }]),
     RoleModule,
-    UserModule
+    UserModule,
   ],
   providers: [ServiceService, MongooseService],
   controllers: [AddController, GettersController, UpdateController],
+  exports: [ServiceService],
 })
 export class ServiceModule {}

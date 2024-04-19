@@ -1,6 +1,7 @@
 import { CareService } from '@Care/care.service';
 import { CreateCareDTO } from '@Care/dto/care.dto';
 import { PRINCIPAL_PATHS } from '@Constants/routes';
+import { Public } from '@Decorators/public-access.decorator';
 import { RoleService } from '@Role/role.service';
 import {
   BadRequestException,
@@ -22,6 +23,7 @@ export class AddController {
     private roleService: RoleService,
   ) {}
 
+  @Public()
   @Post()
   async addCare(@Body() data: CreateCareDTO, @Req() req: Request) {
     try {

@@ -23,5 +23,6 @@ import { DeleteController } from './v1/delete/delete.controller';
     UpdateController,
     DeleteController,
   ],
+  exports: [CareService],
 })
 export class CareModule {}
