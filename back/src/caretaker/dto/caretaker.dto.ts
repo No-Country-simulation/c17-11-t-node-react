@@ -52,4 +52,8 @@ export class UpdateCaretakerDTO {
   @IsBoolean()
   @IsOptional()
   enable?: boolean;
+
+  sumPoint?: number;
+  stars?: number;
+  reviews?: number;
 }

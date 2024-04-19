@@ -28,6 +28,15 @@ export class Caretaker {
 
   @Prop({ default: true })
   enable: boolean;
+
+  @Prop({ default: 0 })
+  sumPoint: number;
+
+  @Prop({ default: 1 })
+  stars: number;
+
+  @Prop({ default: 0 })
+  reviews: number;
 }
 
 export const CaretakerSchema = SchemaFactory.createForClass(Caretaker);
