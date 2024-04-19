@@ -44,12 +44,34 @@ export class ReviewsService {
   }
 
   async findAllByCaretaker(id: string, page: number, limit: number) {
-    const count = await this.reviewModel.estimatedDocumentCount({
-      caretaker: id,
+    const count = await this.reviewModel.countDocuments({
+      caretaker: this.mongooseService.stringToObjectId(id),
     });
     const query = this.reviewModel
       .find({
         caretaker: this.mongooseService.stringToObjectId(id),
+      })
+      .populate({
+        path: 'caretaker',
+        select: 'stars reviews user',
+        populate: {
+          path: 'user',
+          select: 'first_name last_name picture',
+        },
+      })
+      .populate({ path: 'client', select: 'first_name last_name picture' });
+
+    return this.mongooseService.paginate(query, count, page, limit);
+  }
+
+  async findAllByClient(userId: string, page: number, limit: number) {
+    const count = await this.reviewModel.countDocuments({
+      client: this.mongooseService.stringToObjectId(userId),
+    });
+
+    const query = this.reviewModel
+      .find({
+        client: this.mongooseService.stringToObjectId(userId),
       })
       .populate({
         path: 'caretaker',

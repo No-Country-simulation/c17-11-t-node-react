@@ -49,7 +49,7 @@ export class AddController {
       const avgStars = sumPoint / (foundCaretaker.reviews + 1);
 
       await this.caretakerService.updateById(foundCaretaker._id.toString(), {
-        sumPoint,
+        sumPoint: Number(sumPoint.toFixed(2)),
         stars: Number(avgStars.toFixed(2)),
         reviews: foundCaretaker.reviews + 1,
       });

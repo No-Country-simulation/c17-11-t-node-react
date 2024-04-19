@@ -7,7 +7,9 @@ import {
   NotFoundException,
   Param,
   Query,
+  Req,
 } from '@nestjs/common';
+import { Request } from 'express';
 import { ReviewsService } from '@Reviews/reviews.service';
 
 @Controller({
@@ -68,6 +70,33 @@ export class GettersController {
     try {
       const reviews = await this.reviewsService.findAllByCaretaker(
         id,
+        page,
+        limit,
+      );
+
+      return {
+        success: true,
+        data: reviews,
+      };
+    } catch (error) {
+      throw new InternalServerErrorException({
+        success: false,
+        message: String(error),
+      });
+    }
+  }
+
+  @Get('user')
+  async getAllByUser(
+    @Query('page') p: string,
+    @Query('limit') l: string,
+    @Req() req: Request,
+  ) {
+    const page = p == undefined ? 1 : Number(p);
+    const limit = l == undefined ? 10 : Number(l);
+    try {
+      const reviews = await this.reviewsService.findAllByClient(
+        req.user['userId'],
         page,
         limit,
       );
