@@ -43,7 +43,7 @@ export class UpdateController {
         const avgStars = sumPoint / foundCaretaker.reviews;
         await this.caretakerService.update(foundCaretaker._id.toString(), {
           sumPoint,
-          stars: avgStars,
+          stars: Number(avgStars.toFixed(2)),
         });
 
         return {

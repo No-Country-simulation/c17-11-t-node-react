@@ -2,6 +2,7 @@ import { PRINCIPAL_PATHS } from '@Constants/routes';
 import { Roles } from '@Decorators/role.decorator';
 import {
   Body,
+  ConflictException,
   Controller,
   InternalServerErrorException,
   NotFoundException,
@@ -32,7 +33,11 @@ export class AddController {
       const foundCaretaker = await this.caretakerService.findById(caretaker);
       if (foundCaretaker == null) throw new Error('null');
 
-      //TODO: comprobar que el usuario actual no tenga ya una reseña con el cuidador enviado
+      const foundReview = await this.reviewsService.findByCaretakerAndClient(
+        caretaker,
+        req.user['userId'],
+      );
+      if (foundReview.length != 0) throw new Error('found_review');
 
       const review = await this.reviewsService.add({
         client: req.user['userId'],
@@ -45,7 +50,7 @@ export class AddController {
 
       await this.caretakerService.updateById(foundCaretaker._id.toString(), {
         sumPoint,
-        stars: avgStars,
+        stars: Number(avgStars.toFixed(2)),
         reviews: foundCaretaker.reviews + 1,
       });
 
@@ -59,6 +64,13 @@ export class AddController {
           throw new NotFoundException({
             success: false,
             message: 'Caretaker not found',
+          });
+        }
+
+        if (error.message == 'found_review') {
+          throw new ConflictException({
+            success: false,
+            message: 'This caretaker already has a review',
           });
         }
       }

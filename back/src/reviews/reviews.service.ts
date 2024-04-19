@@ -15,7 +15,14 @@ export class ReviewsService {
   async findAll(): Promise<Review[]> {
     return this.reviewModel
       .find()
-      .populate({ path: 'caretaker', select: 'stars reviews user' })
+      .populate({
+        path: 'caretaker',
+        select: 'stars reviews user',
+        populate: {
+          path: 'user',
+          select: 'first_name last_name picture',
+        },
+      })
       .populate({ path: 'client', select: 'first_name last_name picture' })
       .exec();
   }
@@ -24,7 +31,14 @@ export class ReviewsService {
     const count = await this.reviewModel.estimatedDocumentCount();
     const query = this.reviewModel
       .find()
-      .populate({ path: 'caretaker', select: 'stars reviews user' })
+      .populate({
+        path: 'caretaker',
+        select: 'stars reviews user',
+        populate: {
+          path: 'user',
+          select: 'first_name last_name picture',
+        },
+      })
       .populate({ path: 'client', select: 'first_name last_name picture' });
     return this.mongooseService.paginate(query, count, page, limit);
   }
@@ -35,18 +49,42 @@ export class ReviewsService {
     });
     const query = this.reviewModel
       .find({
-        caretaker: id,
+        caretaker: this.mongooseService.stringToObjectId(id),
       })
-      .populate({ path: 'caretaker', select: 'stars reviews user' })
+      .populate({
+        path: 'caretaker',
+        select: 'stars reviews user',
+        populate: {
+          path: 'user',
+          select: 'first_name last_name picture',
+        },
+      })
       .populate({ path: 'client', select: 'first_name last_name picture' });
+
     return this.mongooseService.paginate(query, count, page, limit);
   }
 
   async findOneById(id: string): Promise<ReviewDocument> {
     return this.reviewModel
       .findById(id)
-      .populate({ path: 'caretaker', select: 'stars reviews user' })
+      .populate({
+        path: 'caretaker',
+        select: 'stars reviews user',
+        populate: {
+          path: 'user',
+          select: 'first_name last_name picture',
+        },
+      })
       .populate({ path: 'client', select: 'first_name last_name picture' })
+      .exec();
+  }
+
+  async findByCaretakerAndClient(caretakerId: string, clientId: string) {
+    return this.reviewModel
+      .find({
+        caretaker: this.mongooseService.stringToObjectId(caretakerId),
+        client: this.mongooseService.stringToObjectId(clientId),
+      })
       .exec();
   }
 

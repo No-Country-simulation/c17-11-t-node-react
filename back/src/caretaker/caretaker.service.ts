@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Caretaker } from './schemas/caretaker.schema';
+import { Caretaker, CaretakerDocument } from './schemas/caretaker.schema';
 import { Model } from 'mongoose';
 import { CreateCaretakerDTO, UpdateCaretakerDTO } from './dto/caretaker.dto';
 import { MongooseService } from '@Helpers/mongoose/mongoose.service';
@@ -38,6 +38,14 @@ export class CaretakerService {
       .populate({ path: 'user', select: 'first_name last_name picture' })
       .populate({ path: 'services', select: 'name description' })
       .populate({ path: 'pets', select: 'name' })
+      .exec();
+  }
+
+  async findOneByUseId(userId: string): Promise<CaretakerDocument> {
+    return this.caretakerModel
+      .findOne({
+        user: this.mongooseService.stringToObjectId(userId),
+      })
       .exec();
   }
 
