@@ -5,10 +5,13 @@ import { ReviewsService } from '@Reviews/reviews.service';
 import {
   Controller,
   Delete,
+  ForbiddenException,
   InternalServerErrorException,
   NotFoundException,
   Param,
+  Req,
 } from '@nestjs/common';
+import { Request } from 'express';
 
 @Controller({
   version: '1',
@@ -22,10 +25,23 @@ export class DeleteController {
 
   @Roles('owner', 'admin')
   @Delete(':id')
-  async deleteReview(@Param('id') id: string) {
+  async deleteReview(@Param('id') id: string, @Req() req: Request) {
     try {
       const foundReview = await this.reviewsService.findOneById(id);
       if (foundReview == null) throw new Error('null');
+
+      const reviewCaretakerClient =
+        await this.reviewsService.findByCaretakerAndClient(
+          foundReview.caretaker['_id'],
+          req.user['userId'],
+        );
+
+      if (
+        reviewCaretakerClient.length == 0 &&
+        req.user['roleName'] == 'owner'
+      ) {
+        throw new Error('no_delete');
+      }
 
       const caretaker = await this.caretakerService.findById(
         foundReview.caretaker['_id'],
@@ -50,6 +66,13 @@ export class DeleteController {
           throw new NotFoundException({
             success: false,
             message: 'Review not found',
+          });
+        }
+
+        if (error.message == 'no_delete') {
+          throw new ForbiddenException({
+            success: false,
+            message: 'You cannot delete this review',
           });
         }
       }

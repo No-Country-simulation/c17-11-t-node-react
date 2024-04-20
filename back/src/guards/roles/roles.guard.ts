@@ -20,18 +20,31 @@ export class RolesGuard implements CanActivate {
 
     const request = context.switchToHttp().getRequest();
     const roleId = request.user['roleId'];
+    const result = await this.matchRole(roles, roleId);
 
-    return await this.matchRole(roles, roleId);
+    request.user['roleName'] = result.success ? result.roleName : '';
+    return result.success;
   }
 
-  private async matchRole(role: string[], roleId: string): Promise<boolean> {
+  private async matchRole(
+    role: string[],
+    roleId: string,
+  ): Promise<{
+    success: boolean;
+    roleName?: string;
+  }> {
     try {
       const rol = await this.roleService.findById(roleId);
 
       if (role.includes(rol.name)) {
-        return true;
+        return {
+          success: true,
+          roleName: rol.name,
+        };
       } else {
-        return false;
+        return {
+          success: false,
+        };
       }
     } catch (error) {
       throw new InternalServerErrorException({
