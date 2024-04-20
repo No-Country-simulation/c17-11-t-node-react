@@ -100,7 +100,7 @@ export class CareService {
         },
         { new: true },
       );
-    } else if (role === 'owner') {
+    } else if (role === 'owner' && description !== undefined) {
       return this.careModel.findOneAndUpdate(
         {
           _id: this.mongooseService.stringToObjectId(careId),

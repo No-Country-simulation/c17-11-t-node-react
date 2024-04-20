@@ -56,6 +56,7 @@ export class UpdateCareDTO {
   @IsNumber()
   hours?: number;
 
+  @IsOptional()
   @IsString()
   @IsIn(['pending', 'accept', 'completed'])
   status?: string;

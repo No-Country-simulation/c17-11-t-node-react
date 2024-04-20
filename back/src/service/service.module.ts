@@ -18,6 +18,5 @@ import { UserModule } from '@User/user.module';
   exports: [ServiceService],
   providers: [ServiceService, MongooseService],
   controllers: [AddController, GettersController, UpdateController],
-  exports: [ServiceService],
 })
 export class ServiceModule {}

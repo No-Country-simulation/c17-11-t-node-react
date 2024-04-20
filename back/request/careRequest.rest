@@ -15,7 +15,7 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFmMDg3M
 ###
 
 // Modificar care (caretaker)
-PATCH  http://localhost:3000/api/v1/cares/66230e049e24e8799294a75f
+PATCH  http://localhost:3000/api/v1/cares/662326593ec56b6ef590605f
 content-type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjIxZTNjNWI5ZGZhNWYwMDBkZjQyZDciLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGM5IiwiaWF0IjoxNzEzNTcxNDc0LCJleHAiOjE3MTM2NTc4NzR9.FFNDQqLkCkFjo4FRzYAJpnvMTV34JVvvecCC9p_VIgY
 // los 3 posibles valores de status son pending, accept y completed (por defecto se crea con pending)
@@ -27,13 +27,13 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjIxZTNjN
 ###
 
 // Modificar care (cliente)
-PATCH  http://localhost:3000/api/v1/cares/6623063471c37aba685250a1
+PATCH  http://localhost:3000/api/v1/cares/662326593ec56b6ef590605f
 content-type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFmMDg3MDM3YWEwODY2ZWM5OGMzMDAiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGNhIiwiaWF0IjoxNzEzNTcxNzQ5LCJleHAiOjE3MTM2NTgxNDl9.pVZoUPayflpuTujgrfZjtcj2Tr4fmmx-wQFilelJhFQ
 // el cliente solo puede modificar el status
 
 {
-  "description": "mentira no muerde!"
+  "description": "mentira no muerde"
 }
 
 ###
