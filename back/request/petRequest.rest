@@ -1,28 +1,40 @@
+// Para enviar solicitud presionar Send Request
+
+// Agregar una mascota
 post http://localhost:3000/api/v1/pets
 content-type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFlYWFiMWI1YmUyMzFmNzllZTFkMDEiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGM4IiwiaWF0IjoxNzEzMzA4NTM0LCJleHAiOjE3MTMzOTQ5MzR9.-JMBCfr1cor7aCSQFVSGxO6O4pYEyMSDWV4E78lNnp0
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFlYWFiMWI1YmUyMzFmNzllZTFkMDEiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGM4IiwiaWF0IjoxNzEzNTcwNjIxLCJleHAiOjE3MTM2NTcwMjF9.Ex0wRP4F84YAEChlSwrld7_sKKT7kQOpHQRkZF0W5ew
 
 {
-  "name": "rinoceronte"
+  "name": "dinosaurio"
 }
 
 ###
+
+// Obtener todas las mascotas
 get http://localhost:3000/api/v1/pets
 
 ###
-get http://localhost:3000/api/v1/pets/661eaf4a18734aae375650f4
+
+// Obtener mascota por su id
+get http://localhost:3000/api/v1/pets/661f0411d6423995b91ceaf0
 
 ###
-patch http://localhost:3000/api/v1/pets/661eaf4a18734aae375650f4
+
+// Modificar una mascota
+patch http://localhost:3000/api/v1/pets/661f0411d6423995b91ceaf0
 content-type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFlYWFiMWI1YmUyMzFmNzllZTFkMDEiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGM4IiwiaWF0IjoxNzEzMzA4NTM0LCJleHAiOjE3MTMzOTQ5MzR9.-JMBCfr1cor7aCSQFVSGxO6O4pYEyMSDWV4E78lNnp0
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFlYWFiMWI1YmUyMzFmNzllZTFkMDEiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGM4IiwiaWF0IjoxNzEzNTcwNjIxLCJleHAiOjE3MTM2NTcwMjF9.Ex0wRP4F84YAEChlSwrld7_sKKT7kQOpHQRkZF0W5ew
 
 {
-  "name": "ave"
+  "name": "tiburon"
 }
 
 ###
-delete http://localhost:3000/api/v1/pets/661f03d3d6423995b91ceaea
+
+//Eliminar una mascota
+delete http://localhost:3000/api/v1/pets/6622aae9818093bebef0de15
 content-type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFlYWFiMWI1YmUyMzFmNzllZTFkMDEiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGM4IiwiaWF0IjoxNzEzMzA4NTM0LCJleHAiOjE3MTMzOTQ5MzR9.-JMBCfr1cor7aCSQFVSGxO6O4pYEyMSDWV4E78lNnp0
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFlYWFiMWI1YmUyMzFmNzllZTFkMDEiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGM4IiwiaWF0IjoxNzEzNTcwNjIxLCJleHAiOjE3MTM2NTcwMjF9.Ex0wRP4F84YAEChlSwrld7_sKKT7kQOpHQRkZF0W5ew
+
 

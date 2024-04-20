@@ -1,37 +1,65 @@
+// Para enviar solicitud presionar Send Request
 
+// Agregar care (cliente)
 post http://localhost:3000/api/v1/cares
 content-type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFmMDg3MDM3YWEwODY2ZWM5OGMzMDAiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGNhIiwiaWF0IjoxNzEzMzA5ODA4LCJleHAiOjE3MTMzOTYyMDh9.MbaAx_oxFAt-mIPoKYBz48JWcZ-5vJpbNh16bu0z02I
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFmMDg3MDM3YWEwODY2ZWM5OGMzMDAiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGNhIiwiaWF0IjoxNzEzNTcxMDg5LCJleHAiOjE3MTM2NTc0ODl9.QA5S3MuI6a4j-E3cyFPDKoXqOnbEqaAmFA7yydxWzq8
 
 {
-  "caretaker": "661f0d5ec9034420e37dabd0",
-  "services": [],
+  "services": ["661eb60c79fa6d69a77c6cb2","66218eb79daa9a2616fde204"],
   "pet": "661f040ad6423995b91ceaed",
   "hours": 6,
-  "status": "listo",
-  "state": false,
-  "description": "el perro se porta mal",
-  "totalPrice": 1000
+  "description": "el perro muerde"
 }
 
 ###
 
-PATCH  http://localhost:3000/api/v1/cares
+// Modificar care (caretaker)
+PATCH  http://localhost:3000/api/v1/cares/662326593ec56b6ef590605f
 content-type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFmMDg3MDM3YWEwODY2ZWM5OGMzMDAiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGNhIiwiaWF0IjoxNzEzMzA5ODA4LCJleHAiOjE3MTMzOTYyMDh9.MbaAx_oxFAt-mIPoKYBz48JWcZ-5vJpbNh16bu0z02I
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjIxZTNjNWI5ZGZhNWYwMDBkZjQyZDciLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGM5IiwiaWF0IjoxNzEzNTcxNDc0LCJleHAiOjE3MTM2NTc4NzR9.FFNDQqLkCkFjo4FRzYAJpnvMTV34JVvvecCC9p_VIgY
+// los 3 posibles valores de status son pending, accept y completed (por defecto se crea con pending)
 
 {
-  "description": "mentira el perro se porta bien"
+  "status": "accept"
 }
 
 ###
 
-get http://localhost:3000/api/v1/cares/caretaker/661f0d5ec9034420e37dabd0
+// Modificar care (cliente)
+PATCH  http://localhost:3000/api/v1/cares/662326593ec56b6ef590605f
 content-type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFmMDg3MDM3YWEwODY2ZWM5OGMzMDAiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGNhIiwiaWF0IjoxNzEzMzA5ODA4LCJleHAiOjE3MTMzOTYyMDh9.MbaAx_oxFAt-mIPoKYBz48JWcZ-5vJpbNh16bu0z02I
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFmMDg3MDM3YWEwODY2ZWM5OGMzMDAiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGNhIiwiaWF0IjoxNzEzNTcxNzQ5LCJleHAiOjE3MTM2NTgxNDl9.pVZoUPayflpuTujgrfZjtcj2Tr4fmmx-wQFilelJhFQ
+// el cliente solo puede modificar el status
+
+{
+  "description": "mentira no muerde"
+}
 
 ###
 
+// obtener todo los care (admin)
+get http://localhost:3000/api/v1/cares
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFlYWFiMWI1YmUyMzFmNzllZTFkMDEiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGM4IiwiaWF0IjoxNzEzNTcxODYxLCJleHAiOjE3MTM2NTgyNjF9.fbiNonPIUfyjwgeceDfkA2KGzRdtIiiZngwZJb3pkIg
+
+###
+
+// obtener care por id
+get http://localhost:3000/api/v1/cares/6622b40c455d41f9ee5d15b5
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjIxZTNjNWI5ZGZhNWYwMDBkZjQyZDciLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGM5IiwiaWF0IjoxNzEzNTcxOTM2LCJleHAiOjE3MTM2NTgzMzZ9.G2atv8bIHCrTzwKlidhT4mw3wNmAKK7EC-76kSCgMIY
+
+###
+
+// obtener los care relacionados a un caretaker (caretaker)
+get http://localhost:3000/api/v1/cares/caretaker/6621e4b6b9dfa5f000df42e1
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjIxZTNjNWI5ZGZhNWYwMDBkZjQyZDciLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGM5IiwiaWF0IjoxNzEzNTcxOTM2LCJleHAiOjE3MTM2NTgzMzZ9.G2atv8bIHCrTzwKlidhT4mw3wNmAKK7EC-76kSCgMIY
+
+###
+
+// eliminar care
 delete  http://localhost:3000/api/v1/cares/661f0ad582ca145641b3718b
 content-type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFlYWU4MzE4NzM0YWFlMzc1NjUwZWYiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGNhIiwiaWF0IjoxNzEzMjg3OTE2LCJleHAiOjE3MTMzNzQzMTZ9.YC9xcGx8HKg_2BLHP095YiADFKVBUL9B74ahiLpttgY

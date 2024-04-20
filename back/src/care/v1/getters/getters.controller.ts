@@ -60,20 +60,28 @@ export class GettersController {
   }
 
   // @Public()
-  @Roles('admin')
-  @Roles('caretaker')
+
+  @Roles('caretaker', 'admin')
   @Get(':id')
   async getById(@Param('id') id: string) {
     try {
       const care = await this.careService.findById(id);
-      if (!care) {
-        throw new NotFoundException('Care not found');
-      }
+      if (care == null) throw new Error('null');
+
       return {
         success: true,
         data: care,
       };
     } catch (error) {
+      if (error instanceof Error) {
+        if (error.message == 'null') {
+          throw new NotFoundException({
+            success: false,
+            message: 'Care not found',
+          });
+        }
+      }
+
       throw new InternalServerErrorException({
         success: false,
         message: String(error),
@@ -87,11 +95,22 @@ export class GettersController {
   async findByCaretaker(@Param('caretakerId') caretakerId: string) {
     try {
       const care = await this.careService.findByCaretaker(caretakerId);
+      if (care == null) throw new Error('null');
+
       return {
         success: true,
         data: care,
       };
     } catch (error) {
+      if (error instanceof Error) {
+        if (error.message == 'null') {
+          throw new NotFoundException({
+            success: false,
+            message: 'Not found',
+          });
+        }
+      }
+
       throw new InternalServerErrorException({
         success: false,
         message: String(error),
