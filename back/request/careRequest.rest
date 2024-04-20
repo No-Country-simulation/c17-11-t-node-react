@@ -3,7 +3,7 @@
 // Agregar care (cliente)
 post http://localhost:3000/api/v1/cares
 content-type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFmMDg3MDM3YWEwODY2ZWM5OGMzMDAiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGNhIiwiaWF0IjoxNzEzNTcxMDg5LCJleHAiOjE3MTM2NTc0ODl9.QA5S3MuI6a4j-E3cyFPDKoXqOnbEqaAmFA7yydxWzq8
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFmMDg3MDM3YWEwODY2ZWM5OGMzMDAiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGNhIiwiaWF0IjoxNzEzNjUxOTM2LCJleHAiOjE3MTM3MzgzMzZ9.OSTlqwU8faJsXiI09M0zrifxRdmwSDUtS70fjVFHTP8
 
 {
   "services": ["661eb60c79fa6d69a77c6cb2","66218eb79daa9a2616fde204"],
@@ -15,9 +15,9 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFmMDg3M
 ###
 
 // Modificar care (caretaker)
-PATCH  http://localhost:3000/api/v1/cares/662326593ec56b6ef590605f
+PATCH  http://localhost:3000/api/v1/cares/662440f63e11d9a2315889d7
 content-type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjIxZTNjNWI5ZGZhNWYwMDBkZjQyZDciLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGM5IiwiaWF0IjoxNzEzNTcxNDc0LCJleHAiOjE3MTM2NTc4NzR9.FFNDQqLkCkFjo4FRzYAJpnvMTV34JVvvecCC9p_VIgY
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjIxZTNjNWI5ZGZhNWYwMDBkZjQyZDciLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGM5IiwiaWF0IjoxNzEzNjUyMjg3LCJleHAiOjE3MTM3Mzg2ODd9.6lwieek9qPjivkwXEnxNuiqZdE8RF0Gt402rQxUjRCk
 // los 3 posibles valores de status son pending, accept y completed (por defecto se crea con pending)
 
 {
@@ -27,13 +27,13 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjIxZTNjN
 ###
 
 // Modificar care (cliente)
-PATCH  http://localhost:3000/api/v1/cares/662326593ec56b6ef590605f
+PATCH  http://localhost:3000/api/v1/cares/662440f63e11d9a2315889d7
 content-type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFmMDg3MDM3YWEwODY2ZWM5OGMzMDAiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGNhIiwiaWF0IjoxNzEzNTcxNzQ5LCJleHAiOjE3MTM2NTgxNDl9.pVZoUPayflpuTujgrfZjtcj2Tr4fmmx-wQFilelJhFQ
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjFmMDg3MDM3YWEwODY2ZWM5OGMzMDAiLCJyb2xlIjoiNjYxNTdkMWU3YWZmNmI2MzQ1MjA3NGNhIiwiaWF0IjoxNzEzNjUxOTM2LCJleHAiOjE3MTM3MzgzMzZ9.OSTlqwU8faJsXiI09M0zrifxRdmwSDUtS70fjVFHTP8
 // el cliente solo puede modificar el status
 
 {
-  "description": "mentira no muerde"
+  "description": "mentira no muerde!"
 }
 
 ###
