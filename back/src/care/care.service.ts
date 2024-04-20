@@ -6,6 +6,7 @@ import { Model, Types } from 'mongoose';
 import { MongooseService } from '@Helpers/mongoose/mongoose.service';
 import { ServiceService } from '@Service/service.service';
 import { Caretaker } from '@Caretaker/schemas/caretaker.schema';
+import { CaretakerService } from '@Caretaker/caretaker.service';
 
 @Injectable()
 export class CareService {
@@ -14,6 +15,7 @@ export class CareService {
     @InjectModel(Caretaker.name) private caretakerModel: Model<Caretaker>,
     private mongooseService: MongooseService,
     private serviceService: ServiceService,
+    private caretakerService: CaretakerService,
   ) {}
 
   async create(data: CreateCareDTO, userId: string) {
@@ -86,10 +88,7 @@ export class CareService {
     const { status, description, ...req } = data;
 
     if (role === 'caretaker') {
-      const userID = new Types.ObjectId(userId);
-      const caretaker = await this.caretakerModel
-        .findOne({ user: userID })
-        .exec();
+      const caretaker = await this.caretakerService.findOneByUseId(userId);
 
       return this.careModel.findOneAndUpdate(
         { _id: this.mongooseService.stringToObjectId(careId) },
