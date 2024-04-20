@@ -5,14 +5,12 @@ import { Care } from './schemas/care.schema';
 import { Model, Types } from 'mongoose';
 import { MongooseService } from '@Helpers/mongoose/mongoose.service';
 import { ServiceService } from '@Service/service.service';
-import { Caretaker } from '@Caretaker/schemas/caretaker.schema';
 import { CaretakerService } from '@Caretaker/caretaker.service';
 
 @Injectable()
 export class CareService {
   constructor(
     @InjectModel(Care.name) private careModel: Model<Care>,
-    @InjectModel(Caretaker.name) private caretakerModel: Model<Caretaker>,
     private mongooseService: MongooseService,
     private serviceService: ServiceService,
     private caretakerService: CaretakerService,

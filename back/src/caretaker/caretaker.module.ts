@@ -19,6 +19,6 @@ import { UpdateController } from './v1/update/update.controller';
   ],
   providers: [CaretakerService, MongooseService],
   controllers: [GettersController, AddController, UpdateController],
-  exports: [CaretakerService, MongooseModule],
+  exports: [CaretakerService],
 })
 export class CaretakerModule {}
