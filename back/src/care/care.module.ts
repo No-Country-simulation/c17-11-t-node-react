@@ -27,5 +27,6 @@ import { CaretakerModule } from '@Caretaker/caretaker.module';
     UpdateController,
     DeleteController,
   ],
+  exports: [CareService],
 })
 export class CareModule {}

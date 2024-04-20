@@ -23,7 +23,7 @@ export class AddReviewDTO {
 
   @IsNumber()
   @IsNotEmpty()
-  @Min(0)
+  @Min(1)
   @Max(5)
   stars: number;
 }
@@ -42,6 +42,8 @@ export class UpdateReviewDTO {
   @IsOptional()
   @IsNumber()
   @IsNotEmpty()
+  @Min(1)
+  @Max(5)
   stars?: number;
 
   updateAt: Date;

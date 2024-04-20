@@ -34,8 +34,8 @@ export class DeleteController {
 
       const sumPoint = caretaker.sumPoint - foundReview.stars;
       const avgStars = Math.abs(sumPoint / (caretaker.reviews - 1));
-      await this.caretakerService.update(caretaker._id.toString(), {
-        sumPoint,
+      await this.caretakerService.update(caretaker.user['_id'], {
+        sumPoint: Number(sumPoint.toFixed(2)),
         stars: Number(avgStars.toFixed(2)),
         reviews: caretaker.reviews - 1,
       });

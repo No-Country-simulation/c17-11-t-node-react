@@ -4,13 +4,16 @@ import { Roles } from '@Decorators/role.decorator';
 import { UpdateReviewDTO } from '@Reviews/dto/review.dto';
 import { ReviewsService } from '@Reviews/reviews.service';
 import {
+  BadRequestException,
   Body,
   Controller,
   InternalServerErrorException,
   NotFoundException,
   Param,
   Patch,
+  Req,
 } from '@nestjs/common';
+import { Request } from 'express';
 
 @Controller({
   version: '1',
@@ -24,16 +27,30 @@ export class UpdateController {
 
   @Roles('owner')
   @Patch(':id')
-  async update(@Body() data: UpdateReviewDTO, @Param('id') id: string) {
+  async update(
+    @Body() data: UpdateReviewDTO,
+    @Param('id') id: string,
+    @Req() req: Request,
+  ) {
     const { stars, description } = data;
     try {
       const foundReview = await this.reviewsService.findOneById(id);
       if (foundReview == null) throw new Error('null');
 
+      const reviewCaretakerClient =
+        await this.reviewsService.findByCaretakerAndClient(
+          foundReview.caretaker['_id'],
+          req.user['userId'],
+        );
+      if (reviewCaretakerClient.length == 0) {
+        throw new Error('not_found_review');
+      }
+
       if (stars) {
         const foundCaretaker = await this.caretakerService.findById(
           foundReview.caretaker['_id'],
         );
+
         const review = await this.reviewsService.update(id, {
           stars,
           description,
@@ -41,8 +58,9 @@ export class UpdateController {
         });
         const sumPoint = foundCaretaker.sumPoint - foundReview.stars + stars;
         const avgStars = sumPoint / foundCaretaker.reviews;
-        await this.caretakerService.update(foundCaretaker._id.toString(), {
-          sumPoint,
+
+        await this.caretakerService.update(foundCaretaker.user['_id'], {
+          sumPoint: Number(sumPoint.toFixed(2)),
           stars: Number(avgStars.toFixed(2)),
         });
 
@@ -67,6 +85,12 @@ export class UpdateController {
           throw new NotFoundException({
             success: false,
             message: 'Review not found',
+          });
+        }
+        if (error.message == 'not_found_review') {
+          throw new BadRequestException({
+            success: false,
+            message: 'You cannot modify this review',
           });
         }
       }

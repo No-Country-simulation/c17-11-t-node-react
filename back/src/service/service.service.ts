@@ -19,6 +19,12 @@ export class ServiceService {
     return this.serviceModel.find().exec();
   }
 
+  async findAllPaginate(page: number, limit: number) {
+    const count = await this.serviceModel.estimatedDocumentCount();
+    const query = this.serviceModel.find();
+    return this.mongooseService.paginate(query, count, page, limit);
+  }
+
   async findById(id: string) {
     return this.serviceModel.findById(id).exec();
   }
