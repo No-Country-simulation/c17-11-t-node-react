@@ -3,20 +3,39 @@ import eyeOpen from "../assets/LoginImages/ojo-abierto.png"
 import eyeClosed from "../assets/LoginImages/ojo-cerrado.png"
 import googleIcon from "../assets/LoginImages/google-icon.png"
 export const LoginForm = () => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch('http://127.0.0.1:3001/api/v1/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password }),
+            });
+            const data = await response.json();
+            console.log(data); // Aquí maneja la respuesta del servidor
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
     const [showPassword, setShowPassword] = useState(false);
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
     return (
-        <form className="space-y-4 md:space-y-6" action="#">
+        <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="email" className="block mb-2 text-sm text-left font-medium text-gray-900 dark:text-white">Correo electronico</label>
-                <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Correo electronico" />
+                <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Correo electronico" onChange={(e)=>setUsername(e.target.value)}/>
             </div>
             <div className="relative">
                 <label htmlFor="password" className="block mb-2 text-left text-sm font-medium text-gray-900 dark:text-white">Contraseña</label>
-                <input type={showPassword ? "text" : "password"} name="password" id="password" placeholder="******" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                <input type={showPassword ? "text" : "password"} name="password" id="password" placeholder="******" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e)=>setPassword(e.target.value)}/>
                 <button type="button" onClick={togglePasswordVisibility} className="absolute inset-y-0 top-8 right-0 flex items-center px-2 h-10 rounded-r-md focus:outline-none">
                     {showPassword ? (
                         <img src={eyeOpen} alt="open eye" />
@@ -43,9 +62,9 @@ export const LoginForm = () => {
             <p className="text-sm font-light text-gray-500 dark:text-gray-400">o</p>
 
             <button type="submit" className="flex items-center space-x-2 justify-center w-full text-black bg-gray-200 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-2xl text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 font-bold">
-            <img src={googleIcon} alt="google icon" />
-            <span>INICIAR SESIÓN CON GOOGLE</span>
-            
+                <img src={googleIcon} alt="google icon" />
+                <span>INICIAR SESIÓN CON GOOGLE</span>
+
             </button>
 
             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
