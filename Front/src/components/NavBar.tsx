@@ -9,54 +9,39 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-black/60 w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <nav className="bg-[#FF9F00]/75 w-screen fixed top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+        <div className="flex items-center justify-between">
           <div>
             <a href="/#">
               <img className="rounded-full w-14" src={logo} alt="Logo" />
             </a>
           </div>
-          <div className="hidden md:flex flex-grow">
-            <ul className="flex space-x-4 mx-auto">
+          <div className="hidden md:flex flex-grow ">
+            <ul className="flex  space-x-6">
               <li>
                 <a
-                  href="#"
-                  className="text-gray-300 hover:text-black px-3 py-2 rounded-md text-sm font-medium"
+                  href="/#nosotros"
+                  className="text-[#010101] hover:text-[#010101]/70 px-3 py-2 rounded-md text-lg font-medium"
                 >
-                  Opción 1
+                  Nosotros
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="/#experiencias"
+                  className="text-[#010101] hover:text-[#010101]/70 px-3 py-2 rounded-md text-lg font-medium"
+                >
+                  Experiencias
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
-                  className="text-gray-300 hover:text-black px-3 py-2 rounded-md text-sm font-medium"
+                  href="/#contacto"
+                  className="text-[#010101] hover:text-[#010101]/70 px-3 py-2 rounded-md text-lg font-medium"
                 >
-                  Opción 2
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-black px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Opción 3
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-black px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Opción 4
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-black px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Opción 5
+                  Contacto
                 </a>
               </li>
             </ul>
@@ -64,13 +49,13 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-2">
             <a
               href="#"
-              className="text-white bg-slate-500 hover:text-black px-6 py-2 rounded-md text-sm font-medium"
+              className="text-[#010101] bg-white hover:text-[#010101]/80 px-6 py-2 rounded-full text-lg font-medium"
             >
               Ingresar
             </a>
             <a
               href="#"
-              className="text-gray-900 bg-slate-300 hover:text-white px-6 py-2 rounded-md text-sm font-medium"
+              className="text-[#010101] bg-[#F97D05] hover:text-[#010101]/80 rounded-full px-6 py-2  text-lg font-medium"
             >
               Registro
             </a>
@@ -78,7 +63,7 @@ const Navbar = () => {
           <div className="-mr-2 flex md:hidden">
             <button
               onClick={toggleNavbar}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              className="inline-flex items-center justify-center p-2 rounded-md text-[#90A4AE] hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
             >
               <span className="sr-only">Menú</span>
               <svg
@@ -115,30 +100,44 @@ const Navbar = () => {
       </div>
       <div className={`${isOpen ? "block" : "hidden"} md:hidden`}>
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <a
-            href="#"
-            className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Inicio
-          </a>
-          <a
-            href="#"
-            className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Acerca
-          </a>
-          <a
-            href="#"
-            className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Servicios
-          </a>
-          <a
-            href="#"
-            className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Contacto
-          </a>
+          <li>
+            <a
+              href="#"
+              className="text-[#010101] hover:text-[#010101]/70 px-3 py-2 rounded-md text-lg font-medium"
+            >
+              Nosotros
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              className="text-[#010101] hover:text-[#010101]/70 px-3 py-2 rounded-md text-lg font-medium"
+            >
+              Formar parte
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              className="text-[#010101] hover:text-[#010101]/70 px-3 py-2 rounded-md text-lg font-medium"
+            >
+              Experiencias
+            </a>
+          </li>
+          <div className=" md:flex items-center space-x-2 pt-6">
+            <a
+              href="#"
+              className="text-[#010101] bg-white hover:text-[#010101]/80 px-6 py-2 rounded-full text-lg font-medium"
+            >
+              Ingresar
+            </a>
+            <a
+              href="#"
+              className="text-[#010101] bg-[#F97D05] hover:text-[#010101]/80 rounded-full px-6 py-2  text-lg font-medium"
+            >
+              Registro
+            </a>
+          </div>
         </div>
       </div>
     </nav>
