@@ -1,6 +1,7 @@
 import {
   IsBoolean,
   IsIn,
+  IsNotEmpty,
   IsNumber,
   IsOptional,
   IsString,
@@ -18,6 +19,9 @@ export class CreateCareDTO {
 
   @IsString()
   pet: string;
+
+  @IsNotEmpty()
+  date: Date;
 
   @IsNumber()
   hours: number;

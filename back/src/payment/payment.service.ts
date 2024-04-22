@@ -19,22 +19,96 @@ export class PaymentService {
         path: 'care',
         select:
           'caretaker user services pet totalPrice state date hours status',
+        populate: [
+          {
+            path: 'pet',
+            select: 'name',
+          },
+          {
+            path: 'user',
+            select: 'first_name last_name',
+          },
+          {
+            path: 'services',
+            select: 'name',
+            model: 'Service',
+          },
+          {
+            path: 'caretaker',
+            select: 'user',
+            populate: {
+              path: 'user',
+              select: 'first_name last_name',
+            },
+          },
+        ],
       })
       .exec();
   }
 
   async findAllPaginate(page: number, limit: number) {
     const count = await this.paymentService.estimatedDocumentCount();
-    const query = this.paymentService
-      .find()
-      .populate({ path: 'care', select: 'amount date payment_date status' });
+    const query = this.paymentService.find().populate({
+      path: 'care',
+      select: 'caretaker user services pet totalPrice state date hours status',
+      populate: [
+        {
+          path: 'pet',
+          select: 'name',
+        },
+        {
+          path: 'user',
+          select: 'first_name last_name',
+        },
+        {
+          path: 'services',
+          select: 'name',
+          model: 'Service',
+        },
+        {
+          path: 'caretaker',
+          select: 'user',
+          populate: {
+            path: 'user',
+            select: 'first_name last_name',
+          },
+        },
+      ],
+    });
     return this.mongooseService.paginate(query, count, page, limit);
   }
 
   async findById(id: string) {
     return this.paymentService
       .findById(id)
-      .populate({ path: 'care', select: 'amount date payment_date status' })
+      .populate({
+        path: 'care',
+        select:
+          'caretaker user services pet totalPrice state date hours status',
+        populate: [
+          {
+            path: 'pet',
+            select: 'name',
+          },
+          {
+            path: 'user',
+            select: 'first_name last_name',
+          },
+          {
+            path: 'services',
+            select: 'name',
+            model: 'Service',
+          },
+          {
+            path: 'caretaker',
+            select: 'user',
+            populate: {
+              path: 'user',
+              select: 'first_name last_name',
+            },
+          },
+        ],
+      })
       .exec();
   }
 

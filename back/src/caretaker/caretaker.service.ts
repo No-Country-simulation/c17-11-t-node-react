@@ -16,8 +16,12 @@ export class CaretakerService {
     return this.caretakerModel
       .find({}, { sumPoint: 0 })
       .populate({ path: 'user', select: 'first_name last_name picture' })
-      .populate({ path: 'services', select: 'name description' })
-      .populate({ path: 'pets', select: 'name' })
+      .populate({
+        path: 'services',
+        select: 'name description',
+        model: 'Service',
+      })
+      .populate({ path: 'pets', select: 'name', model: 'Pet' })
       .exec();
   }
 
@@ -26,8 +30,12 @@ export class CaretakerService {
     const query = this.caretakerModel
       .find({}, { sumPoint: 0 })
       .populate({ path: 'user', select: 'first_name last_name picture' })
-      .populate({ path: 'services', select: 'name description' })
-      .populate({ path: 'pets', select: 'name' });
+      .populate({
+        path: 'services',
+        select: 'name description',
+        model: 'Service',
+      })
+      .populate({ path: 'pets', select: 'name', model: 'Pet' });
 
     return this.mongooseService.paginate<Caretaker>(query, count, page, limit);
   }
@@ -36,8 +44,12 @@ export class CaretakerService {
     return this.caretakerModel
       .findById(id)
       .populate({ path: 'user', select: 'first_name last_name picture' })
-      .populate({ path: 'services', select: 'name description' })
-      .populate({ path: 'pets', select: 'name' })
+      .populate({
+        path: 'services',
+        select: 'name description',
+        model: 'Service',
+      })
+      .populate({ path: 'pets', select: 'name', model: 'Pet' })
       .exec();
   }
 
