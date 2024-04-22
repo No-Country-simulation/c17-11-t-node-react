@@ -13,53 +13,28 @@ export class PetService {
   ) {}
 
   async create(data: CreatePetDTO) {
-    try {
-      return await this.petModel.create(data);
-    } catch (error) {
-      throw new Error(`Error creating pet: ${error.message}`);
-    }
+    return await this.petModel.create(data);
   }
+
   async findAll() {
-    try {
-      return this.petModel.find().exec();
-    } catch (error) {
-      throw new Error(`Error finding all pets: ${error.message}`);
-    }
+    return this.petModel.find().exec();
   }
 
   async findAllPaginate(page: number, limit: number) {
-    try {
-      const count = await this.petModel.estimatedDocumentCount();
-      const query = this.petModel.find();
-      return this.mongooseService.paginate<Pet>(query, count, page, limit);
-    } catch (error) {
-      throw new Error(
-        `Error finding all pets with pagination: ${error.message}`,
-      );
-    }
+    const count = await this.petModel.estimatedDocumentCount();
+    const query = this.petModel.find();
+    return this.mongooseService.paginate<Pet>(query, count, page, limit);
   }
 
   async findById(id: string) {
-    try {
-      return this.petModel.findById(id);
-    } catch (error) {
-      throw new Error(`Error finding pet by id: ${error.message}`);
-    }
+    return this.petModel.findById(id);
   }
 
   async update(id: string, data: UpdatePetDTO) {
-    try {
-      return this.petModel.findByIdAndUpdate(id, data, { new: true }).exec();
-    } catch (error) {
-      throw new Error(`Error updating pet: ${error.message}`);
-    }
+    return this.petModel.findByIdAndUpdate(id, data, { new: true }).exec();
   }
 
   async delete(petId: string) {
-    try {
-      return await this.petModel.findByIdAndDelete(petId).exec();
-    } catch (error) {
-      throw new Error(`Error deleting pet: ${error.message}`);
-    }
+    return await this.petModel.findByIdAndDelete(petId).exec();
   }
 }

@@ -9,12 +9,16 @@ import { RoleModule } from '@Role/role.module';
 import { UserModule } from '@User/user.module';
 import { MongooseService } from '@Helpers/mongoose/mongoose.service';
 import { DeleteController } from './v1/delete/delete.controller';
+import { ServiceModule } from '@Service/service.module';
+import { CaretakerModule } from '@Caretaker/caretaker.module';
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: Care.name, schema: CareSchema }]),
     RoleModule,
     UserModule,
+    ServiceModule,
+    CaretakerModule,
   ],
   providers: [CareService, MongooseService],
   controllers: [

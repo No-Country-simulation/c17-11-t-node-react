@@ -1,5 +1,6 @@
 import {
   IsBoolean,
+  IsIn,
   IsNumber,
   IsOptional,
   IsString,
@@ -8,7 +9,6 @@ import {
 } from 'class-validator';
 
 export class CreateCareDTO {
-  @IsString()
   caretaker: string;
 
   @IsString({ each: true })
@@ -22,16 +22,18 @@ export class CreateCareDTO {
   @IsNumber()
   hours: number;
 
+  @IsOptional()
   @IsString()
   status: string;
 
+  @IsOptional()
   @IsBoolean()
   state: boolean;
 
+  @IsOptional()
   @IsString()
   description?: string;
 
-  @IsNumber()
   totalPrice: number;
 }
 
@@ -56,6 +58,7 @@ export class UpdateCareDTO {
 
   @IsOptional()
   @IsString()
+  @IsIn(['pending', 'accept', 'completed'])
   status?: string;
 
   @IsOptional()

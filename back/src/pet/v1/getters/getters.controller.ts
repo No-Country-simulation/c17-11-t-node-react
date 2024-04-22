@@ -60,14 +60,22 @@ export class GettersController {
   async getById(@Param('id') id: string) {
     try {
       const pet = await this.petService.findById(id);
-      if (!pet) {
-        throw new NotFoundException('Pet not found');
-      }
+      if (pet == null) throw new Error('null');
+
       return {
         success: true,
         data: pet,
       };
     } catch (error) {
+      if (error instanceof Error) {
+        if (error.message == 'null') {
+          throw new NotFoundException({
+            success: false,
+            message: 'Pet not found',
+          });
+        }
+      }
+
       throw new InternalServerErrorException({
         success: false,
         message: String(error),
