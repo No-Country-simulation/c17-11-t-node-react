@@ -1,4 +1,4 @@
-import { RegisterForm } from "../components/RegisterForm"
+// import { RegisterForm } from "../components/RegisterForm"
 export const Register = ()=>{
     return(
 
@@ -9,7 +9,7 @@ export const Register = ()=>{
                     <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                         ¡Registrate como!
                     </h1>
-                    <RegisterForm /> 
+                    {/* <RegisterForm />  */}
               </div>
             </div>
         </div>
