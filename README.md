@@ -235,7 +235,7 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
 
 
 
-## Tecnologías utilizadas
+## Tecnologías
 
 ### Stack Front-End
 - HTML
@@ -267,3 +267,80 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
 - Google Sheet
 - Google Docs
 - GitHub Project
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Front-End</th>
+      <th>UX/UI</th>
+      <th>Back-End</th>
+      <th>Testing &amp; QA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <img alt="html" src="https://img.shields.io/badge/HTML-%23F7DF1E?logo=html&logoColor=white">
+      </td>
+      <td>
+        <img alt="figma" src="https://img.shields.io/badge/Figma-%23F24E1E?logo=figma&logoColor=white">
+      </td>
+      <td>
+        <img alt="javascript" src="https://img.shields.io/badge/Javascript-%23F7DF1E?logo=javascript&logoColor=white">
+      </td>
+      <td>
+        <img alt="Trello" src="https://img.shields.io/badge/Trello-%23D30707">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img alt="typescript" src="https://img.shields.io/badge/TypeScript-%233178C6?logo=TypeScript&logoColor=white">
+      </td>
+      <td></td>
+      <td>
+      <img alt="nest.js" src="https://img.shields.io/badge/Nest.js-%23339933?logo=nest.js&logoColor=white">
+      </td>
+      <td>
+        <img alt="google-sheets" src="https://img.shields.io/badge/Google%20Sheets-%2334A853?logo=Google%20sheets&logoColor=white">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img alt="react" src="https://img.shields.io/badge/React-%23339933?logo=React&logoColor=white">
+      </td>
+      <td></td>
+      <td>
+        <img alt="express.js" src="https://img.shields.io/badge/Express.js-%23000000?logo=Express&logoColor=white">
+      </td>
+      </td>
+      <td>
+        <img alt="google-docs" src="https://img.shields.io/badge/Google%20Docs-%2306B6D4?logo=Google%20docs&logoColor=white">
+      </td>
+    </tr>
+      <td>
+        <img alt="tailwind" src="https://img.shields.io/badge/Tailwind-%2306B6D4?logo=tailwind%20css&logoColor=white">
+      </td>
+      <td></td>
+      <td>
+        <img alt="mongodb" src="https://img.shields.io/badge/MongoDB-%2347A248?logo=MongoDB&logoColor=white">
+      </td>
+      <td>
+        <img alt="github-project" src="https://img.shields.io/badge/GitHub%20Project-%23000000?logo=GitHub%20project&logoColor=white">
+      </td>
+    </tr>
+    <tr>
+    </td>
+    </tr>
+    <tr>
+      <td>
+        <img alt="vite" src="https://img.shields.io/badge/Vite-%23646CFF?logo=vite&logoColor=white">
+      </td>
+      <td></td>
+      <td>
+      </td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+<br>
