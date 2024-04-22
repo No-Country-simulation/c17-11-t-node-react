@@ -8,9 +8,12 @@
 | Cliente | No Country |
 
 <br></br>
+
+<h3 align="center"> 
 <"LOGO">
 
-#  🐾 Mascocuidado 🐾
+<h1 align="center"> 
+🐾 Mascocuidado 🐾
 
 ###  😺💝🐶 Mascocuidado es una plataforma en linea especializada en el cuidado de mascotas, brindando servicios de calidad para garantizar el bienestar y la felicidad de tus queridas mascotas. 🐶💝😺
 
@@ -162,7 +165,7 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
                 </a>
               </td>
               <td>
-                <a href="https://www.linkedin.com/in/">
+                <a href="https://www.linkedin.com/in/erick-arevalo-951081222">
                   <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
                 </a>
               </td>
@@ -236,38 +239,6 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
 
 
 ## Tecnologías
-
-### Stack Front-End
-- HTML
-- CSS
-- React
-- Vite
-- Tailwind
-
-
-### Stack Back-End
-- JavaScript
-- TypeScript
-- NestJS
-
-
-### Base de Datos
-- MongoDB
-
-
-### Control de Versiones
-- GitHub
-
-
-### Gestión de Tareas
-- Trello
-
-
-### Gestion de Pruebas
-- Google Sheet
-- Google Docs
-- GitHub Project
-
 
 <table>
   <thead>
