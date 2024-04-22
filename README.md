@@ -1,17 +1,20 @@
-<"BORRADOR N#1">
+> # Información del Proyecto
 
-<br>
-
-<"Aca abajo iria el logo">
-
+| Team | c17-11-t-node-react |
+| --- | --- |
+| Proyecto | Cuidado de Mascotas |
+| Fecha de inicio | 25/03/2024 |
+| Fecha de fin | 28/04/2024 |
+| Cliente | No Country |
 
 <br></br>
+<"LOGO">
 
 #  🐾 Mascocuidado 🐾
 
 
 
-<"Aca abajo iria la descripcion del proyecto">
+<"Descripcion del proyecto">
 
 ###  😺💝🐶 Mascocuidado es una empresa especializada en el cuidado de mascotas, brindando servicios de calidad para garantizar el bienestar y la felicidad de tus queridas mascotas. 🐶💝😺
 
@@ -27,12 +30,10 @@
 | Marlene   | Velázquez            | [marmarlenev](https://github.com/marmarlenev)                     |  UI/UX    |
 | José   |  Imhoff                 | [JoseI11](https://github.com/JoseI11)           |   FrontEnd    |
 | Agustín  |     Avellaneda            | [nitdraig](https://github.com/nitdraig)   |  FrontEnd    |
-| Junior         |     López Salazar            | [JrLopezSalazar](https://github.com/JrLopezSalazar)   |  FrontEnd    |
 | Erick       | Arévalo  | [ErickA2000](https://github.com/ErickA2000)                 |  BackEnd    |
 | Emanuel          | Grigolatto                | [egrigolatto](https://github.com/egrigolatto)             |  BackEnd    |
 | Agustin Mateo         |     De La Puente           | [Agusdelaa](https://github.com/Agusdelaa)   |    BackEnd  |
 | Juan Diego          |     González Antoniazzi           | [JDGA1997](https://github.com/JDGA1997)   |   QA   |
-| Integrante 10         |     Integrante 10           | [Integrante 10](https://github.com/)   |      |
 
 
 
@@ -51,7 +52,7 @@
 
 ## Tecnologías utilizadas
 
-### Front-End
+### Stack Front-End
 - HTML
 - CSS
 - React
@@ -59,7 +60,7 @@
 - Tailwind
 
 
-### Back-End
+### Stack Back-End
 - JavaScript
 - TypeScript
 - NestJS
@@ -69,10 +70,15 @@
 - MongoDB
 
 
-### Versionado
+### Control de Versiones
 - GitHub
 
 
 ### Gestión de Tareas
 - Trello
+
+
+## Gestion de Pruebas
+- Google Sheet
+- Google Docs
 - GitHub
