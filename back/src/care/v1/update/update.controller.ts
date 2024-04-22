@@ -33,13 +33,12 @@ export class UpdateController {
   ) {
     try {
       const userId: string = req.user['userId'];
-      const roleId: string = req.user['roleId'];
-      const role = await this.roleService.findById(roleId);
+      const roleName: string = req.user['roleName'];
 
       const care = await this.careService.update(
         data,
         userId,
-        role.name,
+        roleName.toString(),
         careId,
       );
 
