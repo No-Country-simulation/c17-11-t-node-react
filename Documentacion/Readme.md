@@ -10,10 +10,17 @@ El presente plan de pruebas tiene como objetivo cubrir exhaustivamente todas las
 
 ## `Alcance de las Pruebas`
 
-- Registro de usuario: Pruebas para verificar el correcto funcionamiento del proceso de registro, incluyendo la validación de datos.
-- Login y Logout de usuario: Pruebas para asegurar la seguridad y funcionalidad del inicio y cierre de sesión correctamente.
-- Funcionalidad y Navegabilidad de la pagina web: Evaluacion de la usabilidad y la experiencia del usuario en la navegación para garantizar que todas las funcionalidades y la navegación sean óptimas.
-- Pruebas de APIs: Validacion la comunicación y el funcionamiento de las APIs integradas para verificar el correcto funcionamiento de las mismas.
+- **Registro de usuario**:
+  Pruebas para verificar el correcto funcionamiento del proceso de registro, incluyendo la validación de datos.
+
+- **Login y Logout de usuario**:
+  Pruebas para asegurar la seguridad y funcionalidad del inicio y cierre de sesión correctamente.
+
+- **Funcionalidad y Navegabilidad de la pagina web**:
+  Evaluacion de la usabilidad y la experiencia del usuario en la navegación para garantizar que todas las funcionalidades y la navegación sean óptimas.
+
+- **Pruebas de APIs**:
+  Validacion la comunicación y el funcionamiento de las APIs integradas para verificar el correcto funcionamiento de las mismas.
 
 ## `Tipos de Pruebas, Estrategia`
 
@@ -41,11 +48,11 @@ El presente plan de pruebas tiene como objetivo cubrir exhaustivamente todas las
 
 ## `Herramientas de Pruebas`
 
-- Postman (Para realizar pruebas de APIs y servicios backend)
-- Google Docs y Sheets (Para la documentación y seguimiento de los casos de prueba)
-- GitHub Proyects, Issues y Milestones (Para la gestión y seguimiento del proyecto de pruebas.)
-- Trello (Para la organización del proyecto a traves del uso de tablero para la gestion de las tareas y pruebas)
-- Figma (Para la revisión y validación del diseño de la interfaz de usuario)
+- **Postman** (Para realizar pruebas de APIs y servicios backend)
+- **Google Docs y Sheets** (Para la documentación y seguimiento de los casos de prueba)
+- **GitHub Proyects, Issues y Milestones** (Para la gestión y seguimiento del proyecto de pruebas.)
+- **Trello** (Para la organización del proyecto a traves del uso de tablero para la gestion de las tareas y pruebas)
+- **Figma** (Para la revisión y validación del diseño de la interfaz de usuario)
 
 ## `Preparacion y Planificacion`
 
