@@ -1,47 +1,74 @@
-> # Información del Proyecto
+<h1 align="center">
 
-| Team | c17-11-t-node-react |
-| --- | --- |
-| Proyecto | Cuidado de Mascotas |
-| Fecha de inicio | 25/03/2024 |
-| Fecha de fin | 28/04/2024 |
-| Cliente | No Country |
+Información del Proyecto
+
+</h1>
+
+<table align="center">
+  <tr>
+    <th>Team</th>
+    <th>c17-11-t-node-react</th>
+  </tr>
+  <tr>
+    <td>Proyecto</td>
+    <td>Cuidado de Mascotas</td>
+  </tr>
+  <tr>
+    <td>Fecha de inicio</td>
+    <td>25/03/2024</td>
+  </tr>
+  <tr>
+    <td>Fecha de fin</td>
+    <td>28/04/2024</td>
+  </tr>
+  <tr>
+    <td>Cliente</td>
+    <td>No Country</td>
+  </tr>
+</table>
 
 <br></br>
 
-<h3 align="center"> 
-<"LOGO">
-
-<h1 align="center"> 
-🐾 Mascocuidado 🐾
-
-###  😺💝🐶 Mascocuidado es una plataforma en linea especializada en el cuidado de mascotas, brindando servicios de calidad para garantizar el bienestar y la felicidad de tus queridas mascotas. 🐶💝😺
-
-<br>
-
-## Objetivo
-
-El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean dueños, cuidadores y/o administradores...
+<div align="center">
+<h3> 
+<img src="URL_DEL_LOGO" alt="LOGO">
+</h3>
+  <h1>🐾 Mascocuidado 🐾</h1>
+  <p>😺💝🐶 Mascocuidado es una plataforma en linea especializada en el cuidado de mascotas, brindando servicios de calidad para garantizar el bienestar y la felicidad de tus queridas mascotas. 🐶💝😺</p>
+</div>
 
 <br>
 
-## Funcionalidades
+<h2 align="center">Objetivo</h2>
 
-- Registro (Dueño de mascota y Cuidador)
-- Login (Dueño de mascota, Cuidador y Administrador)
-- Calendario para reservar una cita
-- Recomendaciones de clientes
-- Contacto con la empresa
+<p align="center">El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean dueños, cuidadores y/o administradores...</p>
+
+<br>
+
+<div align="center">
+<h2>Funcionalidades</h2>
+</div>
+
+
+| Funcionalidad | Descripción |
+|---|---|
+| Registro (Dueño de mascota y Cuidador) | Permite a los dueños de mascotas y cuidadores crear cuentas en la plataforma. |
+| Login (Dueño de mascota, Cuidador y Administrador) | Permite a los usuarios registrados iniciar sesión en la plataforma. |
+| Calendario para reservar una cita | Permite a los dueños de mascotas reservar citas con cuidadores para sus mascotas. |
+| Recomendaciones de clientes | Permite a los dueños de mascotas ver y dejar comentarios sobre los cuidadores. |
+| Contacto con la empresa | Permite a los usuarios ponerse en contacto con la empresa para obtener más información o asistencia. |
+
+
 
 <br>
 
 <h1 align="center"> 
   👩‍💻👨🏼‍💻 Team 👩‍💻👨🏼‍💻
 </h1>
-    <h3>PM & Diseño UI/UX</h3>
+    <h3 align="center">PM & Diseño UI/UX</h3>
     <dl>
       <dd>
-        <table>
+        <table align="center">
           <thead>
             <tr>
               <th>Nombre</th>
@@ -76,10 +103,10 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
   </dd>
   <dd>
 <dl>
-    <h3>Diseño UI/UX</h3>
+    <h3 align="center">Diseño UI/UX</h3>
     <dl>
       <dd>
-        <table>
+        <table align="center">
           <thead>
             <tr>
               <th>Nombre</th>
@@ -114,10 +141,10 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
   </dd>
   <dd>
 <dl>
-    <h3>Front-End</h3>
+    <h3 align="center">Front-End</h3>
     <dl>
       <dd>
-        <table>
+        <table align="center">
           <thead>
             <tr>
               <th>Nombre</th>
@@ -169,10 +196,10 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
     </dl>
   </dd>
   <dd>
-    <h3>Back-End</h3>
+    <h3 align="center">Back-End</h3>
     <dl>
       <dd>
-        <table>
+        <table align="center">
           <thead>
             <tr>
               <th>Nombre</th>
@@ -243,10 +270,10 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
     </dl>
   </dd>
   <dd>
-    <h3> Testing & QA </h3>
+    <h3 align="center"> Testing & QA </h3>
     <dl>
       <dd>
-        <table>
+        <table align="center">
           <thead>
             <tr>
               <th>Nombre</th>
@@ -284,10 +311,11 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
 <br>
 
 
+<h1 align="center"> 
+  Tecnologías
+</h1>
 
-## Tecnologías
-
-<table>
+<table align="center">
   <thead>
     <tr>
       <th>Front-End</th>
@@ -364,7 +392,9 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
 </table>
 <br>
 
-> # Inicializacion del proyecto
+<h2 align="center"> 
+  Inicializacion del proyecto
+</h2>
 
 Nest.js instalado en tu sistema, puedes [descargarlo aquí](https://nestjs.com/).
 Gestor de paquetes npm, que se instala automáticamente con Nest.js.
@@ -409,16 +439,20 @@ Puedes encontrar una documentación más detallada de la API en el archivo _API_
 
 </br>
 
-> # Inicializacion del proyecto Front
+<h2 align="center"> 
+  Inicializacion del proyecto Front
+</h2>
 
 
 </br>
 
+<h2 align="center"> 
+Inicializacion del proyecto Back
+</h2>
 
-> # Inicializacion del proyecto Back
-
->  Ejecutar el proyecto con Nest.js
-
+<h3 align="center"> 
+Ejecutar el proyecto con Nest.js
+</h3>
 
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
@@ -490,7 +524,14 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 <strong>
 
->  Ejecutar el proyecto con Docker
+
+<h3 align="center"> 
+Ejecutar el proyecto con Docker
+</h3>
+
+  <p align="center">
+  <a href="https://www.docker.com/" target="blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_%28container_engine%29_logo.svg/1920px-Docker_%28container_engine%29_logo.svg.png" width="500" alt="Nest Logo" /></a>
+  </p>
 
 1. Generar la imagen
 
@@ -516,3 +557,9 @@ $ docker run -d -p 3000:3001 --name name-container -e PORT=3001 -e DATABASE_URL=
 ```
 
 </strong>
+
+</br>
+
+<h1 align="center"> 
+Agradecemientos a No Country
+</h1>
