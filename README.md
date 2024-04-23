@@ -392,9 +392,10 @@ Información del Proyecto
 </table>
 <br>
 
-<h2 align="center"> 
+
+<h1 align="center"> 
   Inicializacion del proyecto
-</h2>
+</h1>
 
 Nest.js instalado en tu sistema, puedes [descargarlo aquí](https://nestjs.com/).
 Gestor de paquetes npm, que se instala automáticamente con Nest.js.
@@ -478,17 +479,17 @@ Ejecutar el proyecto con Nest.js
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+#### Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+#### Installation
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+#### Running the app
 
 ```bash
 # development
@@ -501,7 +502,7 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+#### Test
 
 ```bash
 # unit tests
@@ -514,7 +515,7 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+#### Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
@@ -533,7 +534,7 @@ Ejecutar el proyecto con Docker
   <a href="https://www.docker.com/" target="blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_%28container_engine%29_logo.svg/1920px-Docker_%28container_engine%29_logo.svg.png" width="500" alt="Nest Logo" /></a>
   </p>
 
-1. Generar la imagen
+#### 1. Generar la imagen
 
 Ubicarse en la ruta base de todo el proyecto <strong>/c17-11-t-node-react</strong>
 
@@ -543,7 +544,7 @@ $ docker build -t name-image:tag .
 
 
 
-2. Ejecutar contenedor
+#### 2. Ejecutar contenedor
    
 ```bash
 $ docker run -d -p 3000:3001 --name name-container --env-file back/.env name-image
