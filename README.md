@@ -38,7 +38,7 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
 <h1 align="center"> 
   👩‍💻👨🏼‍💻 Team 👩‍💻👨🏼‍💻
 </h1>
-    <h3>PM y Diseño UI/UX</h3>
+    <h3>PM & Diseño UI/UX</h3>
     <dl>
       <dd>
         <table>
@@ -121,7 +121,7 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
                 </a>
               </td>
               <td>
-                <a href="https://www.linkedin.com/">
+                <a href="https://www.linkedin.com/in/jos%C3%A9-imhoff-9037a3171">
                   <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
                 </a>
               </td>
@@ -252,7 +252,7 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
   <tbody>
     <tr>
       <td>
-        <img alt="html" src="https://img.shields.io/badge/HTML-%23F7DF1E?logo=html&logoColor=white">
+        <img alt="html" src="https://img.shields.io/badge/HTML-%23E34F26.svg?style=flat&logo=html5&logoColor=white">
       </td>
       <td>
         <img alt="figma" src="https://img.shields.io/badge/Figma-%23F24E1E?logo=figma&logoColor=white">
@@ -261,16 +261,16 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
         <img alt="javascript" src="https://img.shields.io/badge/Javascript-%23F7DF1E?logo=javascript&logoColor=white">
       </td>
       <td>
-        <img alt="Trello" src="https://img.shields.io/badge/Trello-%23D30707">
+        <img alt="Trello" src="https://img.shields.io/badge/Trello-%23026AA7.svg?style=flat&logo=Trello&logoColor=white">
       </td>
     </tr>
     <tr>
       <td>
-        <img alt="typescript" src="https://img.shields.io/badge/TypeScript-%233178C6?logo=TypeScript&logoColor=white">
+        <img alt="typescript" src="https://img.shields.io/badge/Typescript-%23007ACC.svg?style=flat&logo=Typescript&logoColor=white">
       </td>
       <td></td>
       <td>
-      <img alt="nest.js" src="https://img.shields.io/badge/Nest.js-%23339933?logo=nest.js&logoColor=white">
+      <img alt="nest.js" src="https://img.shields.io/badge/Nestjs-%23E0234E.svg?style=flat&logo=nestjs&logoColor=white">
       </td>
       <td>
         <img alt="google-sheets" src="https://img.shields.io/badge/Google%20Sheets-%2334A853?logo=Google%20sheets&logoColor=white">
@@ -282,7 +282,7 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
       </td>
       <td></td>
       <td>
-        <img alt="express.js" src="https://img.shields.io/badge/Express.js-%23000000?logo=Express&logoColor=white">
+        <img alt="express.js" src="https://img.shields.io/badge/Express.js-%23404d59.svg?style=flat&logo=express&logoColor=%2361DAFB">
       </td>
       </td>
       <td>
@@ -297,7 +297,7 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
         <img alt="mongodb" src="https://img.shields.io/badge/MongoDB-%2347A248?logo=MongoDB&logoColor=white">
       </td>
       <td>
-        <img alt="github-project" src="https://img.shields.io/badge/GitHub%20Project-%23000000?logo=GitHub%20project&logoColor=white">
+        <img alt="github-project" src="https://img.shields.io/badge/GitHub%20Project-121013?style=flat&logo=github&logoColor=white">
       </td>
     </tr>
     <tr>
@@ -309,6 +309,7 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
       </td>
       <td></td>
       <td>
+        <img alt="postman" src="https://img.shields.io/badge/Postman-FF6C37?style=flat&logo=postman&logoColor=white">
       </td>
       <td></td>
     </tr>
