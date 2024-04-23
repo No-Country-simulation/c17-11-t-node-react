@@ -31,7 +31,7 @@ Información del Proyecto
 
 <div align="center">
 <h3> 
-<img src="URL_DEL_LOGO" alt="LOGO">
+<img src="https://github.com/No-Country/c17-11-t-node-react/blob/main/Dise%C3%B1o/LogoMascocuidado.png" width="200" alt="LOGO">
 </h3>
   <h1>🐾 Mascocuidado 🐾</h1>
   <p>😺💝🐶 Mascocuidado es una plataforma en linea especializada en el cuidado de mascotas, brindando servicios de calidad para garantizar el bienestar y la felicidad de tus queridas mascotas. 🐶💝😺</p>
