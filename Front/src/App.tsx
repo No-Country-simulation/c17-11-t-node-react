@@ -2,21 +2,37 @@ import Navbar from "./components/NavBar";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Index from "./pages/index/Index";
+import Dashboard from "./pages/dashboard/Dashboard";
+import { AuthProvider } from "./services/Api";
+
+// const ProtectedRoute: React.FC<{ element: React.ReactElement }> = ({
+//   element,
+// }) => {
+//   const { isAuthenticated } = useAuth();
+
+//   return isAuthenticated ? element : <Navigate to="/#" />;
+// };
+
 function App() {
   return (
     <>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} /> */}
-          {/* <Route
+      <AuthProvider>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            {/* <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+                 
+          */}
+            {/* <Route
               path="/dashboard"
               element={<ProtectedRoute element={<Dashboard />} />}
             /> */}
-        </Routes>
-      </Router>
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Routes>
+        </Router>
+      </AuthProvider>
     </>
   );
 }
