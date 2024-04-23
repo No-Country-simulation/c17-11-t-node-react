@@ -47,6 +47,7 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
               <th>Nombre</th>
               <th>Github</th>
               <th>Linkedin</th>
+              <th>Portfolio</th>
             </tr>
           </thead>
           <tbody>
@@ -60,6 +61,11 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
               <td>
                 <a href="https://www.linkedin.com/in/juan-gallardo-digital/">
                   <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+                </a>
+              </td>
+              <td>
+                <a href="">
+                  <img src="https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=firefox&logoColor=#FF7139">
                 </a>
               </td>
             </tr>
@@ -79,6 +85,7 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
               <th>Nombre</th>
               <th>Github</th>
               <th>Linkedin</th>
+              <th>Portfolio</th>
             </tr>
           </thead>
           <tbody>
@@ -94,7 +101,13 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
                   <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
                 </a>
               </td>
+              <td>
+                <a href="">
+                  <img src="https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=firefox&logoColor=#FF7139">
+                </a>
+              </td>
             </tr>
+            <tr>
         </table>
       </dd>
     </dl>
@@ -110,6 +123,7 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
               <th>Nombre</th>
               <th>Github</th>
               <th>Linkedin</th>
+              <th>Portfolio</th>
             </tr>
           </thead>
           <tbody>
@@ -125,6 +139,11 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
                   <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
                 </a>
               </td>
+              <td>
+                <a href="">
+                  <img src="https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=firefox&logoColor=#FF7139">
+                </a>
+              </td>
             </tr>
             <tr>
               <td> Agustín Avellaneda </td>
@@ -136,6 +155,11 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
               <td>
                 <a href="https://www.linkedin.com/in/avellaneda-agust%C3%ADn-tns/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
                   <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+                </a>
+              </td>
+              <td>
+                <a href="https://portfolio.agustin.top">
+                  <img src="https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=firefox&logoColor=#FF7139">
                 </a>
               </td>
             </tr>
@@ -154,6 +178,7 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
               <th>Nombre</th>
               <th>Github</th>
               <th>Linkedin</th>
+              <th>Portfolio</th>
             </tr>
           </thead>
           <tbody>
@@ -169,6 +194,11 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
                   <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
                 </a>
               </td>
+              <td>
+                <a href="https://erick-arevalo.netlify.app/">
+                  <img src="https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=firefox&logoColor=#FF7139">
+                </a>
+              </td>
             </tr>
             <tr>
               <td> Emanuel Grigolatto </td>
@@ -182,8 +212,13 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
                   <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
                 </a>
               </td>
+              <td>
+                <a href="">
+                  <img src="https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=firefox&logoColor=#FF7139">
+                </a>
+              </td>
             </tr>
-             <tr>
+            <tr>
               <td> Agustin Mateo De La Puente </td>
               <td>
                 <a href="https://github.com/Agusdelaa">
@@ -195,7 +230,13 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
                   <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
                 </a>
               </td>
+              <td>
+                <a href="">
+                  <img src="https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=firefox&logoColor=#FF7139">
+                </a>
+              </td>
             </tr>
+            <tr>
           </tbody>
         </table>
       </dd>
@@ -211,6 +252,7 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
               <th>Nombre</th>
               <th>Github</th>
               <th>Linkedin</th>
+              <th>Portfolio</th>
             </tr>
           </thead>
           <tbody>
@@ -224,6 +266,11 @@ El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean
               <td>
                 <a href="https://www.linkedin.com/in/jdga1997/">
                   <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+                </a>
+              </td>
+              <td>
+                <a href="">
+                  <img src="https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=firefox&logoColor=#FF7139">
                 </a>
               </td>
             </tr>
