@@ -14,12 +14,12 @@ const HeroComponent: React.FC<HeroProps> = ({ title, description }) => {
     >
       <div className="absolute inset-0  bg-white opacity-35"></div>
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="lg:text-center lg:mt-28">
-          <h3 className="lg:text-6xl text-5xl tracking-tight font-extrabold text-gray-800  ">
+        <div className="lg:text-center mt-16 lg:mt-28">
+          <h3 className="lg:text-7xl text-5xl tracking-tight font-extrabold text-gray-800  ">
             {title}
           </h3>
-          <p className="mt-4 lg:text-4xl text-4xl text-black">{description}</p>
-          <div className="lg:mt-10 mt-6 space-x-3 space-y-3 ">
+          <p className="mt-8 lg:text-5xl text-3xl text-black">{description}</p>
+          <div className="lg:mt-20 mt-10 space-x-3 space-y-3 ">
             <a
               href="/#nosotros"
               className="text-black bg-white hover:text-black/80 rounded-full px-8 py-4 text-lg  lg:text-2xl font-medium"

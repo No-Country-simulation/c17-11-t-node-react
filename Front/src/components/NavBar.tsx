@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import logo from "../assets/logo.jpg";
 
 const Navbar = () => {
@@ -48,13 +48,13 @@ const Navbar = () => {
           </div>
           <div className="hidden md:flex items-center space-x-2">
             <a
-              href="#"
+              href="/dashboard"
               className="text-[#010101] bg-white hover:text-[#010101]/80 px-6 py-2 rounded-full text-lg font-medium"
             >
               Ingresar
             </a>
             <a
-              href="#"
+              href="/register"
               className="text-[#010101] bg-[#F97D05] hover:text-[#010101]/80 rounded-full px-6 py-2  text-lg font-medium"
             >
               Registro
