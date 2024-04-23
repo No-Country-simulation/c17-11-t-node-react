@@ -17,7 +17,7 @@ export class CareService {
   ) {}
 
   async create(data: CreateCareDTO, userId: string) {
-    const { pet, services, ...req } = data;
+    const { pet, services, date, ...req } = data;
 
     const servicePrices = await Promise.all(
       services.map(async (serviceId) => {
@@ -32,7 +32,7 @@ export class CareService {
       user: this.mongooseService.stringToObjectId(userId),
       pet: this.mongooseService.stringToObjectId(pet),
       services: this.mongooseService.stringToObjectId(services),
-      date: new Date(),
+      date: new Date(date),
       totalPrice: totalPrice,
       status: 'pending',
       state: false,
@@ -45,8 +45,15 @@ export class CareService {
       .find()
       .populate({ path: 'user', select: 'first_name last_name picture' })
       .populate({ path: 'pet', select: 'name' })
-      .populate({ path: 'services', select: '' })
-      .populate({ path: 'caretaker', select: '' })
+      .populate({ path: 'services', model: 'Service' })
+      .populate({
+        path: 'caretaker',
+        select: 'stars reviews user',
+        populate: {
+          path: 'user',
+          select: 'first_name last_name picture',
+        },
+      })
       .exec();
   }
 
@@ -56,8 +63,15 @@ export class CareService {
       .find()
       .populate({ path: 'user', select: 'first_name last_name picture' })
       .populate({ path: 'pet', select: 'name' })
-      .populate({ path: 'services', select: '' })
-      .populate({ path: 'caretaker', select: '' });
+      .populate({ path: 'services', model: 'Service' })
+      .populate({
+        path: 'caretaker',
+        select: 'stars reviews user',
+        populate: {
+          path: 'user',
+          select: 'first_name last_name picture',
+        },
+      });
 
     return this.mongooseService.paginate<Care>(query, count, page, limit);
   }
@@ -67,8 +81,15 @@ export class CareService {
       .findById(id)
       .populate({ path: 'user', select: 'first_name last_name picture' })
       .populate({ path: 'pet', select: 'name' })
-      .populate({ path: 'services', select: '' })
-      .populate({ path: 'caretaker', select: '' })
+      .populate({ path: 'services', model: 'Service' })
+      .populate({
+        path: 'caretaker',
+        select: 'stars reviews user',
+        populate: {
+          path: 'user',
+          select: 'first_name last_name picture',
+        },
+      })
       .exec();
   }
 
@@ -85,10 +106,16 @@ export class CareService {
   ) {
     const { status, description, ...req } = data;
 
+    const care = await this.careModel.findById(careId);
+    //*Check care state
+    if (care.state) {
+      throw new Error('care_completed');
+    }
+
     if (role === 'caretaker') {
       const caretaker = await this.caretakerService.findOneByUseId(userId);
 
-      return this.careModel.findOneAndUpdate(
+      const updateCare = await this.careModel.findOneAndUpdate(
         { _id: this.mongooseService.stringToObjectId(careId) },
         {
           caretaker: caretaker._id,
@@ -98,6 +125,20 @@ export class CareService {
         },
         { new: true },
       );
+
+      //*Update active request caretaker
+      if (status == 'accept') {
+        await this.caretakerService.update(caretaker.user['_id'], {
+          active_requests: caretaker.active_requests + 1,
+        });
+      }
+      if (status == 'completed') {
+        await this.caretakerService.update(caretaker.user['_id'], {
+          active_requests: caretaker.active_requests - 1,
+        });
+      }
+
+      return updateCare;
     } else if (role === 'owner' && description !== undefined) {
       return this.careModel.findOneAndUpdate(
         {
@@ -111,6 +152,8 @@ export class CareService {
           new: true,
         },
       );
+    } else {
+      throw new Error('fail_request');
     }
   }
 

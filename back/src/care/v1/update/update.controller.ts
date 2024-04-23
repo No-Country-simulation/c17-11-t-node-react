@@ -2,7 +2,6 @@ import { CareService } from '@Care/care.service';
 import { UpdateCareDTO } from '@Care/dto/care.dto';
 import { PRINCIPAL_PATHS } from '@Constants/routes';
 import { Roles } from '@Decorators/role.decorator';
-import { RoleService } from '@Role/role.service';
 import {
   BadRequestException,
   Body,
@@ -19,10 +18,7 @@ import { Request } from 'express';
   path: PRINCIPAL_PATHS.CARE,
 })
 export class UpdateController {
-  constructor(
-    private careService: CareService,
-    private roleService: RoleService,
-  ) {}
+  constructor(private careService: CareService) {}
 
   @Roles('caretaker', 'owner')
   @Patch(':careId')
@@ -52,6 +48,19 @@ export class UpdateController {
           throw new BadRequestException({
             success: false,
             message: 'User not provided',
+          });
+        }
+        if (error.message == 'fail_request') {
+          throw new BadRequestException({
+            success: false,
+            message: 'This user cannot make this request',
+          });
+        }
+
+        if (error.message == 'care_completed') {
+          throw new BadRequestException({
+            success: false,
+            message: 'Care has been completed',
           });
         }
       }

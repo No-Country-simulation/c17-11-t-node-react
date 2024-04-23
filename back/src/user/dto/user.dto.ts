@@ -75,8 +75,8 @@ export class CreateUserDTO {
   @IsOptional()
   address?: Address[];
 
-  @IsBoolean()
-  @IsOptional()
+  // @IsBoolean()
+  // @IsOptional()
   blocking?: boolean;
 }
 
