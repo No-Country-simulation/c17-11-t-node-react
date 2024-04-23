@@ -9,7 +9,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ user }) => {
   const { name, description, address, imageUrl } = user;
 
   return (
-    <div className="flex flex-col justify-between h-[26rem] w-[16rem] py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-white text-center">
+    <div className="flex flex-col justify-between h-[26rem] lg:w-[16rem] w-[14rem] py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-white text-center">
       <img
         alt="profilePic"
         className="w-32 h-32 mx-auto mb-8 object-cover rounded-full border-2 border-gray-200 bg-gray-100"
@@ -23,7 +23,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ user }) => {
         </div>
         <span className="block text-gray-500">Libre de 16hs a 21hs</span>
       </div>
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
+      <button className="bg-[#F97D05] hover:bg-[#a5703c] text-white font-bold py-2 px-4 rounded-full mt-4">
         Contactar
       </button>
     </div>

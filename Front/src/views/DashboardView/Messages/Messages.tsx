@@ -1,5 +1,11 @@
+import ChatSection from "./ChatSection/ChatSection";
+
 const Messages = () => {
-  return <div className="h-screen">Messages</div>;
+  return (
+    <>
+      <ChatSection />
+    </>
+  );
 };
 
 export default Messages;

@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Index from "./pages/index/Index";
 import Dashboard from "./pages/dashboard/Dashboard";
 import { AuthProvider } from "./services/Api";
+import { Profile } from "./pages/profile/Profile";
+import { Login } from "./pages/login/Login";
 
 // const ProtectedRoute: React.FC<{ element: React.ReactElement }> = ({
 //   element,
@@ -21,14 +23,16 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Index />} />
-            {/* <Route path="/login" element={<Login />} />
+
+            {/*  />
           <Route path="/register" element={<Register />} />
-                 
-          */}
+            */}
             {/* <Route
               path="/dashboard"
               element={<ProtectedRoute element={<Dashboard />} />}
             /> */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </Router>

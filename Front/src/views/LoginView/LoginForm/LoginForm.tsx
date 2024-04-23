@@ -1,7 +1,7 @@
 import { useState } from "react";
-import eyeOpen from "../assets/LoginImages/ojo-abierto.png";
-import eyeClosed from "../assets/LoginImages/ojo-cerrado.png";
-import googleIcon from "../assets/LoginImages/google-icon.png";
+import eyeOpen from "../../../assets/LoginImages/ojo-abierto.png";
+import eyeClosed from "../../../assets/LoginImages/ojo-cerrado.png";
+import googleIcon from "../../../assets/LoginImages/google-icon.png";
 import { useNavigate } from "react-router-dom";
 export const LoginForm = () => {
   const [username, setUsername] = useState("");

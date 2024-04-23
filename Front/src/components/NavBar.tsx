@@ -48,7 +48,7 @@ const Navbar = () => {
           </div>
           <div className="hidden md:flex items-center space-x-2">
             <a
-              href="#"
+              href="/dashboard"
               className="text-[#010101] bg-white hover:text-[#010101]/80 px-6 py-2 rounded-full text-lg font-medium"
             >
               Ingresar
