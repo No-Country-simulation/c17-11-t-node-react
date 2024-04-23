@@ -1,9 +1,10 @@
 import { Header } from "../components/Profile/Header"
-
+import { PersonalInfo } from "../components/Profile/PersonalInfo"
 export const Profile = () => {
     return (
         <div className="h-full bg-gray-200 p-8 mt-10 sticky">
-           <Header />
+            <Header />
+            <PersonalInfo />
         </div>
 
     )
