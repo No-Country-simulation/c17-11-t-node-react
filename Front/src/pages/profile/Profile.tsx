@@ -1,23 +1,15 @@
-import { Header } from "../components/Profile/Header"
-import { PersonalInfo } from "../components/Profile/PersonalInfo"
+import ProfileView from "../../views/ProfileView/ProfileView";
+
 export const Profile = () => {
-    return (
-        <div className="h-full bg-gray-200 p-8 mt-10 sticky">
-            <Header />
-            <PersonalInfo />
-        </div>
+  return (
+    <>
+      <ProfileView />
+    </>
+  );
+};
 
-    )
-
-}
-
-
-
-
-
-
-
-{/* // <div className="w-full h-[250px]">
+{
+  /* // <div className="w-full h-[250px]">
             //     <img src="https://vojislavd.com/ta-template-demo/assets/img/profile-background.jpg" className="w-full h-full rounded-tl-lg rounded-tr-lg"/>
             // </div>
             // <div className="flex flex-col items-center -mt-20">
@@ -48,5 +40,5 @@ export const Profile = () => {
             //             <span>Message</span>
             //         </button>
             //     </div>
-            // </div> */}
-
+            // </div> */
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import { UserProfile } from "../../../../utils/types";
+import { UserProfile } from "../../../../types/types";
 
 interface ProfileCardProps {
   user: UserProfile;
