@@ -54,7 +54,7 @@ const Navbar = () => {
               Ingresar
             </a>
             <a
-              href="#"
+              href="/register"
               className="text-[#010101] bg-[#F97D05] hover:text-[#010101]/80 rounded-full px-6 py-2  text-lg font-medium"
             >
               Registro

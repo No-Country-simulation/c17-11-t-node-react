@@ -6,6 +6,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import { AuthProvider } from "./services/Api";
 import { Profile } from "./pages/profile/Profile";
 import { Login } from "./pages/login/Login";
+import Register from "./pages/register/Register";
 
 // const ProtectedRoute: React.FC<{ element: React.ReactElement }> = ({
 //   element,
@@ -31,6 +32,7 @@ function App() {
               path="/dashboard"
               element={<ProtectedRoute element={<Dashboard />} />}
             /> */}
+            <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/dashboard" element={<Dashboard />} />

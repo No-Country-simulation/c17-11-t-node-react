@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import eyeOpen from "../assets/LoginImages/ojo-abierto.png";
-import eyeClosed from "../assets/LoginImages/ojo-cerrado.png";
+import eyeOpen from "../../../assets/LoginImages/ojo-abierto.png";
+import eyeClosed from "../../../assets/LoginImages/ojo-cerrado.png";
 import { IRole } from "../../../types/types";
-
-// import { useNavigate } from "react-router-dom";
 
 export const RegisterForm = () => {
   const [first_name, setFirstname] = useState("");
@@ -13,8 +11,6 @@ export const RegisterForm = () => {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-
-  // const navigate = useNavigate();
 
   const [data, setData] = useState<IRole[]>([]);
 
