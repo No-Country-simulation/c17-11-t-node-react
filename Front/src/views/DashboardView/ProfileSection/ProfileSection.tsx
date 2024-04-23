@@ -1,4 +1,4 @@
-import { UserProfile } from "../../../utils/types";
+import { UserProfile } from "../../../types/types";
 import ProfileCard from "./ProfileCard/ProfileCard";
 
 const ProfileSection = () => {
