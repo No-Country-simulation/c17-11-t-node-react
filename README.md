@@ -51,9 +51,9 @@ Información del Proyecto
 
 | Funcionalidad | Descripción |
 |---|---|
-| Registro (Dueño de mascota y Cuidador) | Permite a los dueños de mascotas y cuidadores crear cuentas en la plataforma. |
-| Login (Dueño de mascota, Cuidador y Administrador) | Permite a los usuarios registrados iniciar sesión en la plataforma. |
-| Calendario para reservar una cita | Permite a los dueños de mascotas reservar citas con cuidadores para sus mascotas. |
+| Registro | Permite a los dueños de mascotas y cuidadores crear cuentas en la plataforma. |
+| Login  | Permite a los usuarios registrados (Dueño de mascota, Cuidador y Administrador) iniciar sesión en la plataforma. |
+| Calendario  | Permite a los dueños de mascotas reservar citas con cuidadores para sus mascotas. |
 | Recomendaciones de clientes | Permite a los dueños de mascotas ver y dejar comentarios sobre los cuidadores. |
 | Contacto con la empresa | Permite a los usuarios ponerse en contacto con la empresa para obtener más información o asistencia. |
 
@@ -64,6 +64,44 @@ Información del Proyecto
 <h1 align="center"> 
   👩‍💻👨🏼‍💻 Team 👩‍💻👨🏼‍💻
 </h1>
+<h3 align="center">Team Leader</h3>
+    <dl>
+      <dd>
+        <table align="center">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Github</th>
+              <th>Linkedin</th>
+              <th>Portfolio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td> José Alejandro Dominguez </td>
+              <td>
+                <a href="https://github.com/AlejoDx">
+                  <img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
+                </a>
+              </td>
+              <td>
+                <a href="https://www.linkedin.com/in/jose-alejandro-dominguez/">
+                  <img src="https://img.shields.io/badge/linkedin-%230A66C2.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+                </a>
+              </td>
+              <td>
+                <a href="alejodi@gmail.com">
+                  <img src="https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=firefox&logoColor=#FF7139">
+                </a>
+              </td>
+            </tr>
+            <tr>
+        </table>
+      </dd>
+    </dl>
+  </dd>
+  <dd>
+<dl>
     <h3 align="center">PM & Diseño UI/UX</h3>
     <dl>
       <dd>
