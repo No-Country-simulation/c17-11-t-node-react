@@ -8,7 +8,6 @@ const ProfileView = () => {
         <Header />
         <PersonalInfo />
       </div>
-      ;
     </>
   );
 };
