@@ -1,4 +1,3 @@
-import React from "react";
 import HeroComponent from "./Hero/HeroComponent";
 import AboutComponent from "./About/About";
 import ExperiencesComponent from "./Experiences/ExperiencesComponent";
