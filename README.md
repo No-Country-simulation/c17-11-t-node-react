@@ -380,7 +380,9 @@ Información del Proyecto
       <td>
         <img alt="typescript" src="https://img.shields.io/badge/Typescript-%23007ACC.svg?style=flat&logo=Typescript&logoColor=white">
       </td>
-      <td></td>
+      <td>
+        <img alt="adobe-illustrator" src="https://img.shields.io/badge/Adobe%20Illustrator-%23FF9A00.svg?style=plastic&logo=Adobe%20Illustrator&logoColor=white">       
+      </td>
       <td>
       <img alt="nest.js" src="https://img.shields.io/badge/Nestjs-%23E0234E.svg?style=flat&logo=nestjs&logoColor=white">
       </td>
@@ -392,7 +394,9 @@ Información del Proyecto
       <td>
         <img alt="react" src="https://img.shields.io/badge/React-%23339933?logo=React&logoColor=white">
       </td>
-      <td></td>
+      <td>
+        <img alt="google-form" src="https://img.shields.io/badge/Google Form-%234285F4.svg?style=plastic&logo=google-cloud&logoColor=white">
+      </td>
       <td>
         <img alt="express.js" src="https://img.shields.io/badge/Express.js-%23404d59.svg?style=flat&logo=express&logoColor=%2361DAFB">
       </td>
@@ -425,20 +429,30 @@ Información del Proyecto
       </td>
       <td></td>
     </tr>
+    <tr>
+      <td>
+      </td>
+      <td></td>
+      <td>
+        <img alt="typescript" src="https://img.shields.io/badge/Typescript-%23007ACC.svg?style=flat&logo=Typescript&logoColor=white">
+      </td>
+      <td>
+      </td>
+    </tr>
   </tbody>
 </table>
 <br>
 
 
 <h1 align="center"> 
-  Inicializacion del proyecto
+  Inicialización del proyecto
 </h1>
 
-Nest.js instalado en tu sistema, puedes [descargarlo aquí](https://nestjs.com/).
-Gestor de paquetes npm, que se instala automáticamente con Nest.js.
+Node.js instalado en tu sistema, puedes [descargarlo aquí](https://nodejs.org/en).
+Gestor de paquetes npm, que se instala automáticamente con Node.js.
 
 
-*Instalación*
+#### 1. Instalación
 
 Clona este repositorio en tu máquina local:
 ```bash
@@ -450,42 +464,30 @@ Navega al directorio del proyecto:
 cd directorio del proyecto
 ```
 
+
+
+</br>
+
+<h2 align="center"> 
+  Inicialización del proyecto Front
+</h2>
+
+Navega a la carpeta "Front" del proyecto:
+```bash
+cd Front
+```
+
+#### 1. Instalación
+
 Instala las dependencias utilizando npm:
 ```bash
 npm install
 ```
 
-*Configuración*
-
-Crea un archivo .env en el directorio raíz del proyecto y configura las variables de entorno necesarias. Puedes encontrar un ejemplo de las variables requeridas en el archivo .env.example.
-
-
-*Endpoints de la API*
-
-Aquí puedes encontrar una breve descripción de los endpoints disponibles en la API:
-
-
-_/api/products:_ Endpoint para gestionar productos.
-
-_/api/carts:_ Endpoint para gestionar carritos.
-
-_/api/sessions:_ Endpoint para gestionar las sesiones de usuarios.
-
-Puedes encontrar una documentación más detallada de la API en el archivo _API_DOCS.md_.
-
-
-
 </br>
 
 <h2 align="center"> 
-  Inicializacion del proyecto Front
-</h2>
-
-
-</br>
-
-<h2 align="center"> 
-Inicializacion del proyecto Back
+Inicialización del proyecto Back
 </h2>
 
 <h3 align="center"> 
@@ -516,17 +518,27 @@ Ejecutar el proyecto con Nest.js
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-#### Description
+*Descripción*
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-#### Installation
+
+Navega a la carpeta "back" del proyecto :
+```bash
+cd back
+```
+
+#### 1. Instalación
 
 ```bash
 $ npm install
 ```
 
-#### Running the app
+#### 2. Configuración
+
+Crea un archivo .env en el directorio raíz del proyecto y configura las variables de entorno necesarias. Puedes encontrar un ejemplo de las variables requeridas en el archivo .env.example.
+
+#### 3. Ejecutar la aplicación
 
 ```bash
 # development
@@ -539,7 +551,7 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-#### Test
+#### 4. Prueba
 
 ```bash
 # unit tests
@@ -552,7 +564,7 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-#### Support
+*Contacto*
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
