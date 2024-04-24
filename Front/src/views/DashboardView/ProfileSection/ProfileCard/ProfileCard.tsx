@@ -24,7 +24,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ user }) => {
         <span className="block text-gray-500">Libre de 16hs a 21hs</span>
       </div>
       <a
-        href="#"
+        href="/profile"
         className="bg-[#F97D05] hover:bg-[#a5703c] text-white font-bold py-2 px-4 rounded-full mt-4"
       >
         Contactar

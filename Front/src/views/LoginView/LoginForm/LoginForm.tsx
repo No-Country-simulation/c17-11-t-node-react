@@ -18,7 +18,7 @@ export const LoginForm = () => {
         body: JSON.stringify({ username, password }),
       }).then((response) => {
         if (response.ok) {
-          navigate("/");
+          navigate("/dashboard");
         } else {
           console.log("Usuario o contraseña incorrectos");
         }
@@ -37,7 +37,7 @@ export const LoginForm = () => {
       <div>
         <label
           htmlFor="text"
-          className="block mb-2 text-sm text-left font-medium text-gray-900 dark:text-white"
+          className="block mb-2 text-sm text-left font-medium text-gray-900 "
         >
           Correo electronico
         </label>
@@ -45,7 +45,7 @@ export const LoginForm = () => {
           type="text"
           name="email"
           id="email"
-          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
           placeholder="Correo electronico"
           onChange={(e) => setUsername(e.target.value)}
         />
@@ -53,7 +53,7 @@ export const LoginForm = () => {
       <div className="relative">
         <label
           htmlFor="password"
-          className="block mb-2 text-left text-sm font-medium text-gray-900 dark:text-white"
+          className="block mb-2 text-left text-sm font-medium text-gray-900 "
         >
           Contraseña
         </label>
@@ -62,7 +62,7 @@ export const LoginForm = () => {
           name="password"
           id="password"
           placeholder="******"
-          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
           onChange={(e) => setPassword(e.target.value)}
         />
         <button
@@ -85,7 +85,6 @@ export const LoginForm = () => {
               aria-describedby="remember"
               type="checkbox"
               className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-              required
             />
           </div>
           <div className="ml-3 text-sm">
@@ -106,22 +105,20 @@ export const LoginForm = () => {
       </div>
       <button
         type="submit"
-        className="w-full text-white bg-amber-500 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-2xl text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 font-bold"
+        className="w-full text-white  bg-amber-500 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-2xl text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 font-bold"
       >
         INGRESAR
       </button>
-      <p className="text-sm font-light text-center text-gray-500 dark:text-gray-400">
-        o
-      </p>
+      <p className="text-sm font-light text-center text-gray-500 ">o</p>
 
       <a
         href="http://localhost:3001/api/v1/auth/google"
-        className="flex items-center space-x-2 justify-center w-full text-black bg-gray-200 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-2xl text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 font-bold"
+        className="flex items-center space-x-2  justify-center w-full text-black bg-gray-200 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-2xl text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 font-bold"
       >
         <img src={googleIcon} alt="google icon" />
         <span>INICIAR SESIÓN CON GOOGLE</span>
       </a>
-      <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+      <p className="text-sm font-light text-gray-500 ">
         ¿Has olvidado tu contraseña?{" "}
         <a
           href="#"
@@ -131,7 +128,7 @@ export const LoginForm = () => {
         </a>
       </p>
 
-      <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+      <p className="text-sm font-light text-gray-500 ">
         ¿Aun no tienes cuenta?{" "}
         <a
           href="#"

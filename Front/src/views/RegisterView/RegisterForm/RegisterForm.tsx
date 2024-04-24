@@ -73,7 +73,7 @@ export const RegisterForm = () => {
       <div>
         <label
           htmlFor="email"
-          className="block mb-2 text-sm text-left font-medium text-gray-900 dark:text-white"
+          className="block mb-2 text-sm text-left font-medium text-gray-900 "
         >
           Nombre
         </label>
@@ -81,7 +81,8 @@ export const RegisterForm = () => {
           type="text"
           name="usuario"
           id="usuario"
-          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
           placeholder="Nombre"
           onChange={(e) => setFirstname(e.target.value)}
         />
@@ -89,15 +90,16 @@ export const RegisterForm = () => {
       <div>
         <label
           htmlFor="email"
-          className="block mb-2 text-sm text-left font-medium text-gray-900 dark:text-white"
+          className="block mb-2 text-sm text-left font-medium text-gray-900 "
         >
           Apellido
         </label>
         <input
           type="text"
           name="email"
+          required
           id="email"
-          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
           placeholder="Apellido"
           onChange={(e) => setLastname(e.target.value)}
         />
@@ -105,7 +107,7 @@ export const RegisterForm = () => {
       <div>
         <label
           htmlFor="email"
-          className="block mb-2 text-sm text-left font-medium text-gray-900 dark:text-white"
+          className="block mb-2 text-sm text-left font-medium text-gray-900 "
         >
           Usuario
         </label>
@@ -113,15 +115,16 @@ export const RegisterForm = () => {
           type="text"
           name="email"
           id="email"
-          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5    "
           placeholder="Usuario"
+          required
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
       <div>
         <label
           htmlFor="email"
-          className="block mb-2 text-sm text-left font-medium text-gray-900 dark:text-white"
+          className="block mb-2 text-sm text-left font-medium text-gray-900 "
         >
           Correo electronico
         </label>
@@ -129,7 +132,8 @@ export const RegisterForm = () => {
           type="email"
           name="email"
           id="email"
-          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
           placeholder="Correo electronico"
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -138,7 +142,7 @@ export const RegisterForm = () => {
       <div className="relative">
         <label
           htmlFor="password"
-          className="block mb-2 text-left text-sm font-medium text-gray-900 dark:text-white"
+          className="block mb-2 text-left text-sm font-medium text-gray-900 "
         >
           Contraseña
         </label>
@@ -147,7 +151,8 @@ export const RegisterForm = () => {
           name="password"
           id="password"
           placeholder="******"
-          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
           onChange={(e) => setPassword(e.target.value)}
         />
         <button
@@ -175,7 +180,7 @@ export const RegisterForm = () => {
             />
             <label
               htmlFor="default-radio-1"
-              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="ms-2 text-sm font-medium text-gray-900 "
             >
               {item.name}
             </label>
@@ -194,10 +199,7 @@ export const RegisterForm = () => {
             />
           </div>
           <div className="ml-3 text-sm">
-            <label
-              htmlFor="remember"
-              className="text-gray-500 dark:text-gray-300"
-            >
+            <label htmlFor="remember" className="text-gray-500 ">
               Acepto los{" "}
             </label>
             <a
@@ -211,7 +213,7 @@ export const RegisterForm = () => {
       </div>
       <button
         type="submit"
-        className="w-full text-white bg-amber-500 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-2xl text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 font-bold"
+        className="w-full text-black  bg-amber-500 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-2xl text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 font-bold"
       >
         REGISTRARME
       </button>
