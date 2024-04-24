@@ -7,6 +7,7 @@ import { AuthProvider } from "./services/Api";
 import { Profile } from "./pages/profile/Profile";
 import { Login } from "./pages/login/Login";
 import Register from "./pages/register/Register";
+import { Loader } from "./components/Loader";
 
 // const ProtectedRoute: React.FC<{ element: React.ReactElement }> = ({
 //   element,
@@ -24,18 +25,11 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Index />} />
-
-            {/*  />
-          <Route path="/register" element={<Register />} />
-            */}
-            {/* <Route
-              path="/dashboard"
-              element={<ProtectedRoute element={<Dashboard />} />}
-            /> */}
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/auth/google/callback" element={<Loader />}></Route>
           </Routes>
         </Router>
       </AuthProvider>
