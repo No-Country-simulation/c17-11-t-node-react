@@ -53,7 +53,7 @@ export class UserService {
   }
 
   async create(data: CreateUserDTO) {
-    const { password, role, ...req } = data;
+    const { password, role, birthday, pet, ...req } = data;
     const hash =
       password != undefined
         ? await this.passwordService.hash(password)
@@ -68,6 +68,8 @@ export class UserService {
     return this.userModel.create({
       password: hash,
       role: ownerId ? ownerId : this.mongooseService.stringToObjectId(role),
+      pet: pet ? this.mongooseService.stringToObjectId(pet) : undefined,
+      birthday: birthday ? new Date(birthday) : undefined,
       ...req,
     });
   }
