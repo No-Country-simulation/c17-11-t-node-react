@@ -28,20 +28,6 @@ const MessageList = () => {
       avatar:
         "https://placehold.co/200x/2e83ad/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato",
     },
-    {
-      id: 5,
-      name: "Roberto",
-      message: "No los lunes no trabajo",
-      avatar:
-        "https://placehold.co/200x/2e83ad/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato",
-    },
-    {
-      id: 6,
-      name: "Roberto",
-      message: "No los lunes no trabajo",
-      avatar:
-        "https://placehold.co/200x/2e83ad/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato",
-    },
   ];
 
   return (

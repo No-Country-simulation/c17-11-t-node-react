@@ -1,12 +1,31 @@
-import React, { createContext, useContext, ReactNode } from "react";
-import axios from "axios";
+import React, { createContext, useContext, ReactNode, useEffect } from "react";
+
+interface Care {
+  id: number;
+  name: string;
+  description: string;
+  address: string;
+  imageUrl: string;
+}
+
+interface CareResponse {
+  data: Care[];
+}
 
 interface AuthContextType {
   token: string | null;
   isAuthenticated: boolean;
   login: (username: string, password: string) => Promise<void>;
-  register: (username: string, password: string) => Promise<void>;
+  register: (
+    username: string,
+    password: string,
+    role: string,
+    first_name: string,
+    last_name: string,
+    email: string
+  ) => Promise<void>;
   logout: () => void;
+  getCares: () => Promise<Care[]>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -19,13 +38,26 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   );
   const isAuthenticated = !!token;
 
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      setToken(storedToken);
+    }
+  }, []);
+
   const login = async (username: string, password: string) => {
     try {
-      const response = await axios.post("http://localhost:5000/auth/login", {
-        username,
-        password,
+      const response = await fetch("http://localhost:3001/api/v1/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
       });
-      const data = response.data;
+      if (!response.ok) {
+        throw new Error("Failed to login");
+      }
+      const data = await response.json();
       setToken(data.token);
       localStorage.setItem("token", data.token);
     } catch (error) {
@@ -33,11 +65,28 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     }
   };
 
-  const register = async (username: string, password: string) => {
+  const register = async (
+    username: string,
+    password: string,
+    role: string,
+    first_name: string,
+    last_name: string,
+    email: string
+  ) => {
     try {
-      await axios.post("http://localhost:5000/auth/register", {
-        username,
-        password,
+      await fetch("http://localhost:3001/api/v1/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username,
+          password,
+          role,
+          first_name,
+          last_name,
+          email,
+        }),
       });
     } catch (error) {
       throw new Error("Failed to register");
@@ -49,12 +98,31 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     localStorage.removeItem("token");
   };
 
+  const getCares = async (): Promise<Care[]> => {
+    try {
+      const response = await fetch("http://localhost:3001/api/v1/cares", {
+        headers: {
+          Authorization: token ? `Bearer ${token}` : "",
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Failed to fetch cares");
+      }
+      const data: CareResponse = await response.json();
+      return data.data;
+    } catch (error) {
+      console.log("Error:", error);
+      throw new Error("Failed to fetch cares");
+    }
+  };
+
   const contextValue: AuthContextType = {
     token,
     isAuthenticated,
     login,
     register,
     logout,
+    getCares,
   };
 
   return (
