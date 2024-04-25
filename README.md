@@ -33,14 +33,61 @@ Información del Proyecto
 <img src="https://github.com/No-Country/c17-11-t-node-react/blob/main/Dise%C3%B1o/logo_mascocuidado.png" width="300" alt="LOGO">
 
   <h1>🐾 Mascocuidado 🐾</h1>
-  <p>😺💝🐶 Mascocuidado es una plataforma en linea especializada en el cuidado de mascotas, brindando servicios de calidad para garantizar el bienestar y la felicidad de tus queridas mascotas. 🐶💝😺</p>
+  <p>😺💝🐶 Mascocuidado es una innovadora plataforma en línea que se dedica al cuidado integral de mascotas, ofreciendo una variedad de servicios de alta calidad para asegurar el bienestar y la alegría de nuestros amigos de cuatro patas. Con un enfoque centrado en la comodidad y la confianza, Mascocuidado busca ser el puente entre dueños dedicados, cuidadores apasionados y administradores comprometidos, facilitando una experiencia única y personalizada para cada usuario 🐶💝😺</p>
 </div>
 
 <br>
 
-<h2 align="center">Objetivo</h2>
+<h2 align="center"> Nuestros objetivos</h2>
 
-<p align="center">El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean dueños, cuidadores y/o administradores...</p>
+<p align="center">
+
+<details>
+<summary>Facilitar la Conexión</summary>
+
+  - Unir a dueños de mascotas con cuidadores calificados a través de una plataforma fácil de usar, donde se pueden reservar servicios como paseos, cuidado diario y peluquería con solo unos clics.
+
+</details>
+
+<details>
+<summary>Garantizar la Calidad</summary>
+  
+  - Asegurar que cada servicio ofrecido cumpla con los más altos estándares de calidad, proporcionando tranquilidad a los dueños y un ambiente seguro y amoroso para las mascotas
+</details>
+
+
+<details>
+<summary>Fomentar la Comunidad</summary>
+  
+  - Crear una red de apoyo donde los dueños puedan compartir experiencias, reseñas y recomendaciones, fortaleciendo la confianza en los cuidadores disponibles en la plataforma.
+</details>
+
+
+
+<details>
+<summary>Promover la Transparencia</summary>
+
+  - Ofrecer a los dueños acceso a perfiles detallados de cuidadores, incluyendo reseñas, calificaciones y fotos, para tomar decisiones informadas basadas en la reputación y experiencia previa.
+  
+</details>
+
+
+<details>
+<summary>Simplificar la Gestión</summary>
+
+  - Proporcionar a los cuidadores herramientas intuitivas para gestionar sus servicios, disponibilidad y comunicación con los dueños, permitiéndoles concentrarse en lo que mejor saben hacer: cuidar de las mascotas.
+  
+</details>
+
+
+<details>
+<summary>Mantener la Seguridad</summary>
+
+  - Dotar a los administradores de la capacidad para supervisar la plataforma, evaluar a los cuidadores y garantizar que cada interacción cumpla con las políticas de seguridad y bienestar animal.
+  
+</details>
+
+</p>
 
 <br>
 
@@ -90,8 +137,6 @@ Información del Proyecto
   - Creación de cuentas de administrador: Crear y definir otras cuentas de administrador para la colaboración en la gestión de la plataforma.
 
 </details>
-
-
 
 <br>
 
