@@ -38,7 +38,6 @@ export class CreateUserDTO {
   @Max(8)
   dni?: number;
 
-  @IsDate()
   @IsOptional()
   birthday?: Date;
 
