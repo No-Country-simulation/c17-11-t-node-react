@@ -1,8 +1,8 @@
 #backend
 
 # compiled output
-/back//dist
-/back//node_modules
+/back/dist
+/back/node_modules
 /back/.env
 
 # Logs
