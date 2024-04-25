@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../services/Api";
 import logo from "../assets/logos/black.png";
-import logowhite from "../assets/logos/blue.png";
+import logowhite from "../assets/logos/white.png";
 import defaultAvatar from "../assets/defaultAvatar.svg";
 import {
   Avatar,
@@ -72,12 +72,12 @@ const Navbar = () => {
             </ul>
           </div>
           {isAuthenticated ? (
-            <Dropdown>
+            <Dropdown className="rounded-lg">
               <DropdownTrigger>
                 <Avatar src={defaultAvatar} alt="Profile" size="lg" />
               </DropdownTrigger>
               <DropdownMenu aria-label="Link Actions">
-                <DropdownItem href="/dashboard" key="dashboard" color="default">
+                <DropdownItem href="/dashboard" key="dashboard">
                   Dashboard
                 </DropdownItem>
                 <DropdownItem href="/profile" key="profile" color="default">
