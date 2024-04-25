@@ -1,4 +1,5 @@
 import Profile_owner from "../../../assets/dueño-mascota1.webp";
+import StarRating from "../../../components/StarCalification";
 export const Header = () => {
   return (
     <div>
@@ -87,8 +88,8 @@ export const Header = () => {
           </div>
         </div>
       </div>
-      <div className="w-full h-[250px] bg-amber-500"></div>
-      <div className="flex flex-col items-center -mt-20">
+      {/* <div className="w-full h-[250px] bg-amber-500"></div> */}
+      <div className="flex flex-col items-center mt-20">
         <img
           src={Profile_owner}
           className="w-40 border-4 border-white rounded-full"
@@ -113,63 +114,10 @@ export const Header = () => {
           </span>
         </div>
         <p className="text-sm text-gray-500">New York, USA</p>
-        <form action="">
-          <p style={{ direction: "rtl", unicodeBidi: "bidi-override" }}>
-            <input
-              className="hidden "
-              id="radio1"
-              type="radio"
-              name="estrellas"
-              value="5"
-            />
-            <label className="text-gray-400" htmlFor="radio1">
-              ★
-            </label>
-            <input
-              className="hidden "
-              id="radio2"
-              type="radio"
-              name="estrellas"
-              value="4"
-            />
-            <label className="text-gray-400" htmlFor="radio2">
-              ★
-            </label>
-            <input
-              className="hidden "
-              id="radio3"
-              type="radio"
-              name="estrellas"
-              value="3"
-            />
-            <label className="text-gray-400" htmlFor="radio3">
-              ★
-            </label>
-            <input
-              className="hidden "
-              id="radio4"
-              type="radio"
-              name="estrellas"
-              value="2"
-            />
-            <label className="text-gray-400" htmlFor="radio4">
-              ★
-            </label>
-            <input
-              className="hidden "
-              id="radio5"
-              type="radio"
-              name="estrellas"
-              value="1"
-            />
-            <label className="text-gray-400" htmlFor="radio5">
-              ★
-            </label>
-          </p>
-        </form>
+        <StarRating totalStars={5}/>
       </div>
-      <div className="flex-1 flex flex-col items-center lg:items-end justify-end px-8 mt-2">
-        <div className="flex items-center space-x-4 mt-2">
+      <div className="flex-1 flex flex-col justify-center items-center lg:px-8 mt-2">
+        <div className="flex items-center justify-center space-x-4 mt-2">
           <button className="flex items-center bg-blue-600 hover:bg-blue-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
             <svg
               xmlns="http://www.w3.org/2000/svg"
