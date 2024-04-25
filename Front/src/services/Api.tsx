@@ -1,16 +1,10 @@
-import React, { createContext, useContext, ReactNode, useEffect } from "react";
-
-interface Care {
-  id: number;
-  name: string;
-  description: string;
-  address: string;
-  imageUrl: string;
-}
-
-interface CareResponse {
-  data: Care[];
-}
+import React, {
+  createContext,
+  useContext,
+  ReactNode,
+  useEffect,
+  useState,
+} from "react";
 
 interface AuthContextType {
   token: string | null;
@@ -25,7 +19,7 @@ interface AuthContextType {
     email: string
   ) => Promise<void>;
   logout: () => void;
-  getCares: () => Promise<Care[]>;
+  fetchPendingCares: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -33,7 +27,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [token, setToken] = React.useState<string | null>(
+  const [token, setToken] = useState<string | null>(
     localStorage.getItem("token")
   );
   const isAuthenticated = !!token;
@@ -58,8 +52,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
         throw new Error("Failed to login");
       }
       const data = await response.json();
-      setToken(data.token);
-      localStorage.setItem("token", data.token);
+
+      const accessToken = data?.data?.access_token;
+      if (!accessToken) {
+        throw new Error("Access token not found in response");
+      }
+
+      setToken(accessToken);
+      localStorage.setItem("token", accessToken);
     } catch (error) {
       throw new Error("Failed to login");
     }
@@ -74,22 +74,52 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     email: string
   ) => {
     try {
-      await fetch("http://localhost:3001/api/v1/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username,
-          password,
-          role,
-          first_name,
-          last_name,
-          email,
-        }),
-      });
+      const response = await fetch(
+        "http://localhost:3001/api/v1/auth/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username,
+            password,
+            role,
+            first_name,
+            last_name,
+            email,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to register");
+      }
     } catch (error) {
       throw new Error("Failed to register");
+    }
+  };
+
+  const fetchPendingCares = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:3001/api/v1/cares/pending",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch data");
+      }
+      const data = await response.json();
+      return data; // Devuelve los datos obtenidos
+    } catch (error) {
+      console.error(error);
+      throw new Error("Failed to fetch data");
     }
   };
 
@@ -98,31 +128,13 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     localStorage.removeItem("token");
   };
 
-  const getCares = async (): Promise<Care[]> => {
-    try {
-      const response = await fetch("http://localhost:3001/api/v1/cares", {
-        headers: {
-          Authorization: token ? `Bearer ${token}` : "",
-        },
-      });
-      if (!response.ok) {
-        throw new Error("Failed to fetch cares");
-      }
-      const data: CareResponse = await response.json();
-      return data.data;
-    } catch (error) {
-      console.log("Error:", error);
-      throw new Error("Failed to fetch cares");
-    }
-  };
-
   const contextValue: AuthContextType = {
     token,
     isAuthenticated,
     login,
     register,
     logout,
-    getCares,
+    fetchPendingCares,
   };
 
   return (

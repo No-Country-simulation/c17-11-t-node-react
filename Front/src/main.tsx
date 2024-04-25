@@ -4,9 +4,12 @@ import App from "./App.tsx";
 import "./index.css";
 
 import Footer from "./components/Footer";
+import { AuthProvider } from "./services/Api.tsx";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <App />
-    <Footer />
+    <AuthProvider>
+      <App />
+      <Footer />
+    </AuthProvider>
   </React.StrictMode>
 );

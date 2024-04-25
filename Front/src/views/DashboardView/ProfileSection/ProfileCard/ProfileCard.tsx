@@ -6,7 +6,7 @@ interface ProfileCardProps {
 }
 
 const ProfileCard: React.FC<ProfileCardProps> = ({ user }) => {
-  const { name, description, address, imageUrl } = user;
+  const { last_name, first_name, description, address, imageUrl, time } = user;
 
   return (
     <div className="flex flex-col justify-between h-[26rem] lg:w-[16rem] w-[14rem] py-8 px-6 space-y-6 rounded-xl border border-gray-200 bg-white text-center">
@@ -16,12 +16,14 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ user }) => {
         src={imageUrl}
       />
       <div>
-        <h5 className="text-xl text-gray-600">{name}</h5>
-        <div className="mt-2">
-          <h3 className="text-1xl font-bold text-gray-700">{description}</h3>
-          <p className="text-gray-500">{address}</p>
+        <h5 className="text-xl text-gray-600">
+          {first_name} {last_name}
+        </h5>
+        <div className="mt-0">
+          <h3 className="text-md font-bold text-gray-700">{address}</h3>
+          <p className="text-gray-500 text-sm">{description}</p>
         </div>
-        <span className="block text-gray-500">Libre de 16hs a 21hs</span>
+        <span className="block text-gray-800 text-sm">{time}</span>
       </div>
       <a
         href="/profile"
