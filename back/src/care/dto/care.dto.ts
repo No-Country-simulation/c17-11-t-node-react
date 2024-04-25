@@ -23,6 +23,7 @@ export class CreateCareDTO {
   @IsNotEmpty()
   date: Date;
 
+  @IsOptional()
   @IsNumber()
   hours: number;
 
