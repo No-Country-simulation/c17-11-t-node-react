@@ -17,7 +17,7 @@ const DashboardView: React.FC = () => {
     <div className="flex min-h-screen">
       <SideBar handleLinkClick={handleLinkClick} />
       <div className="flex flex-col flex-1">
-        <div className="mt-6 ml-6">
+        <div className="lg:mt-6 ml-6 mt-36 md:mt-30 ">
           {activeComponent === "profile" && <ProfileSection />}
           {activeComponent === "calendar" && <Calendario />}
           {activeComponent === "messages" && <Messages />}

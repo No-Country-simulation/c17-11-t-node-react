@@ -2,7 +2,15 @@ import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../services/Api";
 import logo from "../assets/logos/black.png";
+import logowhite from "../assets/logos/blue.png";
 import defaultAvatar from "../assets/defaultAvatar.svg";
+import {
+  Avatar,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+} from "@nextui-org/react";
 
 const Navbar = () => {
   const { isAuthenticated, logout } = useAuth();
@@ -27,12 +35,16 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
         <div className="flex items-center justify-between">
           <div>
-            <Link to="/#">
-              <img className="rounded-full w-14" src={logo} alt="Logo" />
-            </Link>
+            <a href="/#">
+              {isAuthenticated ? (
+                <img className="rounded-full w-14" src={logo} alt="Logo" />
+              ) : (
+                <img className="rounded-full w-14" src={logowhite} alt="Logo" />
+              )}
+            </a>
           </div>
           <div className="hidden md:flex flex-grow ">
-            <ul className="flex  space-x-6">
+            <ul className="flex space-x-6">
               <li>
                 <a
                   href="/#nosotros"
@@ -60,36 +72,26 @@ const Navbar = () => {
             </ul>
           </div>
           {isAuthenticated ? (
-            <div className="flex items-center space-x-2  relative">
-              <img
-                src={defaultAvatar}
-                alt="Profile"
-                className="w-10 h-10 rounded-full cursor-pointer"
-                onClick={toggleProfileMenu}
-              />
-              {showMenu && (
-                <div className="absolute right-0 mt-40 w-48 bg-white rounded-md shadow-lg py-1">
-                  <Link
-                    to="/dashboard"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Dashboard
-                  </Link>
-                  <Link
-                    to="/profile"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Perfil
-                  </Link>
-                  <button
-                    onClick={handleLogout}
-                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Cerrar sesión
-                  </button>
-                </div>
-              )}
-            </div>
+            <Dropdown>
+              <DropdownTrigger>
+                <Avatar src={defaultAvatar} alt="Profile" size="lg" />
+              </DropdownTrigger>
+              <DropdownMenu aria-label="Link Actions">
+                <DropdownItem href="/dashboard" key="dashboard" color="default">
+                  Dashboard
+                </DropdownItem>
+                <DropdownItem href="/profile" key="profile" color="default">
+                  Profile
+                </DropdownItem>
+                <DropdownItem
+                  key="logout"
+                  onClick={handleLogout}
+                  color="danger"
+                >
+                  Cerrar sesión
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
           ) : (
             <div className="hidden md:flex items-center space-x-2">
               <Link
@@ -109,7 +111,7 @@ const Navbar = () => {
           <div className="-mr-2 flex md:hidden">
             <button
               onClick={toggleNavbar}
-              className="inline-flex items-center justify-center p-2 rounded-md text-[#90A4AE] hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              className="inline-flex items-center justify-center p-2 rounded-md text-[#000000] hover:text-black/50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-black/40"
             >
               <span className="sr-only">Menú</span>
               <svg
@@ -145,49 +147,64 @@ const Navbar = () => {
         </div>
       </div>
       <div className={`${isOpen ? "block" : "hidden"} md:hidden`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 list-none text-center">
           <li>
             <a
-              href="#"
-              className="text-[#010101] hover:text-[#010101]/70 px-3 py-2 rounded-md text-lg font-medium"
+              href="/#nosotros"
+              className="text-[#010101] hover:text-[#010101]/70 px-3 py-2 rounded-md text-3xl font-medium"
             >
               Nosotros
             </a>
           </li>
           <li>
             <a
-              href="#"
-              className="text-[#010101] hover:text-[#010101]/70 px-3 py-2 rounded-md text-lg font-medium"
-            >
-              Formar parte
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="text-[#010101] hover:text-[#010101]/70 px-3 py-2 rounded-md text-lg font-medium"
+              href="/#experiencias"
+              className="text-[#010101] hover:text-[#010101]/70 px-3 py-2 rounded-md text-3xl font-medium"
             >
               Experiencias
             </a>
           </li>
-          {isAuthenticated && (
-            <div className="flex items-center space-x-2 pt-6">
-              <Link
-                to="/dashboard"
-                className="text-[#010101] bg-white hover:text-[#010101]/80 px-6 py-2 rounded-full text-lg font-medium"
-              >
-                Dashboard
-              </Link>
-              <Link
-                to="/profile"
-                className="text-[#010101] bg-[#F97D05] hover:text-[#010101]/80 rounded-full px-6 py-2 text-lg font-medium"
-              >
-                Perfil
-              </Link>
+          <li>
+            <a
+              href="/#contacto"
+              className="text-[#010101] hover:text-[#010101]/70 px-3 py-2 rounded-md text-3xl font-medium"
+            >
+              Contacto
+            </a>
+          </li>
+          {isAuthenticated ? (
+            <div className="lg:flex hidden items-center space-x-2  relative">
+              <img
+                src={defaultAvatar}
+                alt="Profile"
+                className="w-10 h-10 rounded-full cursor-pointer"
+                onClick={toggleProfileMenu}
+              />
+              {showMenu && (
+                <div className="absolute right-0 mt-40 w-48 bg-white rounded-md shadow-lg py-1">
+                  <Link
+                    to="/dashboard"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Dashboard
+                  </Link>
+                  <Link
+                    to="/profile"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Perfil
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Cerrar sesión
+                  </button>
+                </div>
+              )}
             </div>
-          )}
-          {!isAuthenticated && (
-            <div className="flex items-center space-x-2 pt-6">
+          ) : (
+            <div className=" md:flex items-center pt-6 pb-2 space-x-2">
               <Link
                 to="/login"
                 className="text-[#010101] bg-white hover:text-[#010101]/80 px-6 py-2 rounded-full text-lg font-medium"

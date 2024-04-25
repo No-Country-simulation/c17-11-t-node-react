@@ -1,5 +1,3 @@
-import Navbar from "./components/NavBar";
-
 import {
   BrowserRouter as Router,
   Routes,
@@ -13,6 +11,8 @@ import { Profile } from "./pages/profile/Profile";
 import { Login } from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import { Loader } from "./components/Loader";
+
+import Navbar from "./components/NavBar";
 
 const ProtectedRoute: React.FC<{ element: React.ReactElement }> = ({
   element,
