@@ -651,6 +651,8 @@ $ docker run -d -p 3000:3001 --name name-container -e PORT=3001 -e DATABASE_URL=
 
   <h1>Agradecemientos a No Country</h1>
 
+  ### De parte de todo el equipo de Mascocuidado agradecemos a la plataforma NO COUNTRY por dejarnos desarrollarnos en esta linda experiencia 🐾
+
   <img src="https://camo.githubusercontent.com/e17d4229ec90e5645b9e66b308ea1e744a637915b3c27cc3b2ea7ec5bc54de58/68747470733a2f2f75706c6f6164732d73736c2e776562666c6f772e636f6d2f3632636332313663653233663739633130626338383136392f3633393733653939303532333733623831306363653934625f4272616e64696e672532304e432d30362d702d3830302e706e67" width="200" alt="No-Country">
  
 </div>
