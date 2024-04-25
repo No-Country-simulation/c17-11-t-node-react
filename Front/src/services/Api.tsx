@@ -1,11 +1,17 @@
 import React, { createContext, useContext, ReactNode } from "react";
-import axios from "axios";
 
 interface AuthContextType {
   token: string | null;
   isAuthenticated: boolean;
   login: (username: string, password: string) => Promise<void>;
-  register: (username: string, password: string) => Promise<void>;
+  register: (
+    username: string,
+    password: string,
+    role: string,
+    first_name: string,
+    last_name: string,
+    email: string
+  ) => Promise<void>;
   logout: () => void;
 }
 
@@ -21,11 +27,17 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
 
   const login = async (username: string, password: string) => {
     try {
-      const response = await axios.post("http://localhost:5000/auth/login", {
-        username,
-        password,
+      const response = await fetch("http://localhost:3001/api/v1/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
       });
-      const data = response.data;
+      if (!response.ok) {
+        throw new Error("Failed to login");
+      }
+      const data = await response.json();
       setToken(data.token);
       localStorage.setItem("token", data.token);
     } catch (error) {
@@ -33,11 +45,28 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     }
   };
 
-  const register = async (username: string, password: string) => {
+  const register = async (
+    username: string,
+    password: string,
+    role: string,
+    first_name: string,
+    last_name: string,
+    email: string
+  ) => {
     try {
-      await axios.post("http://localhost:5000/auth/register", {
-        username,
-        password,
+      await fetch("http://localhost:3001/api/v1/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username,
+          password,
+          role,
+          first_name,
+          last_name,
+          email,
+        }),
       });
     } catch (error) {
       throw new Error("Failed to register");

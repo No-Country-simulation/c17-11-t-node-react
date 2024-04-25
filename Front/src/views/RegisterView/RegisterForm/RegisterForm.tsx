@@ -17,56 +17,49 @@ export const RegisterForm = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
+  const FETCH = `${import.meta.env.VITE_BACK_API_FETCH}`;
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:3001/api/v1/roles");
+      const response = await fetch(FETCH);
       const jsonData = await response.json();
-      setData(jsonData.data); // Asume que el ID está dentro de un campo llamado 'id' en el objeto data
+      setData(jsonData.data);
     } catch (error) {
       console.error("Error al recuperar datos:", error);
     }
   };
+
+  const APIREGISTER = "http://localhost:3001/api/v1/auth/register";
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        "http://localhost:3001/api/v1/auth/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            role,
-            first_name,
-            last_name,
-            email,
-            password,
-            username,
-          }),
-        }
-      );
-      const data = await response.json();
-      console.log(data);
+      const response = await fetch(APIREGISTER, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          role,
+          first_name,
+          last_name,
+          email,
+          password,
+          username,
+        }),
+      });
+      await response.json();
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-    // Grab the nodeName and value from
-    // the clicked element
     const { value } = e.target as HTMLInputElement;
-    console.log(value);
     setRole(value);
   };
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-  // const togglePasswordConfirmVisibility = () => {
-  //     setShowConfirmpassword(!showConfirmpassword);
-  // };
 
   return (
     <form className=" md:space-y-1" action="#" onSubmit={handleSubmit}>
