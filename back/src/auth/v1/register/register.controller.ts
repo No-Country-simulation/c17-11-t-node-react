@@ -30,7 +30,8 @@ export class RegisterController {
   @Post('register')
   async register(@Body() data: CreateUserDTO) {
     try {
-      const { role, first_name, last_name, email, password, username } = data;
+      const { role, first_name, last_name, email, password, username, ...req } =
+        data;
 
       let isValidRole: Role;
       if (role) {
@@ -50,6 +51,7 @@ export class RegisterController {
           ? username
           : first_name.trim().replace(/\s+/g, '') +
             new Date().valueOf().toString(),
+        ...req,
       });
 
       userCreated.password = '';
