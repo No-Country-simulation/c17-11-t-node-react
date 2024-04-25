@@ -43,12 +43,15 @@ export class CareService {
   async findAll() {
     return this.careModel
       .find()
-      .populate({ path: 'user', select: 'first_name last_name picture' })
+      .populate({
+        path: 'user',
+        select: 'first_name last_name picture birthday phone address',
+      })
       .populate({ path: 'pet', select: 'name' })
       .populate({ path: 'services', model: 'Service' })
       .populate({
         path: 'caretaker',
-        select: 'stars reviews user',
+        select: 'stars reviews user description',
         populate: {
           path: 'user',
           select: 'first_name last_name picture',
@@ -60,7 +63,10 @@ export class CareService {
   async findAllPending() {
     return this.careModel
       .find({ status: 'pending' })
-      .populate({ path: 'user', select: 'first_name last_name picture' })
+      .populate({
+        path: 'user',
+        select: 'first_name last_name picture birthday phone address',
+      })
       .populate({ path: 'pet', select: 'name' })
       .populate({ path: 'services', model: 'Service' })
       .populate({
