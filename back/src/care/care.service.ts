@@ -57,6 +57,23 @@ export class CareService {
       .exec();
   }
 
+  async findAllPending() {
+    return this.careModel
+      .find({ status: 'pending' })
+      .populate({ path: 'user', select: 'first_name last_name picture' })
+      .populate({ path: 'pet', select: 'name' })
+      .populate({ path: 'services', model: 'Service' })
+      .populate({
+        path: 'caretaker',
+        select: 'stars reviews user',
+        populate: {
+          path: 'user',
+          select: 'first_name last_name picture',
+        },
+      })
+      .exec();
+  }
+
   async findAllPaginate(page: number, limit: number) {
     const count = await this.careModel.estimatedDocumentCount();
     const query = this.careModel

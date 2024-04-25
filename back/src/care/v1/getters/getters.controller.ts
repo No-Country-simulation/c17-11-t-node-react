@@ -37,6 +37,24 @@ export class GettersController {
     }
   }
 
+  @Roles('caretaker')
+  @Get('pending')
+  async getAllPending() {
+    try {
+      const cares = await this.careService.findAllPending();
+
+      return {
+        success: true,
+        data: cares,
+      };
+    } catch (error) {
+      throw new InternalServerErrorException({
+        success: false,
+        message: String(error),
+      });
+    }
+  }
+
   // @Public()
   @Roles('admin')
   @Get('p')
