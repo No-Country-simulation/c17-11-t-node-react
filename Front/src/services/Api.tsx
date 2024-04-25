@@ -1,4 +1,16 @@
-import React, { createContext, useContext, ReactNode } from "react";
+import React, { createContext, useContext, ReactNode, useEffect } from "react";
+
+interface Care {
+  id: number;
+  name: string;
+  description: string;
+  address: string;
+  imageUrl: string;
+}
+
+interface CareResponse {
+  data: Care[];
+}
 
 interface AuthContextType {
   token: string | null;
@@ -13,6 +25,7 @@ interface AuthContextType {
     email: string
   ) => Promise<void>;
   logout: () => void;
+  getCares: () => Promise<Care[]>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -24,6 +37,13 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     localStorage.getItem("token")
   );
   const isAuthenticated = !!token;
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      setToken(storedToken);
+    }
+  }, []);
 
   const login = async (username: string, password: string) => {
     try {
@@ -78,12 +98,31 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     localStorage.removeItem("token");
   };
 
+  const getCares = async (): Promise<Care[]> => {
+    try {
+      const response = await fetch("http://localhost:3001/api/v1/cares", {
+        headers: {
+          Authorization: token ? `Bearer ${token}` : "",
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Failed to fetch cares");
+      }
+      const data: CareResponse = await response.json();
+      return data.data;
+    } catch (error) {
+      console.log("Error:", error);
+      throw new Error("Failed to fetch cares");
+    }
+  };
+
   const contextValue: AuthContextType = {
     token,
     isAuthenticated,
     login,
     register,
     logout,
+    getCares,
   };
 
   return (
