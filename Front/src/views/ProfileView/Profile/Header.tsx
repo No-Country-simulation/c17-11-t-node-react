@@ -114,7 +114,7 @@ export const Header = () => {
           </span>
         </div>
         <p className="text-sm text-gray-500">New York, USA</p>
-        <StarRating totalStars={5}/>
+        <StarRating totalStars={5} />
       </div>
       <div className="flex-1 flex flex-col justify-center items-center lg:px-8 mt-2">
         <div className="flex items-center justify-center space-x-4 mt-2">

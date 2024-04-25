@@ -13,6 +13,10 @@ export interface Service {
   description: string;
   price: number;
 }
+export interface AppDetail {
+  imageSrc: string;
+  description: string;
+}
 
 export interface UserProfile {
   id: number;
@@ -24,4 +28,11 @@ export interface UserProfile {
   address: string;
   phone: string;
   imageUrl: string;
+}
+
+export interface Testimonial {
+  name: string;
+  role: string;
+  imageSrc: string;
+  description: string;
 }

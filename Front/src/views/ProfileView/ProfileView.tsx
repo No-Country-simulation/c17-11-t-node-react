@@ -10,15 +10,13 @@ const ProfileView = () => {
       <div className="h-full bg-gray-200 p-8 mt-10 sticky ">
         <Header />
         <div className="grid grid-cols-3 gap-3 max-sm:grid-cols-1">
-
           <PersonalInfo />
           <div className="grid grid-cols-1">
-              <Photos/>
-              <Review />
+            <Photos />
+            <Review />
           </div>
           <ServicesInfo />
         </div>
-
       </div>
     </>
   );
