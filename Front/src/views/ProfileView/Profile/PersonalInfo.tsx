@@ -11,7 +11,7 @@ export const PersonalInfo=()=>{
                         </li>
                         <li className="flex border-b py-2">
                             <span className="font-bold w-24">Se unio a nuestra familia:</span>
-                            <span className="text-gray-700">10 Jan 2022 (25 days ago)</span>
+                            <span className="text-gray-700">10 Jan 2022</span>
                         </li>
                         <li className="flex border-b py-2">
                             <span className="font-bold w-24">Telefono celular:</span>
