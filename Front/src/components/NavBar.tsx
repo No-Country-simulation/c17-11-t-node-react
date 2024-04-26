@@ -74,7 +74,12 @@ const Navbar = () => {
           {isAuthenticated ? (
             <Dropdown className="rounded-lg">
               <DropdownTrigger>
-                <Avatar src={defaultAvatar} alt="Profile" size="lg" />
+                <Avatar
+                  src="https://cdn.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg"
+                  alt="Profile"
+                  isBordered
+                  size="md"
+                />
               </DropdownTrigger>
               <DropdownMenu aria-label="Link Actions">
                 <DropdownItem href="/dashboard" key="dashboard">

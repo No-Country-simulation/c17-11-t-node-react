@@ -36,13 +36,13 @@ const HeroComponent: React.FC<HeroProps> = ({ title, description }) => {
           >
             <a
               href="/#nosotros"
-              className="text-black bg-white hover:text-black/80 rounded-full px-8 py-4 text-lg  lg:text-2xl font-medium"
+              className="text-black bg-white hover:text-black/80 rounded-full px-8 py-3 text-lg  lg:text-2xl font-medium"
             >
               Nosotros
             </a>
             <a
               href="/register"
-              className="text-black bg-[#F97D05] hover:text-black/80 rounded-full px-8 py-4 text-lg  lg:text-2xl font-medium"
+              className="text-black bg-[#F97D05] hover:text-black/80 rounded-full px-8 py-3 text-lg  lg:text-2xl font-medium"
             >
               Empezar
             </a>

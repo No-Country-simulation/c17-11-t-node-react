@@ -50,11 +50,11 @@ export const Header = ({ user }: { user: UserProfile }) => {
   };
 
   return (
-    <div>
+    <>
       <div className="flex flex-col items-center mt-20">
         <img
           src={user.picture}
-          className="w-40 border-4 border-white rounded-full"
+          className="w-52 h-52 border-4 border-white rounded-full"
         />
         <div className="flex items-center space-x-2 mt-2">
           <p className="lg:text-3xl text-2xl uppercase text-black">
@@ -142,6 +142,6 @@ export const Header = ({ user }: { user: UserProfile }) => {
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 };

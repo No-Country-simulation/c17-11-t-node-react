@@ -14,7 +14,7 @@ export const PersonalInfo = ({ user }: { user: UserProfile }) => {
               <span className="text-gray-700 ml-2"> 24 Jul, 1991</span>
             </li>
             <li className="flex border-b py-2">
-              <span className="font-bold w-24">Se unio en:</span>
+              <span className="font-bold w-24">Se registró:</span>
               <span className="text-gray-700">10 Jan 2022 (25 days ago)</span>
             </li>
             <li className="flex border-b py-2">
@@ -25,6 +25,10 @@ export const PersonalInfo = ({ user }: { user: UserProfile }) => {
             <li className="flex border-b py-2">
               <span className="font-bold w-24">Ciudad:</span>
               <span className="text-gray-700">{user.address}</span>
+            </li>
+            <span className="font-bold w-24 pt-2">Sobre mí:</span>
+            <li className="flex border-b py-2">
+              <span className="text-gray-700">{user.description}</span>
             </li>
           </ul>
         </div>

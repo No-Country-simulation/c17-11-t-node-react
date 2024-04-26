@@ -16,7 +16,7 @@ const ProfileView = () => {
               <PersonalInfo user={user} />
               <div className="grid grid-cols-1">
                 <Photos />
-                <Review />
+                <Review user={user} />
               </div>
               <ServicesInfo user={user} />
             </div>
