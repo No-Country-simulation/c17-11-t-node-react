@@ -24,7 +24,7 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 // const REALAPÏ = "https://mascocuidado-backend.onrender.com";
-const LOCALAPI = "http://localhost:3001";
+const LOCALAPI = "https://mascocuidado-backend.onrender.com";
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
