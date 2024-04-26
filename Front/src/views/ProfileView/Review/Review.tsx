@@ -1,12 +1,12 @@
 export const Review = () => {
   return (
     <div className="my-4 flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4">
-      <div className="w-full flex flex-col 2xl:w-1/3">
-        <div className="flex-1 bg-white rounded-lg shadow-xl p-8 text-lg max-sm:text-sm">
-          <h4 className="text-center text-xl text-gray-900 font-bold">
-            Review
+      <div className="w-full flex flex-col 2xl:w-1/3 shadow-lg shadow-[#F97D05] hover:rotate-1 transition duration-600">
+        <div className="flex-1 bg-white rounded-lg shadow-xl p-8 lg:text-lg text-sm">
+          <h4 className="text-center lg:text-2xl text-lg text-gray-900 font-bold mb-4">
+            Opiniones del cuidador
           </h4>
-          <h5 className="font-bold">Irene</h5>
+          <h5 className="font-bold uppercase text-xl">Irene</h5>
           <p className="text-gray-700">
             Amanda cuidó muy bien de mi perrita. Nos mantuvo al tanto de sus
             paseos, sus actividades y estados de ánimo. Nos sentimos muy
@@ -14,7 +14,7 @@ export const Review = () => {
             mi perrita con todo y las noches. Al final Tuvo la amabilidad de
             lavar la camita.
           </p>
-          <h4 className="font-bold">Sofia</h4>
+          <h4 className="font-bold uppercase text-xl">Sofia</h4>
           <p className="text-gray-700">
             Mi perrita Missy estuvo muy bien cuidada y consentida por Aranza y
             su abuelita. Se ve que la Sra. Alejandra tiene experiencia en el

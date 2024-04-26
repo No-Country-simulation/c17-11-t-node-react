@@ -7,7 +7,11 @@ const AboutComponent: React.FC = () => {
       className="bg-[#90A4AE] body-font lg:h-screen h-full w-full"
       id="nosotros"
     >
-      <div className="container px-5 py-16 mx-auto">
+      <div
+        className="container px-5 py-16 mx-auto"
+        data-aos="zoom-out-right"
+        data-aos-duration="3000"
+      >
         <h3 className="text-center text-[#010101] lg:text-4xl text-2xl uppercase font-bold lg:mt-8 mb-16">
           Acerca de MascoCuidado
         </h3>

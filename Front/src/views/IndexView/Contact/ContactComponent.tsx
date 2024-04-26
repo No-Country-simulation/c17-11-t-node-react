@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Swal from "sweetalert2";
 
 const ContactComponent: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -19,12 +20,25 @@ const ContactComponent: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formData);
+    {
+      Swal.fire(
+        "Gracias por contactarnos",
+        "Pronto te responderemos",
+        "success"
+      );
+      setTimeout(() => {
+        window.location.href = "/dashboard";
+      }, 3000);
+    }
   };
 
   return (
     <section className=" bg-[#90A4AE] body-font relative" id="contacto">
-      <div className="container px-10 py-24 mx-auto">
+      <div
+        className="container px-10 py-24 mx-auto"
+        data-aos="fade-down-right"
+        data-aos-duration="3000"
+      >
         <div className="flex flex-col text-center w-full mb-10">
           <h3 className="text-center text-[#010101] lg:text-4xl text-2xl uppercase font-bold mb-6">
             Contacta con nosotros

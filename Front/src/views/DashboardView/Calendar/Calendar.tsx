@@ -89,11 +89,11 @@ const Calendario = () => {
               <Calendar
                 aria-label="Date (Show Month and Year Picker)"
                 showMonthAndYearPickers
-                className="shadow-lg shadow-[#F97D05]"
+                className="shadow-lg shadow-[#F97D05] hover:rotate-1 transition duration-600"
                 color="warning"
               />
               <div className="ml-8">
-                <Card className="w-80 shadow-lg  shadow-[#F97D05]/60">
+                <Card className="w-80 shadow-lg  shadow-[#F97D05]/60 hover:shadow-[#F97D05] transition duration-600">
                   <CardBody>
                     <Input
                       label="Título"
@@ -147,7 +147,7 @@ const Calendario = () => {
                 savedAppointments.map((appointment, index) => (
                   <Card
                     key={index}
-                    className="w-80 shadow-lg  shadow-[#F97D05]/60 mt-4 mr-4 relative"
+                    className="w-80 shadow-lg  shadow-[#F97D05]/60 mt-4 mr-4 relative hover:rotate-3 transition duration-600"
                   >
                     <CardBody>
                       <h5 className="text-lg font-semibold mb-4">

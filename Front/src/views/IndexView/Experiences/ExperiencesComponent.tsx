@@ -11,7 +11,11 @@ const ExperiencesComponent: React.FC = () => {
         <div className="flex flex-wrap -m-4">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="p-4 md:w-1/2 w-full">
-              <div className="h-full bg-[#FF9F00]/75 p-8 rounded-3xl">
+              <div
+                className="h-full bg-[#FF9F00]/75 p-8 rounded-3xl"
+                data-aos="flip-down"
+                data-aos-duration="2000"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
