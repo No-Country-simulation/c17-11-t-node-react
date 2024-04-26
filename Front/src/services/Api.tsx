@@ -23,8 +23,8 @@ interface AuthContextType {
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
-// const REALAPÏ = "https://mascocuidado-backend.onrender.com";
-const LOCALAPI = "http://localhost:3001";
+const REALAPÏ = "https://mascocuidado-backend.onrender.com";
+// const LOCALAPI = "http://localhost:3001";
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
@@ -42,7 +42,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
 
   const login = async (username: string, password: string) => {
     try {
-      const response = await fetch(`${LOCALAPI}/api/v1/auth/login`, {
+      const response = await fetch(`${REALAPÏ}/api/v1/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -75,7 +75,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     email: string
   ) => {
     try {
-      const response = await fetch(`${LOCALAPI}/api/v1/auth/register`, {
+      const response = await fetch(`${REALAPÏ}/api/v1/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -100,7 +100,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
 
   const fetchPendingCares = async () => {
     try {
-      const response = await fetch(`${LOCALAPI}/api/v1/cares/pending`, {
+      const response = await fetch(`${REALAPÏ}/api/v1/cares/pending`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -111,7 +111,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
         throw new Error("Failed to fetch data");
       }
       const data = await response.json();
-      return data; // Devuelve los datos obtenidos
+      return data;
     } catch (error) {
       console.error(error);
       throw new Error("Failed to fetch data");
