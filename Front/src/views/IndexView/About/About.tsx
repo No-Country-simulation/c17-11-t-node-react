@@ -7,17 +7,22 @@ const AboutComponent: React.FC = () => {
       className="bg-[#90A4AE] body-font lg:h-screen h-full w-full"
       id="nosotros"
     >
-      <div
-        className="container px-5 py-16 mx-auto"
-        data-aos="zoom-out-right"
-        data-aos-duration="3000"
-      >
-        <h3 className="text-center text-[#010101] lg:text-4xl text-2xl uppercase font-bold lg:mt-8 mb-16">
+      <div className="container px-5 py-16 mx-auto">
+        <h3
+          className="text-center text-[#010101] lg:text-4xl text-2xl uppercase font-bold lg:mt-8 mb-16"
+          data-aos="zoom-out-right"
+          data-aos-duration="2000"
+        >
           Acerca de MascoCuidado
         </h3>
         <div className="flex flex-wrap -m-4">
           {appDetails.map((detail, index) => (
-            <div key={index} className="lg:w-1/3 lg:mb-0 mb-6 p-4">
+            <div
+              key={index}
+              className="lg:w-1/3 lg:mb-0 mb-6 p-4"
+              data-aos="zoom-out-right"
+              data-aos-duration="3000"
+            >
               <div className="h-full text-center">
                 <img
                   alt="testimonial"
