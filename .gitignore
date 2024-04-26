@@ -19,3 +19,4 @@
 /back/.nyc_output
 
 /front/node_modules
+/front/dist
