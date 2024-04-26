@@ -27,7 +27,7 @@ export interface UserProfile {
   time: string;
   address: string;
   phone: string;
-  imageUrl: string;
+  picture: string;
 }
 
 export interface Testimonial {

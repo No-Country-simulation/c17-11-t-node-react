@@ -18,7 +18,7 @@ export const user: UserProfile[] = [
       { name: "Peluquería", description: "Peluquería a domicilio", price: 300 },
     ],
     phone: "+5491123456789",
-    imageUrl:
+    picture:
       "https://images.unsplash.com/photo-1601758177266-bc599de87707?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
@@ -38,7 +38,7 @@ export const user: UserProfile[] = [
       { name: "Peluquería", description: "Peluquería a domicilio", price: 300 },
     ],
     phone: "+5491123456789",
-    imageUrl:
+    picture:
       "https://images.unsplash.com/photo-1601758177266-bc599de87707?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
@@ -58,7 +58,7 @@ export const user: UserProfile[] = [
       { name: "Peluquería", description: "Peluquería a domicilio", price: 300 },
     ],
     phone: "+5491123456789",
-    imageUrl:
+    picture:
       "https://images.unsplash.com/photo-1601758177266-bc599de87707?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
@@ -78,7 +78,7 @@ export const user: UserProfile[] = [
       { name: "Peluquería", description: "Peluquería a domicilio", price: 300 },
     ],
     phone: "+5491123456789",
-    imageUrl:
+    picture:
       "https://images.unsplash.com/photo-1601758177266-bc599de87707?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
@@ -98,7 +98,7 @@ export const user: UserProfile[] = [
       { name: "Peluquería", description: "Peluquería a domicilio", price: 300 },
     ],
     phone: "+5491123456789",
-    imageUrl:
+    picture:
       "https://images.unsplash.com/photo-1601758177266-bc599de87707?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
@@ -118,7 +118,7 @@ export const user: UserProfile[] = [
       { name: "Peluquería", description: "Peluquería a domicilio", price: 300 },
     ],
     phone: "+5491123456789",
-    imageUrl:
+    picture:
       "https://images.unsplash.com/photo-1601758177266-bc599de87707?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];

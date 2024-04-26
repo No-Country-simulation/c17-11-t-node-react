@@ -6,14 +6,14 @@ interface ProfileCardProps {
 }
 
 const ProfileCard: React.FC<ProfileCardProps> = ({ user }) => {
-  const { last_name, first_name, description, address, imageUrl, time } = user;
+  const { last_name, first_name, description, address, picture, time } = user;
 
   return (
     <div className="flex flex-col justify-between h-[26rem] lg:w-[16rem] w-full py-8 px-6 space-y-6 rounded-lg border border-[#F97D05]/50 shadow-lg shadow-[#F97D05]/40 bg-white text-center hover:rotate-3 transition duration-600">
       <img
         alt="profilePic"
         className="w-32 h-32 mx-auto mb-0 object-cover rounded-full border-2 border-gray-200 bg-gray-100"
-        src={imageUrl}
+        src={picture}
       />
       <div className="">
         <h5 className="text-lg hover:text-xl -mt-4 text-gray-800 transition duration-600">
