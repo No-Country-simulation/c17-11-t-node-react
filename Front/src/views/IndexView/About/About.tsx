@@ -1,30 +1,5 @@
 import React from "react";
-
-interface AppDetail {
-  imageSrc: string;
-  description: string;
-}
-
-const appDetails: AppDetail[] = [
-  {
-    imageSrc:
-      "https://images.unsplash.com/photo-1601758177266-bc599de87707?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    description:
-      "MascoCuidado busca acercar Dueños de Mascotas a Cuidadores expertos, además de la ofrecerte la posibilidad de conocer al cuidador antes de elegirlo, te brindamos una lista de los mejores puntuados. ",
-  },
-  {
-    imageSrc:
-      "https://images.unsplash.com/photo-1563460716037-460a3ad24ba9?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    description:
-      "Sabemos que no le confiarías tu mejor amigo a cualquier persona, por eso mismo te ayudamos a elegir quien mejor se adecue a tus necesidades, tiempos y sea el indicado para este gran trabajo.",
-  },
-  {
-    imageSrc:
-      "https://images.unsplash.com/photo-1545529468-42764ef8c85f?q=80&w=1473&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    description:
-      "Registrate, entra y elige tu cuidador ideal. Pueden ponerse de acuerdo, y llegar a colaborar en esta labor, También puedes dejar una reseña de la persona, para ayudar a otros dueños a encontrarlo.",
-  },
-];
+import { appDetails } from "../../../services/fakeAPI";
 
 const AboutComponent: React.FC = () => {
   return (
@@ -33,12 +8,21 @@ const AboutComponent: React.FC = () => {
       id="nosotros"
     >
       <div className="container px-5 py-16 mx-auto">
-        <h3 className="text-center text-[#010101] lg:text-4xl text-2xl uppercase font-bold lg:mt-8 mb-16">
+        <h3
+          className="text-center text-[#010101] lg:text-4xl text-2xl uppercase font-bold lg:mt-8 mb-16"
+          data-aos="zoom-out-right"
+          data-aos-duration="2000"
+        >
           Acerca de MascoCuidado
         </h3>
         <div className="flex flex-wrap -m-4">
           {appDetails.map((detail, index) => (
-            <div key={index} className="lg:w-1/3 lg:mb-0 mb-6 p-4">
+            <div
+              key={index}
+              className="lg:w-1/3 lg:mb-0 mb-6 p-4"
+              data-aos="zoom-out-right"
+              data-aos-duration="3000"
+            >
               <div className="h-full text-center">
                 <img
                   alt="testimonial"

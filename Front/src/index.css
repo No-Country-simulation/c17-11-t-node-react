@@ -21,7 +21,3 @@ h4 {
 p {
   text-wrap: pretty;
 }
-.rtl-bidi {
-  direction: rtl;
-  unicode-bidi: bidi-override;
-}

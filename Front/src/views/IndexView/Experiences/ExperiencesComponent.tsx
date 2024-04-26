@@ -1,30 +1,5 @@
 import React from "react";
-
-interface Testimonial {
-  name: string;
-  role: string;
-  imageSrc: string;
-  description: string;
-}
-
-const testimonials: Testimonial[] = [
-  {
-    name: "Juan Perez",
-    role: "Recoleta - Buenos Aires",
-    imageSrc:
-      "https://images.unsplash.com/photo-1522556189639-b150ed9c4330?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    description:
-      "MascoCuidado encaja a la perfección con mi estilo de vida, me facilitó mucho el proceso de cuidado de mi mascota.",
-  },
-  {
-    name: "Yanina Figueroa",
-    role: "Rosario - Santa Fe",
-    imageSrc:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    description:
-      "Increíble el tiempo que me ahorro desde que mascocuidado me da la simplicidad de conectar con gente tan experimentada en el cuidado de mi Perrito.",
-  },
-];
+import { testimonials } from "../../../services/fakeAPI";
 
 const ExperiencesComponent: React.FC = () => {
   return (
@@ -36,7 +11,11 @@ const ExperiencesComponent: React.FC = () => {
         <div className="flex flex-wrap -m-4">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="p-4 md:w-1/2 w-full">
-              <div className="h-full bg-[#FF9F00]/75 p-8 rounded-3xl">
+              <div
+                className="h-full bg-[#FF9F00]/75 p-8 rounded-3xl"
+                data-aos="flip-down"
+                data-aos-duration="2000"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"

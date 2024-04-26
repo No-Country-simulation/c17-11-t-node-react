@@ -17,36 +17,36 @@ export const RegisterForm = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  const FETCH = `${import.meta.env.VITE_BACK_API_FETCH}`;
+
   const fetchData = async () => {
     try {
-      const response = await fetch(FETCH);
+      const response = await fetch("http://localhost:3001/api/v1/roles");
       const jsonData = await response.json();
       setData(jsonData.data);
     } catch (error) {
       console.error("Error al recuperar datos:", error);
     }
   };
-
-  const APIREGISTER = "http://localhost:3001/api/v1/auth/register";
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch(APIREGISTER, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          role,
-          first_name,
-          last_name,
-          email,
-          password,
-          username,
-        }),
-      });
+      const response = await fetch(
+        "http://localhost:3001/api/v1/auth/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            role,
+            first_name,
+            last_name,
+            email,
+            password,
+            username,
+          }),
+        }
+      );
       await response.json();
     } catch (error) {
       console.error("Error:", error);
@@ -169,7 +169,7 @@ export const RegisterForm = () => {
               type="radio"
               value={item._id}
               name="default-radio"
-              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 "
             />
             <label
               htmlFor="default-radio-1"
@@ -187,7 +187,7 @@ export const RegisterForm = () => {
               id="remember"
               aria-describedby="remember"
               type="checkbox"
-              className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+              className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300  "
               required
             />
           </div>
@@ -195,10 +195,7 @@ export const RegisterForm = () => {
             <label htmlFor="remember" className="text-gray-500 ">
               Acepto los{" "}
             </label>
-            <a
-              href="#"
-              className="font-medium text-black hover:underline dark:text-primary-500"
-            >
+            <a href="#" className="font-medium text-black hover:underline ">
               Terminos y condiciones
             </a>
           </div>
@@ -206,16 +203,13 @@ export const RegisterForm = () => {
       </div>
       <button
         type="submit"
-        className="w-full text-black  bg-amber-500 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-2xl text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 font-bold"
+        className="w-full text-black  bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-2xl text-sm px-5 py-2.5 text-center  font-bold"
       >
         REGISTRARME
       </button>
-      <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+      <p className="text-sm font-light text-gray-500 ">
         ¿Has olvidado tu contraseña?{" "}
-        <a
-          href="#"
-          className="font-medium text-black hover:underline dark:text-primary-500"
-        >
+        <a href="#" className="font-medium text-black hover:underline ">
           Recuperar
         </a>
       </p>

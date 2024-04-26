@@ -8,10 +8,31 @@ export interface ISelectInput {
   target: InputEvent;
 }
 
-export interface UserProfile {
-  id: number;
+export interface Service {
   name: string;
   description: string;
+  price: number;
+}
+export interface AppDetail {
+  imageSrc: string;
+  description: string;
+}
+
+export interface UserProfile {
+  id: string;
+  first_name: string;
+  last_name: string;
+  description: string;
+  services: Service[];
+  time: string;
   address: string;
-  imageUrl: string;
+  phone: string;
+  picture: string;
+}
+
+export interface Testimonial {
+  name: string;
+  role: string;
+  imageSrc: string;
+  description: string;
 }
