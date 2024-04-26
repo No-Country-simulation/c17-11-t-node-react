@@ -2,7 +2,7 @@ import { AppDetail, Testimonial, UserProfile } from "../types/types";
 
 export const user: UserProfile[] = [
   {
-    id: 1,
+    id: "1",
     first_name: "Roberto",
     last_name: "Perez",
     address: "Recoleta - Buenos Aires",
@@ -32,7 +32,7 @@ export const user: UserProfile[] = [
       "https://cdn.pixabay.com/photo/2017/08/12/18/31/male-2634974_1280.jpg",
   },
   {
-    id: 2,
+    id: "2",
     first_name: "Mariana",
     last_name: "González",
     address: "Palermo - Buenos Aires",
@@ -61,7 +61,7 @@ export const user: UserProfile[] = [
       "https://cdn.pixabay.com/photo/2017/06/09/17/11/model-2387582_1280.jpg",
   },
   {
-    id: 3,
+    id: "3",
     first_name: "Laura",
     last_name: "Rodríguez",
     address: "Belgrano - Buenos Aires",
@@ -92,7 +92,7 @@ export const user: UserProfile[] = [
       "https://cdn.pixabay.com/photo/2018/01/02/09/47/woman-3055841_1280.jpg",
   },
   {
-    id: 4,
+    id: "4",
     first_name: "Jorge",
     last_name: "López",
     address: "Caballito - Buenos Aires",
@@ -123,7 +123,7 @@ export const user: UserProfile[] = [
       "https://cdn.pixabay.com/photo/2016/11/18/19/07/happy-1836445_1280.jpg",
   },
   {
-    id: 5,
+    id: "5",
     first_name: "Carolina",
     last_name: "Martínez",
     address: "San Telmo - Buenos Aires",
@@ -154,7 +154,7 @@ export const user: UserProfile[] = [
       "https://cdn.pixabay.com/photo/2018/01/03/19/54/fashion-3059143_1280.jpg",
   },
   {
-    id: 6,
+    id: "6",
     first_name: "Fernando",
     last_name: "Sánchez",
     address: "Villa Crespo - Buenos Aires",
