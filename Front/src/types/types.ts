@@ -19,7 +19,7 @@ export interface AppDetail {
 }
 
 export interface UserProfile {
-  id: string;
+  id: number;
   first_name: string;
   last_name: string;
   description: string;

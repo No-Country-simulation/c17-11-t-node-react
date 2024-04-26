@@ -10,8 +10,8 @@ export const Review = ({ user }: { user: UserProfile }) => {
           </h4>
           <h5 className="font-bold uppercase text-xl">Irene</h5>
           <p className="text-gray-700">
-            Amanda cuidó muy bien de mi perrita. Nos mantuvo al tanto de sus
-            paseos, sus actividades y estados de ánimo. Nos sentimos muy
+            {user.first_name} cuidó muy bien de mi perrita. Nos mantuvo al tanto
+            de sus paseos, sus actividades y estados de ánimo. Nos sentimos muy
             tranquilos durante la semana que se quedó con ella. Fue paciente con
             mi perrita con todo y las noches. Al final Tuvo la amabilidad de
             lavar la camita.
