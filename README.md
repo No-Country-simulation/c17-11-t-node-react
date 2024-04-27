@@ -524,17 +524,15 @@ Información del Proyecto
 </table>
 <br>
 
+<div align="center">
 
-<h1 align="center"> 
+<h1> 
   Deploy
 </h1>
 
-## [Figma](https://www.figma.com/file/CfUZpuaYN2R1MHn7uVKt7j/Cuidado-de-mascotas?type=design&node-id=1-7&mode=design&t=9jeSo0Wm2gAQkvCx-0)
+## [MascoCuidado](https://mascocuidado.netlify.app/)
 
-## [Front]()
-
-## [Back](https://mascocuidado-backend.onrender.com/)
-
+</div>
 
 <br>
 
