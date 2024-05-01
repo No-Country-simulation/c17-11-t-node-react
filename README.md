@@ -23,7 +23,7 @@ Información del Proyecto
   </tr>
   <tr>
     <td>Cliente</td>
-    <td>No Country</td>
+    <td><a href="https://www.nocountry.tech/">No Country</a></td>
   </tr>
 </table>
 
@@ -33,31 +33,110 @@ Información del Proyecto
 <img src="https://github.com/No-Country/c17-11-t-node-react/blob/main/Dise%C3%B1o/logo_mascocuidado.png" width="300" alt="LOGO">
 
   <h1>🐾 Mascocuidado 🐾</h1>
-  <p>😺💝🐶 Mascocuidado es una plataforma en linea especializada en el cuidado de mascotas, brindando servicios de calidad para garantizar el bienestar y la felicidad de tus queridas mascotas. 🐶💝😺</p>
+  <p>😺💝🐶 Mascocuidado es una innovadora plataforma en línea que se dedica al cuidado integral de mascotas, ofreciendo una variedad de servicios de alta calidad para asegurar el bienestar y la alegría de nuestros amigos de cuatro patas. Con un enfoque centrado en la comodidad y la confianza, Mascocuidado busca ser el puente entre dueños dedicados, cuidadores apasionados y administradores comprometidos, facilitando una experiencia única y personalizada para cada usuario 🐶💝😺</p>
 </div>
 
 <br>
 
-<h2 align="center">Objetivo</h2>
+<h2 align="center"> Nuestros objetivos</h2>
 
-<p align="center">El objetivo principal de Mascocuidado es poder facilitar a los usuarios, ya sean dueños, cuidadores y/o administradores...</p>
+<p align="center">
+
+<details>
+<summary>Facilitar la Conexión</summary>
+
+  - Unir a dueños de mascotas con cuidadores calificados a través de una plataforma fácil de usar, donde se pueden reservar servicios como paseos, cuidado diario y peluquería con solo unos clics.
+
+</details>
+
+<details>
+<summary>Garantizar la Calidad</summary>
+  
+  - Asegurar que cada servicio ofrecido cumpla con los más altos estándares de calidad, proporcionando tranquilidad a los dueños y un ambiente seguro y amoroso para las mascotas
+</details>
+
+
+<details>
+<summary>Fomentar la Comunidad</summary>
+  
+  - Crear una red de apoyo donde los dueños puedan compartir experiencias, reseñas y recomendaciones, fortaleciendo la confianza en los cuidadores disponibles en la plataforma.
+</details>
+
+
+
+<details>
+<summary>Promover la Transparencia</summary>
+
+  - Ofrecer a los dueños acceso a perfiles detallados de cuidadores, incluyendo reseñas, calificaciones y fotos, para tomar decisiones informadas basadas en la reputación y experiencia previa.
+  
+</details>
+
+
+<details>
+<summary>Simplificar la Gestión</summary>
+
+  - Proporcionar a los cuidadores herramientas intuitivas para gestionar sus servicios, disponibilidad y comunicación con los dueños, permitiéndoles concentrarse en lo que mejor saben hacer: cuidar de las mascotas.
+  
+</details>
+
+
+<details>
+<summary>Mantener la Seguridad</summary>
+
+  - Dotar a los administradores de la capacidad para supervisar la plataforma, evaluar a los cuidadores y garantizar que cada interacción cumpla con las políticas de seguridad y bienestar animal.
+  
+</details>
+
+</p>
 
 <br>
 
 <div align="center">
-<h2>Funcionalidades</h2>
+<h2>Tipos de Usuarios</h2>
 </div>
 
+<details>
+<summary>Cliente / Dueño de las mascotas</summary>
 
-| Funcionalidad | Descripción |
-|---|---|
-| Registro | Permite a los dueños de mascotas y cuidadores crear cuentas en la plataforma. |
-| Login  | Permite a los usuarios registrados (Dueño de mascota, Cuidador y Administrador) iniciar sesión en la plataforma. |
-| Calendario  | Permite a los dueños de mascotas reservar citas con cuidadores para sus mascotas. |
-| Recomendaciones de clientes | Permite a los dueños de mascotas ver y dejar comentarios sobre los cuidadores. |
-| Contacto con la empresa | Permite a los usuarios ponerse en contacto con la empresa para obtener más información o asistencia. |
+- Funcionalidades
+  
+  - Registro: Crear una cuenta en la plataforma.
+  - Login: Iniciar sesión en la plataforma.
+  - Calendario: Reservar citas con cuidadores para servicios específicos como paseos, cuidado y peluquería para sus mascotas.
+  - Recomendaciones de clientes: Ver y dejar comentarios sobre los cuidadores.
+  - Contacto con la empresa: Ponerse en contacto con la empresa para obtener más información o asistencia.
+  - Gestión de reservas: Cancelar reservas con facilidad.
+  - Acceso a reseñas: Consultar reseñas y calificaciones de otros usuarios sobre los cuidadores.
+  - Comunicación con cuidadores: Estar en contacto con el cuidador para conocer el estado de su mascota.
+  - Perfil personal: Agregar más información personal y una foto en su perfil.
 
 
+</details>
+
+<details>
+<summary>Empleado / Cuidador</summary>
+
+- Funcionalidades
+
+  - Registro: Registrarse en la plataforma y ofrecer servicios de cuidado de mascotas.
+  - Login: Iniciar sesión en la plataforma.
+  - Selección de mascotas: Seleccionar el tipo de mascota (perro y/o gato) que están capacitados y cómodos para cuidar.
+  - Selección de servicios: Elegir los servicios que desean ofrecer.
+  - Perfil personal: Agregar más información personal y una foto en su perfil para generar confianza con los dueños de las mascotas.
+  - Notificaciones: Recibir notificaciones sobre nuevas solicitudes de servicios.
+
+</details>
+
+<details>
+<summary>Administrador</summary>
+
+- Funcionalidades
+  
+  - Gestión de la plataforma: Administrar la plataforma para garantizar la seguridad y calidad de los servicios ofrecidos.
+  - Evaluación de cuidadores: Evaluar a los potenciales cuidadores que se registren.
+  - Creación de cuentas de administrador: Crear y definir otras cuentas de administrador para la colaboración en la gestión de la plataforma.
+
+</details>
 
 <br>
 
@@ -408,7 +487,9 @@ Información del Proyecto
       <td>
         <img alt="tailwind" src="https://img.shields.io/badge/Tailwind-%2306B6D4?logo=tailwind%20css&logoColor=white">
       </td>
-      <td></td>
+      <td>
+         <img alt="canva" src="https://img.shields.io/badge/Canva-%2300C4CC.svg?style=plastic&logo=Canva&logoColor=white">
+      </td>
       <td>
         <img alt="mongodb" src="https://img.shields.io/badge/MongoDB-%2347A248?logo=MongoDB&logoColor=white">
       </td>
@@ -443,6 +524,17 @@ Información del Proyecto
 </table>
 <br>
 
+<div align="center">
+
+<h1> 
+  Deploy
+</h1>
+
+## [MascoCuidado](https://mascocuidado.netlify.app/)
+
+</div>
+
+<br>
 
 <h1 align="center"> 
   Inicialización del proyecto
@@ -610,6 +702,13 @@ $ docker run -d -p 3000:3001 --name name-container -e PORT=3001 -e DATABASE_URL=
 
 </br>
 
-<h1 align="center"> 
-Agradecemientos a No Country
-</h1>
+
+<div align="center">
+
+  <h1>Agradecemientos a No Country</h1>
+
+  ### De parte de todo el equipo de Mascocuidado agradecemos a la plataforma NO COUNTRY por dejarnos desarrollarnos en esta linda experiencia 🐾
+
+  <img src="https://camo.githubusercontent.com/e17d4229ec90e5645b9e66b308ea1e744a637915b3c27cc3b2ea7ec5bc54de58/68747470733a2f2f75706c6f6164732d73736c2e776562666c6f772e636f6d2f3632636332313663653233663739633130626338383136392f3633393733653939303532333733623831306363653934625f4272616e64696e672532304e432d30362d702d3830302e706e67" width="200" alt="No-Country">
+ 
+</div>
